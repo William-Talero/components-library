@@ -1,11 +1,8 @@
 import styled from "styled-components";
-
-interface ButtonProps {
-  color: "primary" | "secondary";
-}
+import { ButtonProps } from "./IButton";
 
 const Button = styled.button<ButtonProps>`
-  width: 100%;
+  width: ${(props) => (props.width ? props.width : "100%")};
   background-color: ${(props) =>
     props.color === "primary" ? "#4caf50" : "#f44336"};
   border: none;
