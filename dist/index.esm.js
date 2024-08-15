@@ -26,7 +26,7 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
-var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  color: white;\n  background-color: blue;\n"], ["\n  color: white;\n  background-color: blue;\n"])));
+var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  background-color: #4caf50;\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"], ["\n  width: 100%;\n  background-color: #4caf50;\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"])));
 var templateObject_1;
 
 export { Button };
