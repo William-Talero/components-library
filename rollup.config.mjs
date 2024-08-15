@@ -23,15 +23,7 @@ export default {
     peerDepsExternal(),
     resolve(),
     commonjs(),
-    typescript({
-      useTsconfigDeclarationDir: true,
-      tsconfigOverride: {
-        compilerOptions: {
-          declaration: true,
-          declarationDir: "dist/types",
-        },
-      },
-    }),
+    typescript({ useTsconfigDeclarationDir: true }),
   ],
   external: ["react", "react-dom", "styled-components"],
 };

@@ -5,7 +5,7 @@
     "lib": ["dom", "esnext"],
     "jsx": "react",
     "declaration": true,
-    "declarationDir": "dist/types",
+    "declarationDir": "dist",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -15,3 +15,4 @@
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
+
