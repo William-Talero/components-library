@@ -28,9 +28,9 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
-var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  background-color: ", ";\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"], ["\n  width: ", ";\n  background-color: ", ";\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"])), function (props) { return (props.width ? props.width : "100%"); }, function (props) {
+var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  background-color: ", ";\n  border: none;\n  color: ", ";\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"], ["\n  width: ", ";\n  background-color: ", ";\n  border: none;\n  color: ", ";\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"])), function (props) { return (props.width ? props.width : "100%"); }, function (props) {
     return props.color === "primary" ? "#4caf50" : "#f44336";
-});
+}, function (props) { return (props.textColor ? props.textColor : "white"); });
 var templateObject_1;
 
 exports.Button = Button;

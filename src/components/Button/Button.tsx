@@ -6,7 +6,7 @@ const Button = styled.button<ButtonProps>`
   background-color: ${(props) =>
     props.color === "primary" ? "#4caf50" : "#f44336"};
   border: none;
-  color: white;
+  color: ${(props) => (props.textColor ? props.textColor : "white")};
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
