@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c && date > build/timestamp",
+    "build": "rollup -c && node ./src/utils/createTimestamp.js",
     "start": "rollup -c -w"
   },
   "dependencies": {
