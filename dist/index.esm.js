@@ -26,9 +26,46 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 
-var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  background-color: ", ";\n  border: none;\n  color: ", ";\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"], ["\n  width: ", ";\n  background-color: ", ";\n  border: none;\n  color: ", ";\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"])), function (props) { return (props.width ? props.width : "100%"); }, function (props) {
-    return props.color === "primary" ? "#4caf50" : "#f44336";
-}, function (props) { return (props.textColor ? props.textColor : "white"); });
+var buttonSizes = {
+    sm: {
+        width: "5em",
+        height: "2rem",
+        padding: "10px 20px",
+    },
+    md: {
+        width: "7em",
+        height: "3rem",
+        padding: "15px 32px",
+    },
+    lg: {
+        width: "9em",
+        height: "4rem",
+        padding: "20px 40px",
+    },
+};
+
+var generalColors = {
+    primary: "#fc802a",
+    secondary: "#659125",
+};
+
+var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  height: ", ";\n  padding: ", ";\n  background-color: ", ";\n  border: none;\n  color: ", ";\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"], ["\n  width: ", ";\n  height: ", ";\n  padding: ", ";\n  background-color: ", ";\n  border: none;\n  color: ", ";\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 1rem;\n"])), function (props) {
+    return props.size
+        ? buttonSizes[props.size].width
+        : props.w
+            ? props.w
+            : buttonSizes.md.width;
+}, function (props) {
+    return props.size
+        ? buttonSizes[props.size].height
+        : props.h
+            ? props.h
+            : buttonSizes.md.height;
+}, function (props) {
+    return props.size ? buttonSizes[props.size].padding : buttonSizes.md.padding;
+}, function (props) {
+    return props.bgcolor ? generalColors[props.bgcolor] : props.w;
+}, function (props) { return (props.textcolor ? props.textcolor : "white"); });
 var templateObject_1;
 
 export { Button };

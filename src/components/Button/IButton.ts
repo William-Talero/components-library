@@ -1,5 +1,7 @@
 export interface ButtonProps {
-  color?: "primary" | "secondary";
-  width?: string;
-  textColor?: string;
+  bgcolor?: "primary" | "secondary";
+  w?: string;
+  h?: string;
+  size?: "sm" | "md" | "lg";
+  textcolor?: "primary" | "secondary";
 }
