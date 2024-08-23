@@ -1,6 +1,6 @@
 // import React from "react";
 // import { Meta, Story } from "@storybook/react";
-// import { Button } from "./components/Button/Button";
+// import { Button } from "./components/Button/Button.styles";
 // import { ButtonProps } from "./components/Button/IButton";
 
 // export default {

@@ -1,17 +1,23 @@
 export const buttonSizes = {
-    sm: {
-      width: "5em",
-      height: "2rem",
-      padding: "10px 20px",
-    },
-    md: {
-      width: "7em",
-      height: "3rem",
-      padding: "15px 32px",
-    },
-    lg: {
-      width: "9em",
-      height: "4rem",
-      padding: "20px 40px",
-    },
-  };
+  sm: {
+    width: "4rem",
+    height: "2.5rem",
+    padding: ".2rem .4rem",
+    fontSize: "0.6rem",
+    smWidth: "40%",
+  },
+  md: {
+    width: "8rem",
+    height: "2.8rem",
+    padding: ".3rem .5rem",
+    fontSize: "0.8rem",
+    smWidth: "60%",
+  },
+  lg: {
+    width: "16rem",
+    height: "2.8rem",
+    padding: ".3rem .5rem",
+    fontSize: "0.9rem",
+    smWidth: "100%",
+  },
+};
