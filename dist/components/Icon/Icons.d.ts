@@ -5,7 +5,8 @@ declare const icons: {
     plus: string;
 };
 interface IconProps {
-    name: keyof typeof icons;
+    $name: keyof typeof icons;
+    $w: string;
 }
-declare const Icon: ({ name }: IconProps) => React.JSX.Element;
+declare const Icon: ({ $name, $w }: IconProps) => React.JSX.Element;
 export default Icon;

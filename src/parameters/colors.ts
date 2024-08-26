@@ -7,4 +7,5 @@ export const generalColors = {
   disabledSecond: "#8f8f8f",
   primaryHover: "#B9CC56",
   secondaryHover: "#FB6903",
+  principalDark: "#292929",
 };

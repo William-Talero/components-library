@@ -7,4 +7,5 @@ export declare const generalColors: {
     disabledSecond: string;
     primaryHover: string;
     secondaryHover: string;
+    principalDark: string;
 };

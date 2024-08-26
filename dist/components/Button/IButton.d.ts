@@ -8,6 +8,6 @@ export interface ButtonProps {
     $m?: string;
 }
 export interface ButtonWithIconProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
-    icon: "house" | "plus" | "master";
+    $icon: "house" | "plus" | "master";
     children: React.ReactNode;
 }

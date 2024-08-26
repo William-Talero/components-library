@@ -95,6 +95,7 @@ var generalColors = {
     disabledSecond: "#8f8f8f",
     primaryHover: "#B9CC56",
     secondaryHover: "#FB6903",
+    principalDark: "#292929",
 };
 
 var Button = styled.button(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  width: ", ";\n  height: ", ";\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  color: ", ";\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: ", " !important;\n  font-weight: 500 !important;\n  margin: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: #000;\n    border: none;\n  }\n\n  :only-child {\n    fill: ", ";\n  }\n\n  &:hover :only-child {\n    fill: #000 !important;\n  }\n\n  &:disabled {\n    background-color: ", ";\n    cursor: not-allowed;\n    color: ", " !important;\n    border: none;\n\n    :only-child {\n      fill: ", " !important;\n    }\n  }\n\n  &:active {\n    background-color: ", ";\n    color: #fff !important;\n\n    :only-child {\n      fill: #fff !important;\n    }\n  }\n\n  @media screen and (max-width: 60rem) {\n    width: ", ";\n    font-size: 0.8rem;\n  }\n\n  @media screen and (max-width: 20rem) {\n    font-size: 0.5rem;\n  }\n"], ["\n  width: ", ";\n  height: ", ";\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  color: ", ";\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  margin: 1rem 0;\n  cursor: pointer;\n  border-radius: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: ", " !important;\n  font-weight: 500 !important;\n  margin: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: #000;\n    border: none;\n  }\n\n  :only-child {\n    fill: ", ";\n  }\n\n  &:hover :only-child {\n    fill: #000 !important;\n  }\n\n  &:disabled {\n    background-color: ", ";\n    cursor: not-allowed;\n    color: ", " !important;\n    border: none;\n\n    :only-child {\n      fill: ", " !important;\n    }\n  }\n\n  &:active {\n    background-color: ", ";\n    color: #fff !important;\n\n    :only-child {\n      fill: #fff !important;\n    }\n  }\n\n  @media screen and (max-width: 60rem) {\n    width: ", ";\n    font-size: 0.8rem;\n  }\n\n  @media screen and (max-width: 20rem) {\n    font-size: 0.5rem;\n  }\n"])), function (props) {
@@ -150,7 +151,7 @@ var Button = styled.button(templateObject_1$1 || (templateObject_1$1 = __makeTem
             ? props.$w
             : buttonSizes.md.smWidth;
 });
-var ButtonContent = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"], ["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"])));
+var ButtonContent = styled.div(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"], ["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"])));
 var OrangeButton = styled(Button)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: #fff;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"], ["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: #fff;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"])), function (props) {
     return props.$type == "primary"
         ? props.$bgcolor
@@ -170,27 +171,29 @@ var OrangeButton = styled(Button)(templateObject_3 || (templateObject_3 = __make
             ? generalColors.secondary
             : generalColors.quaternary;
 }, generalColors.secondaryHover, generalColors.quaternary, generalColors.secondaryHover, generalColors.disabledSecond);
-var templateObject_1$1, templateObject_2, templateObject_3;
+var templateObject_1$1, templateObject_2$1, templateObject_3;
 
 var icons = {
     house: HouseIcon,
     master: MasterIcon,
     plus: PlusIcon,
 };
-var StyledSvgIcon = styled.svg(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 15%;\n  height: auto;\n  max-height: 60%;\n"], ["\n  width: 15%;\n  height: auto;\n  max-height: 60%;\n"])));
+var IconContainer = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"], ["\n  width: ", ";\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"])), function (props) { return props.$wContainer; });
+var StyledSvgIcon = styled.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 100%;\n  height: auto;\n  max-height: 60%;\n"], ["\n  width: 100%;\n  height: auto;\n  max-height: 60%;\n"])));
 var Icon = function (_a) {
-    var _b = _a.name, name = _b === void 0 ? "plus" : _b;
-    var SvgIcon = icons[name];
-    return React.createElement(StyledSvgIcon, { as: SvgIcon });
+    var _b = _a.$name, $name = _b === void 0 ? "plus" : _b, $w = _a.$w;
+    var SvgIcon = icons[$name];
+    return (React.createElement(IconContainer, { "$wContainer": $w },
+        React.createElement(StyledSvgIcon, { as: SvgIcon })));
 };
-var templateObject_1;
+var templateObject_1, templateObject_2;
 
 var ButtonWithIcon = function (data) {
-    var $size = data.$size, icon = data.icon, children = data.children;
+    var $size = data.$size, icon = data.$icon, children = data.children;
     return (React__namespace.createElement(Button, __assign({}, data),
-        React__namespace.createElement(Icon, { name: icon }),
+        React__namespace.createElement(Icon, { "$name": icon, "$w": "20%" }),
         React__namespace.createElement(ButtonContent, null, children),
-        $size == "lg" && React__namespace.createElement(Icon, { name: icon })));
+        $size == "lg" && React__namespace.createElement(Icon, { "$name": icon, "$w": "20%" })));
 };
 
 exports.Button = Button;

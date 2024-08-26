@@ -11,18 +11,39 @@ const icons = {
 };
 
 interface IconProps {
-  name: keyof typeof icons;
+  $name: keyof typeof icons;
+  $w: string;
 }
 
+interface IconContainerProps {
+  $wContainer: string;
+}
+
+interface IconContainerProps {
+  $wContainer: string;
+}
+
+const IconContainer = styled.div<IconContainerProps>`
+  width: ${(props) => props.$wContainer};
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledSvgIcon = styled.svg`
-  width: 15%;
+  width: 100%;
   height: auto;
   max-height: 60%;
 `;
 
-const Icon = ({ name = "plus" }: IconProps) => {
-  const SvgIcon = icons[name];
-  return <StyledSvgIcon as={SvgIcon} />;
+const Icon = ({ $name = "plus", $w }: IconProps) => {
+  const SvgIcon = icons[$name];
+  return (
+    <IconContainer $wContainer={$w}>
+      <StyledSvgIcon as={SvgIcon} />
+    </IconContainer>
+  );
 };
 
 export default Icon;
