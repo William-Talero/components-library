@@ -51,7 +51,7 @@ const ButtonElement = styled.button<ButtonProps>`
 
   :only-child {
     fill: ${(props) =>
-      props.$type == "primary" ? "white" : generalColors.terciary};
+      props.$type == "primary" ? "white" : generalColors.terciary} !important;
   }
 
   &:hover :only-child {
@@ -113,7 +113,7 @@ const ButtonContent = styled.div`
   overflow: hidden;
 `;
 
-const OrangeButton = styled(ButtonElement)`
+const OrangeButtonElement = styled(ButtonElement)`
   height: 2.5rem;
   background-color: ${(props) =>
     props.$type == "primary" ? generalColors.secondary : "transparent"};
@@ -124,7 +124,7 @@ const OrangeButton = styled(ButtonElement)`
       ? "none"
       : `1px solid ${generalColors.quaternary}`};
   color: ${(props) =>
-    props.$type == "primary" ? "white" : generalColors.quaternary};
+    props.$type == "primary" ? "white" : generalColors.quaternary} !important;
 
   &:hover {
     background-color: ${generalColors.secondaryHover};
@@ -143,4 +143,4 @@ const OrangeButton = styled(ButtonElement)`
   }
 `;
 
-export { ButtonElement, ButtonContent, OrangeButton };
+export { ButtonElement, ButtonContent, OrangeButtonElement };
