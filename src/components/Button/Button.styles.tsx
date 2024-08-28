@@ -128,7 +128,7 @@ const OrangeButtonElement = styled(ButtonElement)`
 
   &:hover {
     background-color: ${generalColors.secondaryHover};
-    color: #fff;
+    color: #fff !important;
   }
 
   &:active {

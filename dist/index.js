@@ -2,8 +2,8 @@
 
 var React = require('react');
 var styled = require('styled-components');
-var HouseIcon = require('@/assets/icons/houseIcon.svg');
-var MasterIcon = require('@/assets/icons/masterIcon.svg');
+var houseIcon_svg = require('@/assets/icons/houseIcon.svg');
+var masterIcon_svg = require('@/assets/icons/masterIcon.svg');
 var PlusIcon = require('@/assets/icons/plusIcon.svg');
 
 function _interopNamespaceDefault(e) {
@@ -136,7 +136,7 @@ var ButtonElement = styled.button(templateObject_1$1 || (templateObject_1$1 = __
             : buttonSizes.md.smWidth;
 });
 var ButtonContent = styled.div(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"], ["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"])));
-var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"], ["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"])), function (props) {
+var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff !important;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"], ["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff !important;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"])), function (props) {
     return props.$type == "primary" ? generalColors.secondary : "transparent";
 }, function (props) {
     return props.$type == "primary"
@@ -148,15 +148,17 @@ var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObj
 var templateObject_1$1, templateObject_2$1, templateObject_3;
 
 var icons = {
-    house: HouseIcon,
-    master: MasterIcon,
+    house: houseIcon_svg.ReactComponent,
+    master: masterIcon_svg.ReactComponent,
     plus: PlusIcon,
 };
 var IconContainer = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"], ["\n  width: ", ";\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"])), function (props) { return props.$wContainer; });
 var StyledSvgIcon = styled.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 100%;\n  height: auto;\n  max-height: 60%;\n"], ["\n  width: 100%;\n  height: auto;\n  max-height: 60%;\n"])));
 var Icon = function (_a) {
     var _b = _a.$name, $name = _b === void 0 ? "plus" : _b, $w = _a.$w;
+    console.log(icons);
     var SvgIcon = icons[$name];
+    console.log(SvgIcon);
     return (React.createElement(IconContainer, { "$wContainer": $w },
         React.createElement(StyledSvgIcon, { as: SvgIcon })));
 };

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import React__default from 'react';
 import styled from 'styled-components';
-import HouseIcon from '@/assets/icons/houseIcon.svg';
-import MasterIcon from '@/assets/icons/masterIcon.svg';
+import { ReactComponent } from '@/assets/icons/houseIcon.svg';
+import { ReactComponent as ReactComponent$1 } from '@/assets/icons/masterIcon.svg';
 import PlusIcon from '@/assets/icons/plusIcon.svg';
 
 /******************************************************************************
@@ -116,7 +116,7 @@ var ButtonElement = styled.button(templateObject_1$1 || (templateObject_1$1 = __
             : buttonSizes.md.smWidth;
 });
 var ButtonContent = styled.div(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"], ["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"])));
-var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"], ["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"])), function (props) {
+var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff !important;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"], ["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff !important;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"])), function (props) {
     return props.$type == "primary" ? generalColors.secondary : "transparent";
 }, function (props) {
     return props.$type == "primary"
@@ -128,15 +128,17 @@ var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObj
 var templateObject_1$1, templateObject_2$1, templateObject_3;
 
 var icons = {
-    house: HouseIcon,
-    master: MasterIcon,
+    house: ReactComponent,
+    master: ReactComponent$1,
     plus: PlusIcon,
 };
 var IconContainer = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"], ["\n  width: ", ";\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"])), function (props) { return props.$wContainer; });
 var StyledSvgIcon = styled.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 100%;\n  height: auto;\n  max-height: 60%;\n"], ["\n  width: 100%;\n  height: auto;\n  max-height: 60%;\n"])));
 var Icon = function (_a) {
     var _b = _a.$name, $name = _b === void 0 ? "plus" : _b, $w = _a.$w;
+    console.log(icons);
     var SvgIcon = icons[$name];
+    console.log(SvgIcon);
     return (React__default.createElement(IconContainer, { "$wContainer": $w },
         React__default.createElement(StyledSvgIcon, { as: SvgIcon })));
 };

@@ -1,7 +1,7 @@
 import React from "react";
 declare const icons: {
-    house: string;
-    master: string;
+    house: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    master: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
     plus: string;
 };
 interface IconProps {

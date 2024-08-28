@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import HouseIcon from "@/assets/icons/houseIcon.svg";
-import MasterIcon from "@/assets/icons/masterIcon.svg";
+import { ReactComponent as HouseIcon } from "@/assets/icons/houseIcon.svg";
+import { ReactComponent as MasterIcon } from "@/assets/icons/masterIcon.svg";
 import PlusIcon from "@/assets/icons/plusIcon.svg";
 
 const icons = {
@@ -38,7 +38,9 @@ const StyledSvgIcon = styled.svg`
 `;
 
 const Icon = ({ $name = "plus", $w }: IconProps) => {
+  console.log(icons);
   const SvgIcon = icons[$name];
+  console.log(SvgIcon);
   return (
     <IconContainer $wContainer={$w}>
       <StyledSvgIcon as={SvgIcon} />
