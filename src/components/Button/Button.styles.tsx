@@ -1,43 +1,37 @@
 import styled from "styled-components";
 import { ButtonProps } from "./IButton";
-import { buttonSizes } from "@/parameters/sizes";
+import { buttonSizes } from "../../parameters/sizes";
 import { generalColors } from "@/parameters/colors";
 
-const Button = styled.button<ButtonProps>`
+const ButtonElement = styled.button<ButtonProps>`
   width: ${(props) =>
     props.$size
       ? buttonSizes[props.$size].width
       : props.$w
-      ? props.$w
-      : buttonSizes.md.width};
+        ? props.$w
+        : buttonSizes.md.width};
   height: ${(props) =>
     props.$size
       ? buttonSizes[props.$size].height
       : props.$h
-      ? props.$h
-      : buttonSizes.md.height};
+        ? props.$h
+        : buttonSizes.md.height};
   padding: ${(props) =>
     props.$size ? buttonSizes[props.$size].padding : buttonSizes.md.padding};
   background-color: ${(props) =>
-    props.$type == "primary"
-      ? props.$bgcolor
-        ? generalColors[props.$bgcolor]
-        : generalColors.primary
-      : "transparent"};
+    props.$type == "primary" ? generalColors.primary : "transparent"};
   border: ${(props) =>
-    props.$type == "primary" ? "none" : `1px solid ${generalColors.terciary}`};
+    props.$type == "primary"
+      ? "none"
+      : `2px solid light-dark(${generalColors.terciary}, ${generalColors.primary})`};
   color: ${(props) =>
     props.$type == "primary"
-      ? props.$textcolor
-        ? props.$textcolor
-        : "white"
-      : props.$bgcolor
-      ? generalColors[props.$bgcolor]
-      : generalColors.terciary};
+      ? "white"
+      : `light-dark(${generalColors.terciary}, ${generalColors.primary})`} !important;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 1rem 0;
+  margin: ${(props) => props.$m};
   cursor: pointer;
   border-radius: 0.5rem;
   display: flex;
@@ -48,26 +42,16 @@ const Button = styled.button<ButtonProps>`
       ? buttonSizes[props.$size].fontSize
       : buttonSizes.md.fontSize} !important;
   font-weight: 500 !important;
-  margin: ${(props) => props.$m};
 
   &:hover {
-    background-color: ${(props) =>
-      props.$bgcolor
-        ? generalColors[`${props.$bgcolor}Hover`]
-        : generalColors.primary};
-    color: #000;
+    background-color: ${generalColors.primaryHover};
+    color: #000 !important;
     border: none;
   }
 
   :only-child {
     fill: ${(props) =>
-      props.$type == "primary"
-        ? props.$textcolor
-          ? props.$textcolor
-          : "white"
-        : props.$bgcolor
-        ? generalColors[props.$bgcolor]
-        : generalColors.terciary};
+      props.$type == "primary" ? "white" : generalColors.terciary};
   }
 
   &:hover :only-child {
@@ -75,13 +59,24 @@ const Button = styled.button<ButtonProps>`
   }
 
   &:disabled {
-    background-color: ${generalColors.disabled};
+    background-color: light-dark(
+      ${generalColors.disabled},
+      ${generalColors.disabledSecond}
+    );
     cursor: not-allowed;
-    color: ${generalColors.disabledSecond} !important;
+    color: light-dark(
+      ${generalColors.disabledSecond},
+      ${generalColors.disabled}
+    ) !important;
     border: none;
 
     :only-child {
       fill: ${generalColors.disabledSecond} !important;
+    }
+
+    &:hover {
+      background-color: ${generalColors.disabled};
+      color: ${generalColors.disabledSecond} !important;
     }
   }
 
@@ -99,8 +94,8 @@ const Button = styled.button<ButtonProps>`
       props.$size
         ? buttonSizes[props.$size].smWidth
         : props.$w
-        ? props.$w
-        : buttonSizes.md.smWidth};
+          ? props.$w
+          : buttonSizes.md.smWidth};
     font-size: 0.8rem;
   }
 
@@ -118,14 +113,10 @@ const ButtonContent = styled.div`
   overflow: hidden;
 `;
 
-const OrangeButton = styled(Button)`
+const OrangeButton = styled(ButtonElement)`
   height: 2.5rem;
   background-color: ${(props) =>
-    props.$type == "primary"
-      ? props.$bgcolor
-        ? generalColors.secondary
-        : generalColors.secondary
-      : "transparent"};
+    props.$type == "primary" ? generalColors.secondary : "transparent"};
   border-radius: 1rem;
   border-top-right-radius: 0;
   border: ${(props) =>
@@ -133,13 +124,7 @@ const OrangeButton = styled(Button)`
       ? "none"
       : `1px solid ${generalColors.quaternary}`};
   color: ${(props) =>
-    props.$type == "primary"
-      ? props.$textcolor
-        ? props.$textcolor
-        : "white"
-      : props.$bgcolor
-      ? generalColors.secondary
-      : generalColors.quaternary};
+    props.$type == "primary" ? "white" : generalColors.quaternary};
 
   &:hover {
     background-color: ${generalColors.secondaryHover};
@@ -158,4 +143,4 @@ const OrangeButton = styled(Button)`
   }
 `;
 
-export { Button, ButtonContent, OrangeButton };
+export { ButtonElement, ButtonContent, OrangeButton };

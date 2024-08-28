@@ -16,7 +16,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/utils/createTimestamp.js", "webpack.config.js", "svg.d.ts"],
+  "jsx": "react",
+  "moduleResolution": "node",
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "include": [
+    "src",
+    "src/utils/createTimestamp.js",
+    "webpack.config.js",
+    "svg.d.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }
-

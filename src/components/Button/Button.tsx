@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ButtonWithIconProps } from "./IButton";
-import { Button, ButtonContent } from "./Button.styles";
+import { ButtonWithIconProps, ButtonProps } from "./IButton";
+import { ButtonElement, ButtonContent } from "./Button.styles";
 import Icon from "../Icon/Icons";
 
 const ButtonWithIcon = (data: ButtonWithIconProps) => {
@@ -14,4 +14,9 @@ const ButtonWithIcon = (data: ButtonWithIconProps) => {
   );
 };
 
-export { ButtonWithIcon };
+const Button = (data: ButtonProps) => {
+  const { children } = data;
+  return <ButtonElement {...data}>{children}</ButtonElement>;
+};
+
+export { Button, ButtonWithIcon };
