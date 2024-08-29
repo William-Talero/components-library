@@ -23,8 +23,7 @@
   "include": [
     "src",
     "src/utils/createTimestamp.js",
-    "webpack.config.js",
-    "svg.d.ts"
+    "webpack.config.js"
   ],
   "exclude": ["node_modules", "dist"]
 }

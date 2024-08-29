@@ -9,7 +9,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 export interface InputWithButtonProps
   extends InputProps,
     React.InputHTMLAttributes<HTMLInputElement> {
-  $icon: "house" | "master" | "plus";
+  $icon: "plus";
 }
 
 export interface InputContainerProps {

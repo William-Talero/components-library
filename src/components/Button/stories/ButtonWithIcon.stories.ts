@@ -16,7 +16,7 @@ const meta: Meta<ButtonWithIconProps> = {
     },
     $icon: {
       control: { type: "select" },
-      options: ["home", "plus", "master"],
+      options: ["plus"],
     },
     children: { control: "text" },
     disabled: { control: "boolean" },

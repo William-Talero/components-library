@@ -1,22 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as HouseIcon } from "@/assets/icons/houseIcon.svg";
-import { ReactComponent as MasterIcon } from "@/assets/icons/masterIcon.svg";
-import PlusIcon from "@/assets/icons/plusIcon.svg";
+import PlusIcon from "@/assets/icons/PlusIcon";
 
 const icons = {
-  house: HouseIcon,
-  master: MasterIcon,
   plus: PlusIcon,
 };
 
-interface IconProps {
-  $name: keyof typeof icons;
-  $w: string;
-}
+type IconName = keyof typeof icons;
 
-interface IconContainerProps {
-  $wContainer: string;
+interface IconProps {
+  $name: IconName;
+  $w: string;
 }
 
 interface IconContainerProps {
@@ -32,18 +26,16 @@ const IconContainer = styled.div<IconContainerProps>`
 `;
 
 const StyledSvgIcon = styled.svg`
-  width: 100%;
-  height: auto;
-  max-height: 60%;
+width: 100%;
+height: auto;
+max-height: 60%;
 `;
 
-const Icon = ({ $name = "plus", $w }: IconProps) => {
-  console.log(icons);
+const Icon: React.FC<IconProps> = ({ $name = "plus", $w }) => {
   const SvgIcon = icons[$name];
-  console.log(SvgIcon);
   return (
     <IconContainer $wContainer={$w}>
-      <StyledSvgIcon as={SvgIcon} />
+      <StyledSvgIcon as={SvgIcon}/>
     </IconContainer>
   );
 };

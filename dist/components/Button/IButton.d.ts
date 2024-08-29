@@ -7,5 +7,5 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     children: React.ReactNode;
 }
 export interface ButtonWithIconProps extends ButtonProps {
-    $icon: "house" | "plus" | "master";
+    $icon: "plus";
 }

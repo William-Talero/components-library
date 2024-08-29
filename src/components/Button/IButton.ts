@@ -9,5 +9,5 @@ export interface ButtonProps
 }
 
 export interface ButtonWithIconProps extends ButtonProps {
-  $icon: "house" | "plus" | "master";
+  $icon: "plus";
 }
