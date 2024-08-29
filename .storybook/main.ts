@@ -15,6 +15,9 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
+  docs: {
+    defaultName: "Documentation",
+  },
   webpackFinal: async (config) => {
     if (config.resolve) {
       config.resolve.alias = {
