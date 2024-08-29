@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
-import { ButtonProps } from "./IButton";
+import { OrangeButton } from "@/components/Button/Button";
+import { ButtonProps } from "@/components/Button/IButton";
 
 const meta: Meta<ButtonProps> = {
-  title: "Example/Button",
-  component: Button,
+  title: "Components/Buttons/OrangeButton",
+  component: OrangeButton,
   argTypes: {
     $type: {
       control: { type: "select" },

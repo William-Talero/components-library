@@ -10,10 +10,15 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
+  },
+  docs: {
+    defaultName: "Documentation",
   },
   webpackFinal: async (config) => {
     if (config.resolve) {
@@ -22,6 +27,7 @@ const config: StorybookConfig = {
         "@": path.resolve(__dirname, "../src"),
       };
     }
+    return config;
     return config;
   },
 };

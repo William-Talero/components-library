@@ -1,6 +1,10 @@
 import * as React from "react";
 import { ButtonWithIconProps, ButtonProps } from "./IButton";
-import { ButtonElement, ButtonContent } from "./Button.styles";
+import {
+  ButtonElement,
+  ButtonContent,
+  OrangeButtonElement,
+} from "./Button.styles";
 import Icon from "../Icon/Icons";
 
 const ButtonWithIcon = (data: ButtonWithIconProps) => {
@@ -19,4 +23,9 @@ const Button = (data: ButtonProps) => {
   return <ButtonElement {...data}>{children}</ButtonElement>;
 };
 
-export { Button, ButtonWithIcon };
+const OrangeButton = (data: ButtonProps) => {
+  const { children } = data;
+  return <OrangeButtonElement {...data}>{children}</OrangeButtonElement>;
+};
+
+export { Button, ButtonWithIcon, OrangeButton };

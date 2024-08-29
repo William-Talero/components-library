@@ -1,12 +1,11 @@
 import React from "react";
 declare const icons: {
-    house: string;
-    master: string;
-    plus: string;
+    plus: React.FC<React.SVGProps<SVGSVGElement>>;
 };
+type IconName = keyof typeof icons;
 interface IconProps {
-    $name: keyof typeof icons;
+    $name: IconName;
     $w: string;
 }
-declare const Icon: ({ $name, $w }: IconProps) => React.JSX.Element;
+declare const Icon: React.FC<IconProps>;
 export default Icon;

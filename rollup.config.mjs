@@ -3,7 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
-import pkg from './package.json' with { type: 'json' };
+import pkg from "./package.json" with { type: "json" };
 
 export default {
   input: "src/index.ts",
@@ -23,7 +23,7 @@ export default {
     peerDepsExternal(),
     resolve(),
     commonjs(),
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({ useTsconfigDeclarationDir: true })
   ],
   external: ["react", "react-dom", "styled-components"],
 };
