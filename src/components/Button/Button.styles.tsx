@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ButtonProps } from "./IButton";
-import { buttonSizes } from "../../parameters/sizes";
+import { buttonSizes } from "@/parameters/sizes";
 import { generalColors } from "@/parameters/colors";
 
 const ButtonElement = styled.button<ButtonProps>`

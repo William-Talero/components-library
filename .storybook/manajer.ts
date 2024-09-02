@@ -1,11 +1,7 @@
-import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming';
+import { addons } from "@storybook/manager-api";
+import theme from "./theme";
+import { themes } from "@storybook/theming";
 
 addons.setConfig({
-    theme: create({
-        base: 'light',
-        brandTitle: 'Components Library',
-        brandUrl: 'https://components-library.com',
-        brandImage: ' ',
-    }),
+  theme: themes.light,
 });
