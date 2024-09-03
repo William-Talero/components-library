@@ -11,6 +11,7 @@
   "scripts": {
     "build": "rollup -c && node ./src/utils/createTimestamp.js",
     "start": "rollup -c -w",
+    "start-dev": "webpack serve --config webpack.config.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest"
@@ -52,8 +53,11 @@
     "storybook": "^8.2.9",
     "styled-components": "^6.1.13",
     "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   },
   "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
 }

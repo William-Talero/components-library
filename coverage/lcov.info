@@ -1,5 +1,5 @@
 TN:
-SF:src\assets\icons\PlusIcon.tsx
+SF:src/assets/icons/PlusIcon.tsx
 FN:3,PlusIcon
 FNF:1
 FNH:1
@@ -20,7 +20,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src\components\Button\Button.styles.tsx
+SF:src/components/Button/Button.styles.tsx
 FN:7,Object.<anonymous>.exports.ButtonElement
 FN:13,Object.<anonymous>.exports.ButtonElement
 FN:19,Object.<anonymous>.exports.ButtonElement
@@ -226,7 +226,7 @@ BRF:33
 BRH:23
 end_of_record
 TN:
-SF:src\components\Button\Button.tsx
+SF:src/components/Button/Button.tsx
 FN:10,ButtonWithIcon
 FN:21,Button
 FN:26,OrangeButton
@@ -275,7 +275,7 @@ BRF:3
 BRH:3
 end_of_record
 TN:
-SF:src\components\Icon\Icons.tsx
+SF:src/components/Icon/Icons.tsx
 FN:34,Icon
 FNF:1
 FNH:1
@@ -332,7 +332,7 @@ BRF:3
 BRH:2
 end_of_record
 TN:
-SF:src\parameters\colors.ts
+SF:src/parameters/colors.ts
 FNF:0
 FNH:0
 DA:1,1
@@ -352,7 +352,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\parameters\sizes.ts
+SF:src/parameters/sizes.ts
 FNF:0
 FNH:0
 DA:1,1

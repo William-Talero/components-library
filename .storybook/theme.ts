@@ -1,9 +1,10 @@
 import { create } from "@storybook/theming/create";
 
 export default create({
-  base: "light",
+  base: "dark",
   brandTitle: "Components Library",
-  brandUrl: "https://example.com",
-  brandImage: "./../public/images/logo.png",
+  brandUrl: "#",
+  brandImage: "/logo.png",
   brandTarget: "_self",
 });
+

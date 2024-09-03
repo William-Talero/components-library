@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1725293409715" clover="3.2.0">
-  <project timestamp="1725293409715" name="All files">
+<coverage generated="1725375547645" clover="3.2.0">
+  <project timestamp="1725375547645" name="All files">
     <metrics statements="263" coveredstatements="263" conditionals="40" coveredconditionals="29" methods="14" coveredmethods="14" elements="317" coveredelements="306" complexity="0" loc="263" ncloc="263" packages="4" files="6" classes="6"/>
     <package name="assets.icons">
       <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="PlusIcon.tsx" path="C:\Proyectos\components-library\src\assets\icons\PlusIcon.tsx">
+      <file name="PlusIcon.tsx" path="/Users/willi/Documents/Proyectos/React/components-library/src/assets/icons/PlusIcon.tsx">
         <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -19,7 +19,7 @@
     </package>
     <package name="components.Button">
       <metrics statements="177" coveredstatements="177" conditionals="36" coveredconditionals="26" methods="12" coveredmethods="12"/>
-      <file name="Button.styles.tsx" path="C:\Proyectos\components-library\src\components\Button\Button.styles.tsx">
+      <file name="Button.styles.tsx" path="/Users/willi/Documents/Proyectos/React/components-library/src/components/Button/Button.styles.tsx">
         <metrics statements="146" coveredstatements="146" conditionals="33" coveredconditionals="23" methods="9" coveredmethods="9"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -168,7 +168,7 @@
         <line num="145" count="1" type="stmt"/>
         <line num="146" count="1" type="stmt"/>
       </file>
-      <file name="Button.tsx" path="C:\Proyectos\components-library\src\components\Button\Button.tsx">
+      <file name="Button.tsx" path="/Users/willi/Documents/Proyectos/React/components-library/src/components/Button/Button.tsx">
         <metrics statements="31" coveredstatements="31" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -205,7 +205,7 @@
     </package>
     <package name="components.Icon">
       <metrics statements="43" coveredstatements="43" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="Icons.tsx" path="C:\Proyectos\components-library\src\components\Icon\Icons.tsx">
+      <file name="Icons.tsx" path="/Users/willi/Documents/Proyectos/React/components-library/src/components/Icon/Icons.tsx">
         <metrics statements="43" coveredstatements="43" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -254,7 +254,7 @@
     </package>
     <package name="parameters">
       <metrics statements="34" coveredstatements="34" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="colors.ts" path="C:\Proyectos\components-library\src\parameters\colors.ts">
+      <file name="colors.ts" path="/Users/willi/Documents/Proyectos/React/components-library/src/parameters/colors.ts">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -268,7 +268,7 @@
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
       </file>
-      <file name="sizes.ts" path="C:\Proyectos\components-library\src\parameters\sizes.ts">
+      <file name="sizes.ts" path="/Users/willi/Documents/Proyectos/React/components-library/src/parameters/sizes.ts">
         <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
