@@ -35,7 +35,7 @@ const App = () => (
     >
       Botón Secundario
     </ButtonWithIcon>
-    <h3>Botones Generales</h3>
+    <h3>Botones secundarios</h3>
     <OrangeButton $type="primary" $size="md" $m="10px">
       Botón Primario
     </OrangeButton>
