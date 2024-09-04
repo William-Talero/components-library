@@ -53,6 +53,7 @@
     "react-test-renderer": "^18.3.1",
     "rollup": "^4.21.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-sass": "^1.13.2",
     "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "sass": "^1.78.0",
