@@ -21,9 +21,21 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve(),
-    commonjs(),
-    typescript({ useTsconfigDeclarationDir: true })
+    resolve({
+      extensions: [".ts", ".tsx"],
+    }),
+    commonjs({
+      include: "node_modules/**",
+      namedExports: {
+        "styled-components": ["styled", "css", "ThemeProvider"],
+      },
+    }),
+    typescript({
+      useTsconfigDeclarationDir: true,
+      tsconfigOverride: {
+        exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
+      },
+    }),
   ],
   external: ["react", "react-dom", "styled-components"],
 };

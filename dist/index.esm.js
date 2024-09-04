@@ -41,14 +41,14 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
 
 var buttonSizes = {
     sm: {
-        width: "4rem",
+        width: "6rem",
         height: "2.5rem",
         padding: ".2rem .4rem",
         fontSize: "0.6rem",
         smWidth: "40%",
     },
     md: {
-        width: "8rem",
+        width: "10rem",
         height: "2.8rem",
         padding: ".3rem .5rem",
         fontSize: "0.8rem",
