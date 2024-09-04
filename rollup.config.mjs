@@ -1,35 +1,32 @@
+import resolve from "@rollup/plugin-node-resolve";
+import babel from "@rollup/plugin-babel";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import sass from "rollup-plugin-sass";
-import alias from "@rollup/plugin-alias";
-import pkg from "./package.json" with { type: "json" };
+import postcss from "rollup-plugin-postcss";
+import autoprefixer from "autoprefixer";
+import packageJson from "./package.json" with { type: "json" };
 
 export default {
   input: "src/index.ts",
   output: [
     {
-      file: pkg.main,
+      file: packageJson.main,
       format: "cjs",
-      sourcemap: true,
-    },
-    {
-      file: pkg.module,
-      format: "esm",
       sourcemap: true,
     },
   ],
   plugins: [
     peerDepsExternal(),
+    commonjs({
+      include: "node_modules/**",
+      namedExports: {
+        "react-is": ["isForwardRef", "isValidElementType"],
+      },
+    }),
     resolve({
       extensions: [".ts", ".tsx", ".js", ".jsx"],
-    }),
-    commonjs({
-      include: /node_modules/,
-      namedExports: {
-        "styled-components": ["styled", "css", "ThemeProvider"],
-      },
     }),
     typescript({
       useTsconfigDeclarationDir: true,
@@ -37,12 +34,23 @@ export default {
         exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
       },
     }),
-    alias({
-      entries: [{ find: "@", replacement: "./src" }],
+    babel({
+      exclude: "node_modules/**",
+      babelHelpers: "bundled",
     }),
-    sass({
-      output: true,
+    postcss({
+      preprocessor: (content, id) =>
+        new Promise((res) => {
+          const result = sass.renderSync({ file: id });
+
+          res({ code: result.css.toString() });
+        }),
+      plugins: [autoprefixer],
+      modules: {
+        scopeBehaviour: "global",
+      },
+      sourceMap: true,
+      extract: true,
     }),
   ],
-  external: ["react", "react-dom", "styled-components"],
 };
