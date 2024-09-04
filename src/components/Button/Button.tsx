@@ -29,7 +29,7 @@ const ButtonWithIcon = (data: ButtonWithIconProps) => {
 
 const OrangeButton = (data: ButtonProps) => {
   const { children, $type, $size, $m, ...rest } = data;
-  const classNames = `button button-${$type} button-${$size} button-${$m}`;
+  const classNames = `button button-orange-${$type} button-${$size} button-${$m}`;
 
   return (
     <button className={classNames} {...rest}>

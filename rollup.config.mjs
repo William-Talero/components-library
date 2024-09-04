@@ -4,7 +4,12 @@ import resolve from "@rollup/plugin-node-resolve";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import alias from "@rollup/plugin-alias";
+import terser from "@rollup/plugin-terser";
+import { babel } from "@rollup/plugin-babel";
+import analyze from "rollup-plugin-analyzer";
 import pkg from "./package.json" with { type: "json" };
+
+const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
 export default {
   input: "src/index.ts",
@@ -22,17 +27,18 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({
-      extensions: [".ts", ".tsx", ".js", ".jsx"],
-    }),
-    commonjs({
-      include: /node_modules/,
-    }),
+    resolve({ extensions }),
+    commonjs(),
     typescript({
       useTsconfigDeclarationDir: true,
       tsconfigOverride: {
         exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
       },
+    }),
+    babel({
+      exclude: "node_modules/**",
+      extensions,
+      babelHelpers: "bundled",
     }),
     alias({
       entries: [{ find: "@", replacement: "./src" }],
@@ -50,6 +56,8 @@ export default {
         ],
       ],
     }),
+    terser(),
+    analyze({ summaryOnly: true }),
   ],
-  external: ["react", "react-dom"],
+  external: ["react", "react-dom", ...Object.keys(pkg.peerDependencies || {})],
 };

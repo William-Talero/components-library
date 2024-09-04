@@ -6,96 +6,125 @@
   $size: "md",
   $w: null,
   $h: null,
-  $m: null
+  $m: null,
+  $variant: null
 ) {
-  width: if($w, $w, map-get(map-get($button-sizes, $size), "width"));
-  height: if($h, $h, map-get(map-get($button-sizes, $size), "height"));
-  padding: map-get(map-get($button-sizes, $size), "padding");
-  background-color: if(
-    $type == "primary",
-    map-get($general-colors, "primary"),
+  $sizes: map-get($button-sizes, $size);
+  $is-primary: $type == "primary";
+  $is-orange: $variant == "orange";
+
+  $bg-color: if(
+    $is-primary,
+    if(
+      $is-orange,
+      map-get($general-colors, "secondary"),
+      map-get($general-colors, "primary")
+    ),
     transparent
   );
-  border: if(
-    $type == "primary",
-    none,
-    2px solid
+  $text-color: if(
+    $is-primary,
+    white,
+    if(
+      $is-orange,
+      map-get($general-colors, "secondary"),
       light-dark(
         map-get($general-colors, "terciary"),
         map-get($general-colors, "primary")
       )
+    )
   );
-  color: if(
-    $type == "primary",
-    white,
+  $border-color: if(
+    $is-orange,
+    map-get($general-colors, "secondary"),
     light-dark(
       map-get($general-colors, "terciary"),
       map-get($general-colors, "primary")
     )
-  ) !important;
+  );
+
+  width: if($w, $w, map-get($sizes, "width"));
+  height: if($h, $h, map-get($sizes, "height"));
+  padding: map-get($sizes, "padding");
+  background-color: $bg-color;
+  border: if($is-primary, none, 2px solid $border-color);
+  color: $text-color !important;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin: if($m, $m, 1rem 0);
-  cursor: pointer;
-  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: map-get(map-get($button-sizes, $size), "fontSize") !important;
-  font-weight: 500 !important;
+  margin: if($m, $m, 1rem 0);
+  cursor: pointer;
+  border-radius: if($is-orange, 1rem, 0.5rem);
+  @if $is-orange {
+    border-top-right-radius: 0;
+  }
+  font: {
+    size: map-get($sizes, "fontSize") !important;
+    weight: 500 !important;
+  }
 
-  &:hover {
-    background-color: map-get($general-colors, "primaryHover");
-    color: #000 !important;
-    border: none;
+  &:not(:disabled) {
+    &:hover {
+      $hover-color: if(
+        $is-orange,
+        map-get($general-colors, "secondaryHover"),
+        map-get($general-colors, "primaryHover")
+      );
+      background-color: $hover-color;
+      color: if($is-orange, #fff, #000) !important;
+      border: none;
+
+      :only-child {
+        fill: if($is-orange, #fff, #000) !important;
+      }
+    }
+
+    &:active {
+      $active-color: if(
+        $is-orange,
+        map-get($general-colors, "quaternary"),
+        map-get($general-colors, "terciary")
+      );
+      background-color: $active-color;
+      color: #fff !important;
+      @if $is-orange {
+        border: 4px solid map-get($general-colors, "secondaryHover");
+      }
+
+      :only-child {
+        fill: #fff !important;
+      }
+    }
   }
 
   :only-child {
-    fill: if(
-      $type == "primary",
-      white,
-      map-get($general-colors, "terciary")
-    ) !important;
-  }
-
-  &:hover :only-child {
-    fill: #000 !important;
+    fill: if($is-primary, white, $border-color) !important;
   }
 
   &:disabled {
-    background-color: light-dark(
+    $disabled-color: light-dark(
       map-get($general-colors, "disabled"),
       map-get($general-colors, "disabledSecond")
     );
-    cursor: not-allowed;
-    color: light-dark(
+    $disabled-text-color: light-dark(
       map-get($general-colors, "disabledSecond"),
       map-get($general-colors, "disabled")
-    ) !important;
+    );
+    background-color: $disabled-color;
+    cursor: not-allowed;
+    color: $disabled-text-color !important;
     border: none;
+    opacity: 0.7;
 
     :only-child {
-      fill: map-get($general-colors, "disabledSecond") !important;
-    }
-
-    &:hover {
-      background-color: map-get($general-colors, "disabled");
-      color: map-get($general-colors, "disabledSecond") !important;
-    }
-  }
-
-  &:active {
-    background-color: map-get($general-colors, "terciary");
-    color: #fff !important;
-
-    :only-child {
-      fill: #fff !important;
+      fill: $disabled-text-color !important;
     }
   }
 
   @media screen and (max-width: 60rem) {
-    width: if($w, $w, map-get(map-get($button-sizes, $size), "smWidth"));
+    width: if($w, $w, map-get($sizes, "smWidth"));
     font-size: 0.8rem;
   }
 
@@ -104,70 +133,21 @@
   }
 }
 
-.button-primary {
-  @include button-base($type: "primary");
+@mixin generate-button-classes($type, $variant: null) {
+  $class-name: if($variant, "button-#{$variant}-#{$type}", "button-#{$type}");
 
-  &.button-sm {
-    @include button-base($type: "primary", $size: "sm");
-  }
+  .#{$class-name} {
+    @include button-base($type: $type, $variant: $variant);
 
-  &.button-md {
-    @include button-base($type: "primary", $size: "md");
-  }
-
-  &.button-lg {
-    @include button-base($type: "primary", $size: "lg");
+    @each $size in ("sm", "md", "lg") {
+      &.button-#{$size} {
+        @include button-base($type: $type, $size: $size, $variant: $variant);
+      }
+    }
   }
 }
 
-.button-secondary {
-  @include button-base($type: "secondary");
-
-  &.button-sm {
-    @include button-base($type: "secondary", $size: "sm");
-  }
-  &.button-md {
-    @include button-base($type: "secondary", $size: "md");
-  }
-  &.button-lg {
-    @include button-base($type: "secondary", $size: "lg");
-  }
-}
-
-// .orange-button-element {
-//   @include button-base($type: "primary", $size: "md");
-//   height: 2.5rem;
-//   background-color: if(
-//     $type == "primary",
-//     map-get($general-colors, "secondary"),
-//     transparent
-//   );
-//   border-radius: 1rem;
-//   border-top-right-radius: 0;
-//   border: if(
-//     $type == "primary",
-//     none,
-//     1px solid map-get($general-colors, "quaternary")
-//   );
-//   color: if(
-//     $type == "primary",
-//     white,
-//     map-get($general-colors, "quaternary")
-//   ) !important;
-
-//   &:hover {
-//     background-color: map-get($general-colors, "secondaryHover");
-//     color: #fff !important;
-//   }
-
-//   &:active {
-//     background-color: map-get($general-colors, "quaternary");
-//     border: 4px solid map-get($general-colors, "secondaryHover");
-//   }
-
-//   &:disabled {
-//     background-color: map-get($general-colors, "disabledSecond");
-//     color: #fff !important;
-//     border: none;
-//   }
-// }
+@include generate-button-classes("primary");
+@include generate-button-classes("secondary");
+@include generate-button-classes("primary", "orange");
+@include generate-button-classes("secondary", "orange");
