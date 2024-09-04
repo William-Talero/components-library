@@ -23,10 +23,10 @@ export default {
   plugins: [
     peerDepsExternal(),
     resolve({
-      extensions: [".ts", ".tsx"],
+      extensions: [".ts", ".tsx", ".js", ".jsx"],
     }),
     commonjs({
-      include: "node_modules/**",
+      include: /node_modules/,
       namedExports: {
         "styled-components": ["styled", "css", "ThemeProvider"],
       },
@@ -41,8 +41,8 @@ export default {
       entries: [{ find: "@", replacement: "./src" }],
     }),
     sass({
-      output: "dist/styles.css",
+      output: true,
     }),
   ],
-  external: ["react", "react-dom"],
+  external: ["react", "react-dom", "styled-components"],
 };
