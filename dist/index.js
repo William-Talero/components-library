@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-var styled = require('styled-components');
 
 function _interopNamespaceDefault(e) {
     var n = Object.create(null);
@@ -62,10 +61,6 @@ function __rest(s, e) {
     return t;
 }
 
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-}
 typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
     var e = new Error(message);
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
@@ -136,95 +131,7 @@ var OrangeButton = function (data) {
     return (React__namespace.createElement("button", __assign({ className: classNames }, rest), children));
 };
 
-var buttonSizes = {
-    sm: {
-        width: "6rem",
-        height: "2.5rem",
-        padding: ".2rem .4rem",
-        fontSize: "0.6rem",
-        smWidth: "40%",
-    },
-    md: {
-        width: "10rem",
-        height: "2.8rem",
-        padding: ".3rem .5rem",
-        fontSize: "0.8rem",
-        smWidth: "60%",
-    },
-    lg: {
-        width: "16rem",
-        height: "2.8rem",
-        padding: ".3rem .5rem",
-        fontSize: "0.9rem",
-        smWidth: "100%",
-    },
-};
-
-var generalColors = {
-    primary: "#659125",
-    secondary: "#fc802a",
-    terciary: "#3E6A27",
-    quaternary: "#FC8029",
-    disabled: "#EFEFEF",
-    disabledSecond: "#8f8f8f",
-    primaryHover: "#B9CC56",
-    secondaryHover: "#FB6903",
-    principalDark: "#292929",
-};
-
-var ButtonElement = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", ";\n  height: ", ";\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  color: ", " !important;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  margin: ", ";\n  cursor: pointer;\n  border-radius: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: ", " !important;\n  font-weight: 500 !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #000 !important;\n    border: none;\n  }\n\n  :only-child {\n    fill: ", " !important;\n  }\n\n  &:hover :only-child {\n    fill: #000 !important;\n  }\n\n  &:disabled {\n    background-color: light-dark(\n      ", ",\n      ", "\n    );\n    cursor: not-allowed;\n    color: light-dark(\n      ", ",\n      ", "\n    ) !important;\n    border: none;\n\n    :only-child {\n      fill: ", " !important;\n    }\n\n    &:hover {\n      background-color: ", ";\n      color: ", " !important;\n    }\n  }\n\n  &:active {\n    background-color: ", ";\n    color: #fff !important;\n\n    :only-child {\n      fill: #fff !important;\n    }\n  }\n\n  @media screen and (max-width: 60rem) {\n    width: ", ";\n    font-size: 0.8rem;\n  }\n\n  @media screen and (max-width: 20rem) {\n    font-size: 0.5rem;\n  }\n"], ["\n  width: ", ";\n  height: ", ";\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  color: ", " !important;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  margin: ", ";\n  cursor: pointer;\n  border-radius: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: ", " !important;\n  font-weight: 500 !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #000 !important;\n    border: none;\n  }\n\n  :only-child {\n    fill: ", " !important;\n  }\n\n  &:hover :only-child {\n    fill: #000 !important;\n  }\n\n  &:disabled {\n    background-color: light-dark(\n      ", ",\n      ", "\n    );\n    cursor: not-allowed;\n    color: light-dark(\n      ", ",\n      ", "\n    ) !important;\n    border: none;\n\n    :only-child {\n      fill: ", " !important;\n    }\n\n    &:hover {\n      background-color: ", ";\n      color: ", " !important;\n    }\n  }\n\n  &:active {\n    background-color: ", ";\n    color: #fff !important;\n\n    :only-child {\n      fill: #fff !important;\n    }\n  }\n\n  @media screen and (max-width: 60rem) {\n    width: ", ";\n    font-size: 0.8rem;\n  }\n\n  @media screen and (max-width: 20rem) {\n    font-size: 0.5rem;\n  }\n"])), function (props) {
-    return props.$size
-        ? buttonSizes[props.$size].width
-        : props.$w
-            ? props.$w
-            : buttonSizes.md.width;
-}, function (props) {
-    return props.$size
-        ? buttonSizes[props.$size].height
-        : props.$h
-            ? props.$h
-            : buttonSizes.md.height;
-}, function (props) {
-    return props.$size ? buttonSizes[props.$size].padding : buttonSizes.md.padding;
-}, function (props) {
-    return props.$type == "primary" ? generalColors.primary : "transparent";
-}, function (props) {
-    return props.$type == "primary"
-        ? "none"
-        : "2px solid light-dark(".concat(generalColors.terciary, ", ").concat(generalColors.primary, ")");
-}, function (props) {
-    return props.$type == "primary"
-        ? "white"
-        : "light-dark(".concat(generalColors.terciary, ", ").concat(generalColors.primary, ")");
-}, function (props) { return props.$m; }, function (props) {
-    return props.$size
-        ? buttonSizes[props.$size].fontSize
-        : buttonSizes.md.fontSize;
-}, generalColors.primaryHover, function (props) {
-    return props.$type == "primary" ? "white" : generalColors.terciary;
-}, generalColors.disabled, generalColors.disabledSecond, generalColors.disabledSecond, generalColors.disabled, generalColors.disabledSecond, generalColors.disabled, generalColors.disabledSecond, generalColors.terciary, function (props) {
-    return props.$size
-        ? buttonSizes[props.$size].smWidth
-        : props.$w
-            ? props.$w
-            : buttonSizes.md.smWidth;
-});
-var ButtonContent = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"], ["\n  width: 85%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  overflow: hidden;\n"])));
-var OrangeButtonElement = styled(ButtonElement)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff !important;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"], ["\n  height: 2.5rem;\n  background-color: ", ";\n  border-radius: 1rem;\n  border-top-right-radius: 0;\n  border: ", ";\n  color: ", " !important;\n\n  &:hover {\n    background-color: ", ";\n    color: #fff !important;\n  }\n\n  &:active {\n    background-color: ", ";\n    border: 4px solid ", ";\n  }\n\n  &:disabled {\n    background-color: ", ";\n    color: #fff !important;\n    border: none;\n  }\n"])), function (props) {
-    return props.$type == "primary" ? generalColors.secondary : "transparent";
-}, function (props) {
-    return props.$type == "primary"
-        ? "none"
-        : "1px solid ".concat(generalColors.quaternary);
-}, function (props) {
-    return props.$type == "primary" ? "white" : generalColors.quaternary;
-}, generalColors.secondaryHover, generalColors.quaternary, generalColors.secondaryHover, generalColors.disabledSecond);
-var templateObject_1, templateObject_2, templateObject_3;
-
 exports.Button = Button;
-exports.ButtonContent = ButtonContent;
-exports.ButtonElement = ButtonElement;
 exports.ButtonWithIcon = ButtonWithIcon;
 exports.OrangeButton = OrangeButton;
-exports.OrangeButtonElement = OrangeButtonElement;
 //# sourceMappingURL=index.js.map

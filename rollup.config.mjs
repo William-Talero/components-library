@@ -27,9 +27,6 @@ export default {
     }),
     commonjs({
       include: /node_modules/,
-      namedExports: {
-        "styled-components": ["styled", "css", "ThemeProvider"],
-      },
     }),
     typescript({
       useTsconfigDeclarationDir: true,
