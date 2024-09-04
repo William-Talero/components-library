@@ -6,26 +6,40 @@ import {
   OrangeButtonElement,
 } from "./Button.styles";
 import Icon from "../Icon/Icons";
+import "../../styles.scss";
 
-const ButtonWithIcon = (data: ButtonWithIconProps) => {
-  const { $size, $icon: icon, children } = data;
+const Button = (data: ButtonProps) => {
+  const { children, $type, $size, $m, ...rest } = data;
+  const className = `button button-${$type} button-${$size} button-${$m}`;
+
   return (
-    <Button {...data}>
-      <Icon $name={icon} $w="20%" />
-      <ButtonContent>{children}</ButtonContent>
-      {$size == "lg" && <Icon $name={icon} $w="20%" />}
-    </Button>
+    <button className={className} {...rest}>
+      {children}
+    </button>
   );
 };
 
-const Button = (data: ButtonProps) => {
-  const { children } = data;
-  return <ButtonElement {...data}>{children}</ButtonElement>;
+const ButtonWithIcon = (data: ButtonWithIconProps) => {
+  const { children, $type, $size, $m, ...rest } = data;
+  const classNames = `button button-${$type} button-${$size} button-${$m}`;
+
+  return (
+    <button className={classNames} {...rest}>
+      <Icon $name="plus" $w="10%" />
+      <div style={{ width: "100%" }}>{children}</div>
+      {$size === "lg" && <Icon $name="plus" $w="10%" />}
+    </button>
+  );
 };
 
 const OrangeButton = (data: ButtonProps) => {
-  const { children } = data;
-  return <OrangeButtonElement {...data}>{children}</OrangeButtonElement>;
-};
+  const { children, $type, $size, $m, ...rest } = data;
+  const classNames = `button button-${$type} button-${$size} button-${$m}`;
 
+  return (
+    <button className={classNames} {...rest}>
+      {children}
+    </button>
+  );
+};
 export { Button, ButtonWithIcon, OrangeButton };

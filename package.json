@@ -73,6 +73,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "autoprefixer": "^10.4.20",
     "path": "^0.12.7",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2"
   }
 }
