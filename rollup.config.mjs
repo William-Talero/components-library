@@ -2,6 +2,8 @@ import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import scss from "rollup-plugin-scss"; 
+import alias from "@rollup/plugin-alias";
 import pkg from "./package.json" with { type: "json" };
 
 export default {
@@ -34,6 +36,15 @@ export default {
       tsconfigOverride: {
         exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
       },
+    }),
+    alias({
+      entries: [{ find: "@", replacement: "./src" }],
+    }),
+    scss({
+      output: "dist/styles.css",
+      outputStyle: "compressed",
+      sourceMap: true,
+      watch: "src/styles",
     }),
   ],
   external: ["react", "react-dom"],

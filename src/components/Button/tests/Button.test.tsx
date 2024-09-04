@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Button, ButtonWithIcon, OrangeButton } from "./../Button";
+import { Button, OrangeButton, ButtonWithIcon } from "../Button";
 
 describe("Button Component", () => {
   it("should render a basic Button with children", () => {
@@ -15,7 +15,7 @@ describe("Button Component", () => {
 
   it("should render ButtonWithIcon with icon and size", () => {
     render(
-      <ButtonWithIcon $icon="plus" $size="lg">
+      <ButtonWithIcon $size="lg" $icon="plus">
         Click me
       </ButtonWithIcon>
     );
