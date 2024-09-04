@@ -20,13 +20,14 @@ const Button = (data: ButtonProps) => {
 };
 
 const ButtonWithIcon = (data: ButtonWithIconProps) => {
-  const { children, $type, $size, ...rest } = data;
-  const classNames = `button button-${$type} size-${$size}`;
+  const { children, $type, $size, $m, ...rest } = data;
+  const classNames = `button button-${$type} button-${$size} button-${$m}`;
 
   return (
     <button className={classNames} {...rest}>
-      <Icon $name="plus" $w="5rem" />
-      {children}
+      <Icon $name="plus" $w="10%" />
+      <div style={{ width: "100%" }}>{children}</div>
+      {$size === "lg" && <Icon $name="plus" $w="10%" />}
     </button>
   );
 };

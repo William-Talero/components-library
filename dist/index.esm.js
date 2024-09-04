@@ -73,11 +73,12 @@ var Button = function (data) {
     return (React.createElement("button", __assign({ className: className }, rest), children));
 };
 var ButtonWithIcon = function (data) {
-    var children = data.children, $type = data.$type, $size = data.$size, rest = __rest(data, ["children", "$type", "$size"]);
-    var classNames = "button button-".concat($type, " size-").concat($size);
+    var children = data.children, $type = data.$type, $size = data.$size, $m = data.$m, rest = __rest(data, ["children", "$type", "$size", "$m"]);
+    var classNames = "button button-".concat($type, " button-").concat($size, " button-").concat($m);
     return (React.createElement("button", __assign({ className: classNames }, rest),
-        React.createElement(Icon, { "$name": "plus", "$w": "5rem" }),
-        children));
+        React.createElement(Icon, { "$name": "plus", "$w": "10%" }),
+        React.createElement("div", { style: { width: "100%" } }, children),
+        $size === "lg" && React.createElement(Icon, { "$name": "plus", "$w": "10%" })));
 };
 var OrangeButton = function (data) {
     var children = data.children, $type = data.$type, $size = data.$size, $m = data.$m, rest = __rest(data, ["children", "$type", "$size", "$m"]);
