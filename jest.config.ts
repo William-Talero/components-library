@@ -1,8 +1,3 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
-
 import type { Config } from "jest";
 
 const config: Config = {
@@ -14,7 +9,8 @@ const config: Config = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1', // Ajusta la ruta según tu estructura
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|scss)$': '<rootDir>/styleMock.js',
   },
 };
 
