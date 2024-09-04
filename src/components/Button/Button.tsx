@@ -6,7 +6,7 @@ import {
   OrangeButtonElement,
 } from "./Button.styles";
 import Icon from "../Icon/Icons";
-import "./Button.styles.scss";
+import "../../styles.scss";
 
 const Button = (data: ButtonProps) => {
   const { children, $type, $size, $m, ...rest } = data;
