@@ -1,10 +1,5 @@
 import * as React from "react";
 import { ButtonWithIconProps, ButtonProps } from "./IButton";
-import {
-  ButtonElement,
-  ButtonContent,
-  OrangeButtonElement,
-} from "./Button.styles";
 import Icon from "../Icon/Icons";
 import "../../styles.scss";
 

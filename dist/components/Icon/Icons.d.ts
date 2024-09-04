@@ -1,4 +1,5 @@
 import React from "react";
+import "./Icons.styles.scss";
 declare const icons: {
     plus: React.FC<React.SVGProps<SVGSVGElement>>;
 };
