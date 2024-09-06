@@ -1,0 +1,83 @@
+@import "../../parameters/colors";
+
+@mixin title-base {
+    line-height: 140%;
+    font-weight: 300;
+    margin: 0;
+    color: light-dark(var(--color), var(--dark-color)) !important
+  }
+  
+  .title1 {
+    @include title-base;
+    font-size: 48px;
+  }
+  
+  .title2 {
+    @include title-base;
+    font-size: 32px;
+  }
+  
+  .title3 {
+    @include title-base;
+    font-size: 24px;
+  }
+  
+  .title4 {
+    @include title-base;
+    font-size: 20px;
+  }
+
+  .title5 {
+    @include title-base;
+    font-size: 16px;
+  }
+
+  .title6 {
+    @include title-base;
+    font-size: 16px;
+  }
+
+@mixin text-base {
+    line-height: 140%;
+    font-weight: 300;
+    margin: 0;
+    color: light-dark(var(--color), var(--dark-color))
+}
+
+.text1 {
+    @include text-base;
+    font-size: 20px;
+}
+
+.text2 {
+    @include text-base;
+    font-size: 14px;
+}
+
+.text3 {
+    @include text-base;
+    font-size: 14px;
+}
+
+.text4 {
+    @include text-base;
+    font-size: 12px;
+}
+
+.TextCta {
+    @include text-base;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.TextLink {
+    @include text-base;
+    font-size: 14px;
+    color: map-get($general-colors, "orange-dark-1") !important
+}
+
+
+  
+  .bold {
+    font-weight: bold;
+  }
