@@ -7,6 +7,8 @@ import {
   ButtonWithIcon,
   OrangeButton,
 } from "../components/Button/Button";
+import { Checkbox } from "@/components/Checkbox/Checkbox";
+import { Alert } from "@/components/Alert/Alert";
 
 const App = () => (
   <div>
@@ -49,6 +51,28 @@ const App = () => (
     <OrangeButton $type="secondary" $size="lg" $m="10px" disabled={true}>
       Botón Primario
     </OrangeButton>
+
+    <h3>CheckBox</h3>
+    <Checkbox label="Check" checked={true} onChange={() => {}} />
+    <Checkbox label="Uncheck" checked={false} onChange={() => {}} />
+    <Checkbox
+      label="Check disabled"
+      checked={true}
+      disabled
+      onChange={() => {}}
+    />
+    <Checkbox
+      label="Uncheck disabled"
+      checked={false}
+      disabled
+      onChange={() => {}}
+    />
+
+    <h3>Alerts</h3>
+    <Alert type="success" message="Alerta de tipo Success" />
+    <Alert type="alert" message="Alerta de tipo Warning" />
+    <Alert type="error" message="Alerta de tipo Error" />
+
   </div>
 );
 

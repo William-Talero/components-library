@@ -1,0 +1,74 @@
+@import "../../parameters/colors";
+@import "../../parameters/sizes";
+
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: map-get($general-colors, "primary");
+  font-size: map-get($font-sizes, "medium");
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid map-get($general-colors, "primary");
+    border-radius: .3rem;
+    margin-right: .3rem;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  input[type="checkbox"]:checked + .checkbox-custom {
+    background-color: map-get($general-colors, "primary");
+    border-color: map-get($general-colors, "primary");
+
+    &::after {
+      display: block;
+    }
+  }
+
+  &:hover .checkbox-custom {
+    border-color: darken(map-get($general-colors, "primary"), 10%);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .checkbox-custom {
+      border-color: map-get($general-colors, "disabledSecond");
+      background-color: lighten(
+        map-get($general-colors, "disabledSecond"),
+        30%
+      );
+    }
+
+    input[type="checkbox"]:checked + .checkbox-custom {
+      background-color: map-get($general-colors, "disabledSecond");
+    }
+  }
+}
+
+.checkbox-label {
+  color: light-dark(#000, #fff);
+  margin-right: 1rem;
+}

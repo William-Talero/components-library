@@ -10,7 +10,11 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '\\.(css|scss)$': '<rootDir>/styleMock.js',
+    '\\.(css|scss)$': 'identity-obj-proxy',
+  },
+  transform: {
+    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.scss$': 'jest-transform-stub',
   },
 };
 

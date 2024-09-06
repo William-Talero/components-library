@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ButtonWithIconProps, ButtonProps } from "./IButton";
 import Icon from "../Icon/Icons";
-import "../../styles.scss";
+import "@/styles.scss";
 
 const Button = (data: ButtonProps) => {
   const { children, $type, $size, $m, ...rest } = data;

@@ -1,0 +1,47 @@
+@import "../../parameters/colors";
+@import "../../parameters/sizes";
+
+.alert {
+  display: flex;
+  align-items: center;
+  padding: .7rem 1rem;
+  border-radius: .5rem;
+  margin-bottom: 10px;
+  font-size: map-get($font-sizes, "medium");
+  font-weight: 600;
+
+  .alert-icon {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  &.alert-success {
+    background-color: lighten(map-get($general-colors, "success-color"), 40%);
+    border: 2px solid map-get($general-colors, "success-color");
+    color: darken(map-get($general-colors, "success-color"), 10%);
+
+    .alert-icon {
+      color: map-get($general-colors, "success-color");
+    }
+  }
+
+  &.alert-error {
+    background-color: lighten(map-get($general-colors, "error-color"), 40%);
+    border: 2px solid map-get($general-colors, "error-color");
+    color: darken(map-get($general-colors, "error-color"), 10%);
+
+    .alert-icon {
+      color: map-get($general-colors, "error-color");
+    }
+  }
+
+  &.alert-alert {
+    background-color: lighten(map-get($general-colors, "warning-color"), 40%);
+    border: 2px solid map-get($general-colors, "warning-color");
+    color: darken(map-get($general-colors, "warning-color"), 10%);
+
+    .alert-icon {
+      color: map-get($general-colors, "warning-color");
+    }
+  }
+}
