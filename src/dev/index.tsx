@@ -101,7 +101,7 @@ const App = () => (
 
     <h3>Otros Textos</h3>
     <TextCTA color="#000">Este es un texto de nivel CTA</TextCTA>
-    <TextLink color="#000">Este es un texto de nivel Link</TextLink>
+    <TextLink >Este es un texto de nivel Link</TextLink>
   </div>
 );
 

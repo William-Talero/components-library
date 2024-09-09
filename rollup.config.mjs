@@ -7,7 +7,8 @@ import alias from "@rollup/plugin-alias";
 import terser from "@rollup/plugin-terser";
 import { babel } from "@rollup/plugin-babel";
 import analyze from "rollup-plugin-analyzer";
-import pkg from "./package.json" with { type: "json" };
+import json from "@rollup/plugin-json";
+import pkg from "./package.json" assert { type: "json" };
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
@@ -27,8 +28,12 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({ extensions }),
+    resolve({ 
+      extensions,
+      preferBuiltins: true
+    }),
     commonjs(),
+    json(),
     typescript({
       useTsconfigDeclarationDir: true,
       tsconfigOverride: {

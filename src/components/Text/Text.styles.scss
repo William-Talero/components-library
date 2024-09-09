@@ -64,16 +64,17 @@
     font-size: 12px;
 }
 
-.TextCta {
+.textCta {
     @include text-base;
     font-size: 14px;
     font-weight: normal;
 }
 
-.TextLink {
+.textLink {
     @include text-base;
     font-size: 14px;
-    color: map-get($general-colors, "orange-dark-1") !important
+    color: var(--color) !important;
+    text-decoration-line: underline;
 }
 
 
