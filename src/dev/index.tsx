@@ -9,7 +9,21 @@ import {
 } from "../components/Button/Button";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { Alert } from "@/components/Alert/Alert";
-import { Titulo1, Titulo2, Titulo3, Titulo4, Titulo5, Titulo6, Text1, Text2, Text3, Text4, TextCTA, TextLink } from "@/components/Text/Text";
+import {
+  Titulo1,
+  Titulo2,
+  Titulo3,
+  Titulo4,
+  Titulo5,
+  Titulo6,
+  Text1,
+  Text2,
+  Text3,
+  Text4,
+  TextCTA,
+  TextLink,
+} from "@/components/Text/Text";
+import { Arrow } from "@/components/Arrow/Arrow";
 
 const App = () => (
   <div>
@@ -74,7 +88,6 @@ const App = () => (
     <Alert type="alert" message="Alerta de tipo Warning" />
     <Alert type="error" message="Alerta de tipo Error" />
 
-
     <h3>Titulos</h3>
     <Titulo1 color="#000">Este es un título de nivel 1</Titulo1>
     <Titulo2 color="#000">Este es un título de nivel 2</Titulo2>
@@ -82,26 +95,50 @@ const App = () => (
     <Titulo4 color="#000">Este es un título de nivel 4</Titulo4>
     <Titulo5 color="#000">Este es un título de nivel 5</Titulo5>
     <Titulo6 color="#000">Este es un título de nivel 6</Titulo6>
-    <Titulo1 bold color="#000">Este es un título de nivel 1 Negrita</Titulo1>
-    <Titulo2 bold color="#000">Este es un título de nivel 2 Negrita</Titulo2>
-    <Titulo3 bold color="#000">Este es un título de nivel 3 Negrita</Titulo3>
-    <Titulo4 bold color="#000">Este es un título de nivel 4 Negrita</Titulo4>
-    <Titulo5 bold color="#000">Este es un título de nivel 5 Negrita</Titulo5>
-    <Titulo6 bold color="#000">Este es un título de nivel 6 Negrita</Titulo6>
+    <Titulo1 bold color="#000">
+      Este es un título de nivel 1 Negrita
+    </Titulo1>
+    <Titulo2 bold color="#000">
+      Este es un título de nivel 2 Negrita
+    </Titulo2>
+    <Titulo3 bold color="#000">
+      Este es un título de nivel 3 Negrita
+    </Titulo3>
+    <Titulo4 bold color="#000">
+      Este es un título de nivel 4 Negrita
+    </Titulo4>
+    <Titulo5 bold color="#000">
+      Este es un título de nivel 5 Negrita
+    </Titulo5>
+    <Titulo6 bold color="#000">
+      Este es un título de nivel 6 Negrita
+    </Titulo6>
 
     <h3>Textos</h3>
     <Text1 color="#000">Este es un texto de nivel 1</Text1>
     <Text2 color="#000">Este es un texto de nivel 2</Text2>
     <Text3 color="#000">Este es un texto de nivel 3</Text3>
     <Text4 color="#000">Este es un texto de nivel 4</Text4>
-    <Text1 bold color="#000">Este es un texto de nivel 1 Negrita</Text1>
-    <Text2 bold color="#000">Este es un texto de nivel 2 Negrita</Text2>
-    <Text3 bold color="#000">Este es un texto de nivel 3 Negrita</Text3>
-    <Text4 bold color="#000">Este es un texto de nivel 4 Negrita</Text4>
+    <Text1 bold color="#000">
+      Este es un texto de nivel 1 Negrita
+    </Text1>
+    <Text2 bold color="#000">
+      Este es un texto de nivel 2 Negrita
+    </Text2>
+    <Text3 bold color="#000">
+      Este es un texto de nivel 3 Negrita
+    </Text3>
+    <Text4 bold color="#000">
+      Este es un texto de nivel 4 Negrita
+    </Text4>
 
     <h3>Otros Textos</h3>
     <TextCTA color="#000">Este es un texto de nivel CTA</TextCTA>
-    <TextLink >Este es un texto de nivel Link</TextLink>
+    <TextLink>Este es un texto de nivel Link</TextLink>
+
+    <h3>Arrows</h3>
+    <Arrow direction="left" />
+    <Arrow direction="right" />
   </div>
 );
 

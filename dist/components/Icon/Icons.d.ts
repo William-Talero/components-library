@@ -2,6 +2,8 @@ import React from "react";
 import "./Icons.styles.scss";
 declare const icons: {
     plus: React.FC<React.SVGProps<SVGSVGElement>>;
+    leftArrow: React.FC<React.SVGProps<SVGSVGElement>>;
+    rightArrow: React.FC<React.SVGProps<SVGSVGElement>>;
 };
 type IconName = keyof typeof icons;
 interface IconProps {
