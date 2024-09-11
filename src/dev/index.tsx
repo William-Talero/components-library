@@ -58,46 +58,46 @@ const columns: Column<DataItem>[] = [
 
 const data: DataItem[] = [
   {
-    id: "10310313819",
+    id: "10310313820",
     fechaPago: "8/03/23",
     fechaAcreditacion: "8/03/23",
     operacion: "Acreditación",
     inversion: "Efectivo Colombia Pesos",
     objetivo: "Ahorro",
-    nitAcreditador: "3525645",
+    nitAcreditador: "6476783",
     razonSocial: "-",
     valor: 50000,
   },
   {
-    id: "10310313819",
+    id: "10310313821",
     fechaPago: "8/03/23",
     fechaAcreditacion: "8/03/23",
     operacion: "Acreditación",
     inversion: "Efectivo Colombia Pesos",
     objetivo: "Ahorro",
-    nitAcreditador: "3525645",
+    nitAcreditador: "64242",
     razonSocial: "-",
     valor: 50000,
   },
   {
-    id: "10310313819",
+    id: "10310313822",
     fechaPago: "8/03/23",
     fechaAcreditacion: "8/03/23",
     operacion: "Acreditación",
     inversion: "Efectivo Colombia Pesos",
     objetivo: "Ahorro",
-    nitAcreditador: "3525645",
+    nitAcreditador: "646353",
     razonSocial: "-",
     valor: 50000,
   },
   {
-    id: "10310313819",
+    id: "10310313823",
     fechaPago: "8/03/23",
     fechaAcreditacion: "8/03/23",
     operacion: "Acreditación",
     inversion: "Efectivo Colombia Pesos",
     objetivo: "Ahorro",
-    nitAcreditador: "3525645",
+    nitAcreditador: "52342",
     razonSocial: "-",
     valor: 50000,
   },
@@ -219,7 +219,7 @@ const App = () => (
     <Arrow direction="right" />
 
     <h3>Tables</h3>
-    <Table data={data} columns={columns} itemsPerPage={1} />
+    <Table data={data} columns={columns} itemsPerPage={2} />
   </div>
 );
 

@@ -31,6 +31,8 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
     return sortedData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, itemsPerPage, sortedData]);
 
+  const pages = Math.ceil(data.length / itemsPerPage);
+
   const requestSort = (key: keyof T) => {
     let direction: "asc" | "desc" = "asc";
     if (
@@ -45,9 +47,7 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const number = parseInt(e.target.value);
-    setCurrentPage(
-      Number.isNaN(number) ? 0 : number < data.length ? number : data.length
-    );
+    setCurrentPage(Number.isNaN(number) ? 0 : number < pages ? number : pages);
   };
 
   return (

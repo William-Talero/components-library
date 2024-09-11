@@ -1,5 +1,5 @@
-import React from 'react';
-import '@/styles.scss';
+import React from "react";
+import "@/styles.scss";
 import { TitleProps } from "./IText";
 export declare const Titulo1: React.FC<TitleProps>;
 export declare const Titulo2: React.FC<TitleProps>;
