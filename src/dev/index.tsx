@@ -24,6 +24,84 @@ import {
   TextLink,
 } from "@/components/Text/Text";
 import { Arrow } from "@/components/Arrow/Arrow";
+import { Table } from "@/components/Table/Table";
+
+interface DataItem {
+  id: string;
+  fechaPago: string;
+  fechaAcreditacion: string;
+  operacion: string;
+  inversion: string;
+  objetivo: string;
+  nitAcreditador: string;
+  razonSocial: string;
+  valor: number;
+}
+
+interface Column<T> {
+  key: keyof T;
+  header: string;
+  sortable: boolean;
+}
+
+const columns: Column<DataItem>[] = [
+  { key: "id", header: "ID Aporte", sortable: true },
+  { key: "fechaPago", header: "Fecha de pago", sortable: true },
+  { key: "fechaAcreditacion", header: "Fecha de acreditación", sortable: true },
+  { key: "operacion", header: "Operación", sortable: true },
+  { key: "inversion", header: "Inversión", sortable: true },
+  { key: "objetivo", header: "Objetivo", sortable: true },
+  { key: "nitAcreditador", header: "NIT acreditador", sortable: true },
+  { key: "razonSocial", header: "Razón social", sortable: true },
+  { key: "valor", header: "Valor", sortable: true },
+];
+
+const data: DataItem[] = [
+  {
+    id: "10310313819",
+    fechaPago: "8/03/23",
+    fechaAcreditacion: "8/03/23",
+    operacion: "Acreditación",
+    inversion: "Efectivo Colombia Pesos",
+    objetivo: "Ahorro",
+    nitAcreditador: "3525645",
+    razonSocial: "-",
+    valor: 50000,
+  },
+  {
+    id: "10310313819",
+    fechaPago: "8/03/23",
+    fechaAcreditacion: "8/03/23",
+    operacion: "Acreditación",
+    inversion: "Efectivo Colombia Pesos",
+    objetivo: "Ahorro",
+    nitAcreditador: "3525645",
+    razonSocial: "-",
+    valor: 50000,
+  },
+  {
+    id: "10310313819",
+    fechaPago: "8/03/23",
+    fechaAcreditacion: "8/03/23",
+    operacion: "Acreditación",
+    inversion: "Efectivo Colombia Pesos",
+    objetivo: "Ahorro",
+    nitAcreditador: "3525645",
+    razonSocial: "-",
+    valor: 50000,
+  },
+  {
+    id: "10310313819",
+    fechaPago: "8/03/23",
+    fechaAcreditacion: "8/03/23",
+    operacion: "Acreditación",
+    inversion: "Efectivo Colombia Pesos",
+    objetivo: "Ahorro",
+    nitAcreditador: "3525645",
+    razonSocial: "-",
+    valor: 50000,
+  },
+];
 
 const App = () => (
   <div>
@@ -139,6 +217,9 @@ const App = () => (
     <h3>Arrows</h3>
     <Arrow direction="left" />
     <Arrow direction="right" />
+
+    <h3>Tables</h3>
+    <Table data={data} columns={columns} itemsPerPage={1} />
   </div>
 );
 
