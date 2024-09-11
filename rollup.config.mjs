@@ -50,7 +50,7 @@ export default {
     }),
     postcss({
       extensions: [".css", ".scss"],
-      extract: false,
+      extract: true,
       minimize: true,
       use: [
         [
