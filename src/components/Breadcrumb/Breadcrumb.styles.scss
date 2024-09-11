@@ -1,0 +1,43 @@
+@import "../../parameters/colors";
+
+.breadcrumb-container {
+  background-color: map-get($general-colors, "neutral-light-2");
+  padding: 0.4rem 0.1rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-separator {
+  width: 1rem;
+  height: 1rem;
+  color: #9ca3af;
+}
+
+.breadcrumb-link {
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.breadcrumb-current {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.breadcrumb-icon {
+  width: 0.8rem;
+  margin: 0 1rem;
+}

@@ -25,6 +25,7 @@ import {
 } from "@/components/Text/Text";
 import { Arrow } from "@/components/Arrow/Arrow";
 import { Table } from "@/components/Table/Table";
+import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 
 interface DataItem {
   id: string;
@@ -101,6 +102,12 @@ const data: DataItem[] = [
     razonSocial: "-",
     valor: 50000,
   },
+];
+
+const breadcrumbItems = [
+  { label: "Breadcrumb", href: "/" },
+  { label: "Breadcrumb", href: "/category" },
+  { label: "Breadcrumb" },
 ];
 
 const App = () => (
@@ -220,6 +227,9 @@ const App = () => (
 
     <h3>Tables</h3>
     <Table data={data} columns={columns} itemsPerPage={2} />
+
+    <h3>Breadcrumb</h3>
+    <Breadcrumb items={breadcrumbItems} />
   </div>
 );
 

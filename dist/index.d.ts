@@ -1,4 +1,3 @@
-import "@/styles.scss";
 export * from "./components/Alert";
 export * from "./components/Arrow";
 export * from "./components/Button";
