@@ -28,9 +28,9 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({ 
+    resolve({
       extensions,
-      preferBuiltins: true
+      preferBuiltins: true,
     }),
     commonjs(),
     json(),
@@ -50,7 +50,7 @@ export default {
     }),
     postcss({
       extensions: [".css", ".scss"],
-      extract: true,
+      extract: false,
       minimize: true,
       use: [
         [
