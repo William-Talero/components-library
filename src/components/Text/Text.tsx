@@ -178,9 +178,10 @@ export const Text4: React.FC<TitleProps> = ({
   bold = false,
   color,
   darkColor,
+  className
 }) => (
   <h4
-    className={`text4 ${bold ? "bold" : ""}`}
+    className={`text4 ${bold ? "bold" : ""} ${className}`}
     style={
       {
         "--color": color ? color : "#000",

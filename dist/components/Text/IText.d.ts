@@ -3,6 +3,7 @@ export interface TitleProps {
     bold?: boolean;
     color?: string;
     darkColor?: string;
+    className?: string;
 }
 export interface TextProps {
     children: React.ReactNode;

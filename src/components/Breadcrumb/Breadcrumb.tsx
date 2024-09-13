@@ -1,15 +1,7 @@
 import React from "react";
 import "@/styles.scss";
 import Icon from "../Icon/Icons";
-
-interface BreadcrumbItem {
-  label: string;
-  href?: string;
-}
-
-interface BreadcrumbProps {
-  items: BreadcrumbItem[];
-}
+import { BreadcrumbItem, BreadcrumbProps } from "./IBreadcrumb";
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (

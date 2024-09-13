@@ -1,0 +1,176 @@
+@import '../../parameters/colors';
+@import '../../parameters/sizes';
+
+.input-wrapper {
+  margin-bottom: 1rem;
+  
+  .title-description {
+    color: light-dark(map-get($general-colors, 'neutral-dark-1'), #fff);
+  }
+
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: light-dark(map-get($general-colors, 'neutral-dark-1'), #fff);
+
+    .input {
+      flex-grow: 1;
+      border-radius: 8px;
+      padding: 14px;
+      width: 100%;
+      color: map-get($general-colors, 'neutral-dark-1');
+      border: 1px solid map-get($general-colors, 'neutral-dark-1');
+      background-color: map-get($general-colors, 'neutral-light-5');
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20.02px;
+      text-align: left;
+
+      &:hover {
+        background-color: map-get($general-colors, 'neutral-light-4') !important;
+      }
+
+      &:focus {
+        border-color: map-get($general-colors, 'neutral-dark-1') !important;
+        background-color: map-get($general-colors, 'neutral-light-5') !important;
+        outline: none;
+      }
+
+      &:disabled {
+        background-color: map-get($general-colors, 'neutral-light-4') !important;
+        border-color: map-get($general-colors, 'neutral-light-1') !important;
+        color: map-get($general-colors, 'neutral-light-1') !important;
+        cursor: not-allowed;
+      }
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 10px;
+      width: 20px;
+      height: 33px;
+      transition: fill 0.3s ease;
+      fill: map-get($general-colors, 'neutral-dark-1');
+    }
+  }
+
+  .help-text {
+    padding-left: 0.4rem;
+    color: light-dark(map-get($general-colors, 'neutral-dark-1'), #fff);
+  }
+
+  &.success {
+    .title-description {
+      color: map-get($general-colors, 'green-2-light-1') !important;
+    }
+
+    .input-container {
+      .input {
+        border-color: map-get($general-colors, 'green-2-light-1') !important;
+      }
+
+      .input-icon {
+        fill: map-get($general-colors, 'green-2-light-1') !important;
+      }
+    }
+
+    .help-text {
+      color: map-get($general-colors, 'green-dark-1') !important;
+      background-color: map-get($general-colors, 'green-2-light-5');
+    }
+  }
+
+  &.warning {
+    .title-description {
+      color: map-get($general-colors, 'orange-dark-2') !important;
+    }
+
+    .input-container {
+      .input {
+        border-color: map-get($general-colors, 'orange-dark-2') !important;
+      }
+
+      .input-icon {
+        fill: map-get($general-colors, 'orange-dark-2') !important;
+      }
+    }
+
+    .help-text {
+      color: map-get($general-colors, 'orange-dark-1') !important;
+      background-color: map-get($general-colors, 'orange-light-3');
+    }
+  }
+
+  &.error {
+    .title-description {
+      color: map-get($general-colors, 'semantic-dark-1') !important;
+    }
+
+    .input-container {
+      .input {
+        border-color: map-get($general-colors, 'semantic-dark-1') !important;
+      }
+
+      .input-icon {
+        fill: map-get($general-colors, 'semantic-dark-1') !important;
+      }
+    }
+
+    .help-text {
+      color: map-get($general-colors, 'semantic-dark-1') !important;
+      background-color: map-get($general-colors, 'semantic-light-4');
+    }
+  }
+
+  &.is-disable {
+    .title-description {
+      color: map-get($general-colors, 'neutral-light-1') !important;
+    }
+
+    .input-container {
+      .input {
+        color: map-get($general-colors, 'neutral-light-4') !important;
+        border-color: map-get($general-colors, 'neutral-light-1') !important;
+        background-color: map-get($general-colors, 'neutral-light-4') !important;
+        cursor: not-allowed;
+
+        &::placeholder {
+          color: map-get($general-colors, 'neutral-light-1') !important;
+        }
+      }
+
+      .input-icon {
+        fill: map-get($general-colors, 'neutral-light-1') !important;
+      }
+    }
+
+    .help-text {
+      color: map-get($general-colors, 'neutral-light-1') !important;
+    }
+  }
+
+  &.not-editable {
+    .input-container {
+      .input {
+        color: map-get($general-colors, 'neutral-light-3') !important;
+        border-color: map-get($general-colors, 'neutral-dark-4') !important;
+        background-color: map-get($general-colors, 'neutral-light-3') !important;
+
+        &::placeholder {
+          color: map-get($general-colors, 'neutral-dark-4') !important;
+        }
+      }
+
+      .input-icon {
+        fill: map-get($general-colors, 'neutral-dark-4') !important;
+      }
+    }
+
+    .help-text {
+      color: map-get($general-colors, 'neutral-dark-1') !important;
+    }
+  }
+}

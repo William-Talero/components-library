@@ -24,6 +24,7 @@ import {
   TextLink,
 } from "@/components/Text/Text";
 import { Arrow } from "@/components/Arrow/Arrow";
+import { Input, InputWithIcon } from "@/components/Input";
 import { Table } from "@/components/Table/Table";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 
@@ -224,6 +225,120 @@ const App = () => (
     <h3>Arrows</h3>
     <Arrow direction="left" />
     <Arrow direction="right" />
+
+    <h3>Input Generales</h3>
+    <Input placeholder="Ejemplo placeholder" />
+    <Input
+      $w="190px"
+      $title="Campo de Texto"
+      $helpText="Este es un campo de texto"
+      type="text"
+      required
+    />
+    <Input
+      $w="190px"
+      $title="Campo Númerico"
+      $helpText="Este es un textNumber"
+      type="number"
+      required
+    />
+    <Input
+      $w="267px"
+      $title="Campo de Correo Electrónico"
+      $helpText="Introduce un correo electrónico válido"
+      placeholder="example@porvenir.com.co"
+      type="email"
+      required
+    />
+    <Input
+      $w="364px"
+      $title="Campo de Contraseña"
+      $errorMessage="Error: la contraseña debe tener mas de 6 caracteres."
+      $helpText="Introduce una contraseña válida."
+      type="password"
+      pattern={/^.{6,}$/}
+      required
+    />
+    <Input
+      $w="558px"
+      $title="Campo de Nombre con Mayúsculas"
+      $helpText="Introduce un nombre, el texto será capitalizado"
+      type="namesUpper"
+      required
+    />
+
+    <h3>Input con Ícono</h3>
+    <InputWithIcon
+      $w="752px"
+      $icon="plus"
+      $title="Buscar"
+      $helpText="Introduce el término de búsqueda"
+      type="text"
+      required
+    />
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input width 100%"
+      $helpText="Texto de ayuda"
+      required
+    />
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input width 100% con value editable"
+      $helpText="Value editado desde el componente padre."
+      $value="texto set"
+    />
+
+    <h3>Input con con variación de colores</h3>
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input"
+      $helpText="Texto de ayuda"
+      $isSuccess={true}
+      required
+    />
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input"
+      $helpText="Texto de ayuda"
+      $isWarning={true}
+      required
+    />
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input"
+      $helpText="Texto de ayuda"
+      $isError={true}
+      required
+    />
+
+    <h3>Input desabilitado y solo lectura</h3>
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input disabled"
+      $helpText="Texto de ayuda"
+      disabled
+    />
+    <InputWithIcon
+      $icon="plus"
+      $title="Titulo Input readOnly"
+      $helpText="Texto de ayuda"
+      readOnly
+    />
+
+    <h3>Input con otros iconos</h3>
+    <InputWithIcon
+      $icon="leftArrow"
+      $title="Icono leftArrow"
+      $helpText="Texto de ayuda"
+      $isSuccess={true}
+    />
+    <InputWithIcon
+      $icon="rightArrow"
+      $title="Icono rightArrow"
+      $helpText="Texto de ayuda"
+      $isWarning={true}
+    />
 
     <h3>Tables</h3>
     <Table data={data} columns={columns} itemsPerPage={2} />

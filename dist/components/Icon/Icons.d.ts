@@ -5,10 +5,11 @@ declare const icons: {
     leftArrow: React.FC<React.SVGProps<SVGSVGElement>>;
     rightArrow: React.FC<React.SVGProps<SVGSVGElement>>;
 };
-type IconName = keyof typeof icons;
+export type IconName = keyof typeof icons;
 interface IconProps {
     $name: IconName;
     $w: string;
+    className?: string;
 }
 declare const Icon: React.FC<IconProps>;
 export default Icon;

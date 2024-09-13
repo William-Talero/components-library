@@ -44,7 +44,7 @@ const ButtonWithIcon = (data: ButtonWithIconProps) => {
 };
 
 const OrangeButton = (data: ButtonProps) => {
-  const { children, $type, $size, $m, ...rest } = data;
+  const { children, $type = "primary", $size, $m, ...rest } = data;
 
   const buttonClasses = [
     "button",
