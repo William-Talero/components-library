@@ -39,7 +39,7 @@ export const CustomWithPatternValidation: Story = {
   render: Template,
   args: {
     pattern: /^http.+/gi,
-    $title: 'Titulo input',
+    $title: 'Title input',
     $helpText: 'Texto ayuda',
   },
 };

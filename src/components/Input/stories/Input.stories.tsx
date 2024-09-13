@@ -49,7 +49,7 @@ export const textInput: Story = {
   render: Template,
   args: {
     type: "text",
-    $title: 'Titulo input',
+    $title: 'Title input',
     $helpText: "texto de ayuda",
   },
 };
@@ -58,7 +58,7 @@ export const InputNumber: Story = {
   render: Template,
   args: {
     type: "number",
-    $title: " Titulo input Number",
+    $title: " Title input Number",
     $helpText: "texto de ayuda",
   },
 };
@@ -67,7 +67,7 @@ export const inputPassword: Story = {
   render: Template,
   args: {
     type: "password",
-    $title: "Titulo input Password",
+    $title: "Title input Password",
     $helpText: 'Texto ayuda',
   },
 };
@@ -76,7 +76,7 @@ export const inputEmail: Story = {
   render: Template,
   args: {
     type: "email",
-    $title: "Titulo input Email",
+    $title: "Title input Email",
     $helpText: 'Texto ayuda',
   },
 };
@@ -95,7 +95,7 @@ export const inputSetValue: Story = {
   args: {
     type: "text",
     $value: "vulue 2",
-    $title: 'Titulo input',
+    $title: 'Title input',
     $helpText: 'Texto ayuda',
   },
 };
@@ -105,7 +105,7 @@ export const inputPlaceholder: Story = {
   args: {
     type: "text",
     placeholder: "Ejemplo llenado",
-    $title: 'Titulo input',
+    $title: 'Title input',
     $helpText: 'Texto ayuda',
   },
 };
@@ -124,7 +124,7 @@ export const inputReadOnly: Story = {
   args: {
     type: "text",
     $value: "vulue 1",
-    $title: 'Titulo input',
+    $title: 'Title input',
     $helpText: 'Texto ayuda',
     readOnly: true,
   },

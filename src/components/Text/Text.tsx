@@ -2,7 +2,7 @@ import React from "react";
 import "@/styles.scss";
 import { TitleProps, TextProps } from "./IText";
 
-export const Titulo1: React.FC<TitleProps> = ({
+export const Title1: React.FC<TitleProps> = ({
   children,
   bold = false,
   color,
@@ -21,7 +21,7 @@ export const Titulo1: React.FC<TitleProps> = ({
   </h1>
 );
 
-export const Titulo2: React.FC<TitleProps> = ({
+export const Title2: React.FC<TitleProps> = ({
   children,
   bold = false,
   color,
@@ -40,7 +40,7 @@ export const Titulo2: React.FC<TitleProps> = ({
   </h2>
 );
 
-export const Titulo3: React.FC<TitleProps> = ({
+export const Title3: React.FC<TitleProps> = ({
   children,
   bold = false,
   color,
@@ -59,7 +59,7 @@ export const Titulo3: React.FC<TitleProps> = ({
   </h3>
 );
 
-export const Titulo4: React.FC<TitleProps> = ({
+export const Title4: React.FC<TitleProps> = ({
   children,
   bold = false,
   color,
@@ -78,7 +78,7 @@ export const Titulo4: React.FC<TitleProps> = ({
   </h4>
 );
 
-export const Titulo5: React.FC<TitleProps> = ({
+export const Title5: React.FC<TitleProps> = ({
   children,
   bold = false,
   color,
@@ -97,7 +97,7 @@ export const Titulo5: React.FC<TitleProps> = ({
   </h5>
 );
 
-export const Titulo6: React.FC<TitleProps> = ({
+export const Title6: React.FC<TitleProps> = ({
   children,
   bold = false,
   color,

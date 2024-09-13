@@ -2,12 +2,12 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import {
-  Titulo1,
-  Titulo2,
-  Titulo3,
-  Titulo4,
-  Titulo5,
-  Titulo6,
+  Title1,
+  Title2,
+  Title3,
+  Title4,
+  Title5,
+  Title6,
   Text1,
   Text2,
   Text3,
@@ -52,12 +52,12 @@ describe("Text Components", () => {
     });
   };
 
-  testComponent(Titulo1, "title1", "h1");
-  testComponent(Titulo2, "title2", "h2");
-  testComponent(Titulo3, "title3", "h3");
-  testComponent(Titulo4, "title4", "h4");
-  testComponent(Titulo5, "title5", "h5");
-  testComponent(Titulo6, "title6", "h6");
+  testComponent(Title1, "title1", "h1");
+  testComponent(Title2, "title2", "h2");
+  testComponent(Title3, "title3", "h3");
+  testComponent(Title4, "title4", "h4");
+  testComponent(Title5, "title5", "h5");
+  testComponent(Title6, "title6", "h6");
   testComponent(Text1, "text1", "h2");
   testComponent(Text2, "text2", "h2");
   testComponent(Text3, "text3", "h3");

@@ -10,12 +10,12 @@ import {
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { Alert } from "@/components/Alert/Alert";
 import {
-  Titulo1,
-  Titulo2,
-  Titulo3,
-  Titulo4,
-  Titulo5,
-  Titulo6,
+  Title1,
+  Title2,
+  Title3,
+  Title4,
+  Title5,
+  Title6,
   Text1,
   Text2,
   Text3,
@@ -174,31 +174,31 @@ const App = () => (
     <Alert type="alert" message="Alerta de tipo Warning" />
     <Alert type="error" message="Alerta de tipo Error" />
 
-    <h3>Titulos</h3>
-    <Titulo1 color="#000">Este es un título de nivel 1</Titulo1>
-    <Titulo2 color="#000">Este es un título de nivel 2</Titulo2>
-    <Titulo3 color="#000">Este es un título de nivel 3</Titulo3>
-    <Titulo4 color="#000">Este es un título de nivel 4</Titulo4>
-    <Titulo5 color="#000">Este es un título de nivel 5</Titulo5>
-    <Titulo6 color="#000">Este es un título de nivel 6</Titulo6>
-    <Titulo1 bold color="#000">
+    <h3>Titles</h3>
+    <Title1 color="#000">Este es un título de nivel 1</Title1>
+    <Title2 color="#000">Este es un título de nivel 2</Title2>
+    <Title3 color="#000">Este es un título de nivel 3</Title3>
+    <Title4 color="#000">Este es un título de nivel 4</Title4>
+    <Title5 color="#000">Este es un título de nivel 5</Title5>
+    <Title6 color="#000">Este es un título de nivel 6</Title6>
+    <Title1 bold color="#000">
       Este es un título de nivel 1 Negrita
-    </Titulo1>
-    <Titulo2 bold color="#000">
+    </Title1>
+    <Title2 bold color="#000">
       Este es un título de nivel 2 Negrita
-    </Titulo2>
-    <Titulo3 bold color="#000">
+    </Title2>
+    <Title3 bold color="#000">
       Este es un título de nivel 3 Negrita
-    </Titulo3>
-    <Titulo4 bold color="#000">
+    </Title3>
+    <Title4 bold color="#000">
       Este es un título de nivel 4 Negrita
-    </Titulo4>
-    <Titulo5 bold color="#000">
+    </Title4>
+    <Title5 bold color="#000">
       Este es un título de nivel 5 Negrita
-    </Titulo5>
-    <Titulo6 bold color="#000">
+    </Title5>
+    <Title6 bold color="#000">
       Este es un título de nivel 6 Negrita
-    </Titulo6>
+    </Title6>
 
     <h3>Textos</h3>
     <Text1 color="#000">Este es un texto de nivel 1</Text1>
@@ -278,13 +278,13 @@ const App = () => (
     />
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input width 100%"
+      $title="Title Input width 100%"
       $helpText="Texto de ayuda"
       required
     />
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input width 100% con value editable"
+      $title="Title Input width 100% con value editable"
       $helpText="Value editado desde el componente padre."
       $value="texto set"
     />
@@ -292,21 +292,21 @@ const App = () => (
     <h3>Input con con variación de colores</h3>
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input"
+      $title="Title Input"
       $helpText="Texto de ayuda"
       $isSuccess={true}
       required
     />
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input"
+      $title="Title Input"
       $helpText="Texto de ayuda"
       $isWarning={true}
       required
     />
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input"
+      $title="Title Input"
       $helpText="Texto de ayuda"
       $isError={true}
       required
@@ -315,13 +315,13 @@ const App = () => (
     <h3>Input desabilitado y solo lectura</h3>
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input disabled"
+      $title="Title Input disabled"
       $helpText="Texto de ayuda"
       disabled
     />
     <InputWithIcon
       $icon="plus"
-      $title="Titulo Input readOnly"
+      $title="Title Input readOnly"
       $helpText="Texto de ayuda"
       readOnly
     />
