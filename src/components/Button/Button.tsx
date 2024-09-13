@@ -4,22 +4,38 @@ import Icon from "../Icon/Icons";
 import "@/styles.scss";
 
 const Button = (data: ButtonProps) => {
-  const { children, $type, $size, $m, ...rest } = data;
-  const className = `button button-${$type} button-${$size} button-${$m}`;
+  const { children, $type = "primary", $size, $m, ...rest } = data;
+
+  const buttonClasses = [
+    "button",
+    `button-${$type}`,
+    $size && `button-${$size}`,
+    $m && `button-${$m}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <button className={className} {...rest}>
+    <button className={buttonClasses} {...rest}>
       {children}
     </button>
   );
 };
 
 const ButtonWithIcon = (data: ButtonWithIconProps) => {
-  const { children, $type, $size, $m, $icon, ...rest } = data;
-  const classNames = `button button-${$type} button-${$size} button-${$m}`;
+  const { children, $type = "primary", $size, $m, $icon, ...rest } = data;
+
+  const buttonClasses = [
+    "button",
+    `button-${$type}`,
+    $size && `button-${$size}`,
+    $m && `button-${$m}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <button className={classNames} {...rest}>
+    <button className={buttonClasses} {...rest}>
       <Icon $name="plus" $w="10%" />
       <div style={{ width: "100%" }}>{children}</div>
       {$size === "lg" && <Icon $name={$icon} $w="10%" />}
@@ -29,10 +45,18 @@ const ButtonWithIcon = (data: ButtonWithIconProps) => {
 
 const OrangeButton = (data: ButtonProps) => {
   const { children, $type, $size, $m, ...rest } = data;
-  const classNames = `button button-orange-${$type} button-${$size} button-${$m}`;
+
+  const buttonClasses = [
+    "button",
+    `button-orange-${$type}`,
+    $size && `button-${$size}`,
+    $m && `button-${$m}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <button className={classNames} {...rest}>
+    <button className={buttonClasses} {...rest}>
       {children}
     </button>
   );
