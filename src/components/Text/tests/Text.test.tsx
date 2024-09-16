@@ -58,10 +58,10 @@ describe("Text Components", () => {
   testComponent(Title4, "title4", "h4");
   testComponent(Title5, "title5", "h5");
   testComponent(Title6, "title6", "h6");
-  testComponent(Text1, "text1", "h2");
-  testComponent(Text2, "text2", "h2");
-  testComponent(Text3, "text3", "h3");
-  testComponent(Text4, "text4", "h4");
+  testComponent(Text1, "text1", "p");
+  testComponent(Text2, "text2", "p");
+  testComponent(Text3, "text3", "p");
+  testComponent(Text4, "text4", "p");
   testComponent(TextCTA, "textCta", "p");
 
   describe("TextLink", () => {

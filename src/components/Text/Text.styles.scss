@@ -1,84 +1,88 @@
 @import "../../parameters/colors";
 
+.textContainer {
+  display: flex;
+  justify-content: var(--justify);
+  flex-direction: var(--align);
+}
+
 @mixin title-base {
-    line-height: 140%;
-    font-weight: 300;
-    margin: 0;
-    color: light-dark(var(--color), var(--dark-color)) !important
-  }
-  
-  .title1 {
-    @include title-base;
-    font-size: 48px;
-  }
-  
-  .title2 {
-    @include title-base;
-    font-size: 32px;
-  }
-  
-  .title3 {
-    @include title-base;
-    font-size: 24px;
-  }
-  
-  .title4 {
-    @include title-base;
-    font-size: 20px;
-  }
+  line-height: 140%;
+  font-weight: 300;
+  margin: 0;
+  color: light-dark(var(--color), var(--dark-color)) !important;
+}
 
-  .title5 {
-    @include title-base;
-    font-size: 16px;
-  }
+.title1 {
+  @include title-base;
+  font-size: 48px;
+}
 
-  .title6 {
-    @include title-base;
-    font-size: 16px;
-  }
+.title2 {
+  @include title-base;
+  font-size: 32px;
+}
+
+.title3 {
+  @include title-base;
+  font-size: 24px;
+}
+
+.title4 {
+  @include title-base;
+  font-size: 20px;
+}
+
+.title5 {
+  @include title-base;
+  font-size: 16px;
+}
+
+.title6 {
+  @include title-base;
+  font-size: 16px;
+}
 
 @mixin text-base {
-    line-height: 140%;
-    font-weight: 300;
-    margin: 0;
-    color: light-dark(var(--color), var(--dark-color))
+  line-height: 140%;
+  font-weight: 300;
+  margin: 0;
+  color: light-dark(var(--color), var(--dark-color));
 }
 
 .text1 {
-    @include text-base;
-    font-size: 20px;
+  @include text-base;
+  font-size: 20px;
 }
 
 .text2 {
-    @include text-base;
-    font-size: 14px;
+  @include text-base;
+  font-size: 14px;
 }
 
 .text3 {
-    @include text-base;
-    font-size: 14px;
+  @include text-base;
+  font-size: 14px;
 }
 
 .text4 {
-    @include text-base;
-    font-size: 12px;
+  @include text-base;
+  font-size: 12px;
 }
 
 .textCta {
-    @include text-base;
-    font-size: 14px;
-    font-weight: normal;
+  @include text-base;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .textLink {
-    @include text-base;
-    font-size: 14px;
-    color: var(--color) !important;
-    text-decoration-line: underline;
+  @include text-base;
+  font-size: 14px;
+  color: var(--color) !important;
+  text-decoration-line: underline;
 }
 
-
-  
-  .bold {
-    font-weight: bold;
-  }
+.bold {
+  font-weight: bold;
+}

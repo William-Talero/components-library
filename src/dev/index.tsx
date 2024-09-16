@@ -27,6 +27,7 @@ import { Arrow } from "@/components/Arrow/Arrow";
 import { Input, InputWithIcon } from "@/components/Input";
 import { Table } from "@/components/Table/Table";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
+import { Circle } from "@/components/Circle/Circle";
 
 interface DataItem {
   id: string;
@@ -345,6 +346,10 @@ const App = () => (
 
     <h3>Breadcrumb</h3>
     <Breadcrumb items={breadcrumbItems} />
+
+
+    <h3>Circulo</h3>
+    <Circle />
   </div>
 );
 

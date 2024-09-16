@@ -36,9 +36,11 @@ const ButtonWithIcon = (data: ButtonWithIconProps) => {
 
   return (
     <button className={buttonClasses} {...rest}>
-      <Icon $name="plus" $w="10%" />
+      <Icon $name={$icon} $w="10%" data-testid={`icon-${$icon}`} />
       <div style={{ width: "100%" }}>{children}</div>
-      {$size === "lg" && <Icon $name={$icon} $w="10%" />}
+      {$size === "lg" && (
+        <Icon $name={$icon} $w="10%" data-testid={`icon-${$icon}`} />
+      )}
     </button>
   );
 };

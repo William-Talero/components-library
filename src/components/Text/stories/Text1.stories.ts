@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Text1 } from "@/components/Text/Text";
-import { TextProps } from "@/components/Text/IText";
+import { TextBaseProps } from "@/components/Text/IText";
 
-const meta: Meta<TextProps> = {
+const meta: Meta<TextBaseProps> = {
   title: "Components/Textos/Texto1",
   component: Text1,
   argTypes: {
@@ -15,7 +15,7 @@ const meta: Meta<TextProps> = {
 
 export default meta;
 
-type Story = StoryObj<TextProps>;
+type Story = StoryObj<TextBaseProps>;
 
 export const Regular: Story = {
     args: {

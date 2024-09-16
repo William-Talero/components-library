@@ -18,12 +18,18 @@ interface IconProps {
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ $name = "plus", $w, className }) => {
+const Icon: React.FC<IconProps> = ({
+  $name = "plus",
+  $w,
+  className = "",
+  ...props
+}) => {
   const SvgIcon = icons[$name];
   return (
     <div
       className={`icon-container ${className}`}
       style={{ "--w-container": $w } as React.CSSProperties}
+      {...props}
     >
       <SvgIcon className="styled-svg-icon" />
     </div>

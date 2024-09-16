@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Title5 } from "@/components/Text/Text";
-import { TitleProps } from "@/components/Text/IText";
+import { Title6 } from "@/components/Text/Text";
+import { TextBaseProps } from "@/components/Text/IText";
 
-const meta: Meta<TitleProps> = {
-  title: "Components/Titles/Title5",
-  component: Title5,
+const meta: Meta<TextBaseProps> = {
+  title: "Components/Titles/Title6",
+  component: Title6,
   argTypes: {
     children: { control: "text" },
     bold: { control: "boolean" },
@@ -15,17 +15,17 @@ const meta: Meta<TitleProps> = {
 
 export default meta;
 
-type Story = StoryObj<TitleProps>;
+type Story = StoryObj<TextBaseProps>;
 
 export const Regular: Story = {
     args: {
-        children: "Este es un Title 5"
+        children: "Este es un Title 6"
     },
   };
   
   export const Bold: Story = {
     args: {
-        children: "Este es un Title 5",
+        children: "Este es un Title 6",
         bold: true,
     },
   };

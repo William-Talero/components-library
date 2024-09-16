@@ -1,13 +1,10 @@
-export interface TitleProps {
+export interface TextBaseProps {
     children: React.ReactNode;
     bold?: boolean;
     color?: string;
     darkColor?: string;
+    justify?: 'start' | 'center' | 'end';
+    direction?: 'row' | 'column';
     className?: string;
-}
-export interface TextProps {
-    children: React.ReactNode;
-    bold?: boolean;
-    color?: string;
-    darkColor?: string;
+    as?: React.ElementType;
 }
