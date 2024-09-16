@@ -7,3 +7,4 @@ export * from "./components/Text";
 export * from "./components/Input";
 export * from "./components/Breadcrumb";
 export * from "./components/Circle";
+export * from "./components/Accordion";

@@ -26,6 +26,7 @@ import {
 import { Arrow } from "@/components/Arrow/Arrow";
 import { Input, InputWithIcon } from "@/components/Input";
 import { Table } from "@/components/Table/Table";
+import { Accordion, AccordionTab } from "@/components/Accordion/Accordion";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import { Circle } from "@/components/Circle/Circle";
 
@@ -347,6 +348,23 @@ const App = () => (
     <h3>Breadcrumb</h3>
     <Breadcrumb items={breadcrumbItems} />
 
+    <h3>Accordion</h3>
+    <Accordion contentColor="green">
+      <AccordionTab header="Placeholder I">
+        <Text3>
+          Lorem ipsum I dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+        </Text3>
+      </AccordionTab>
+      <AccordionTab header="Placeholder II">
+        <Text3>
+          Lorem ipsum II dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+        </Text3>
+      </AccordionTab>
+    </Accordion>
 
     <h3>Circulo</h3>
     <Circle />
