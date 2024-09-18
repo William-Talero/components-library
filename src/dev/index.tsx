@@ -26,9 +26,12 @@ import {
 import { Arrow } from "@/components/Arrow/Arrow";
 import { Input, InputWithIcon } from "@/components/Input";
 import { Table } from "@/components/Table/Table";
+import { Dropdown } from "@/components/Dropdown";
 import { Accordion, AccordionTab } from "@/components/Accordion/Accordion";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import { Circle } from "@/components/Circle/Circle";
+import { SectionAccordion } from "@/components/SectionAccordion/SectionAccordion";
+import { Stepper } from "@/components/Stepper/Stepper";
 
 interface DataItem {
   id: string;
@@ -255,7 +258,7 @@ const App = () => (
     <Input
       $w="364px"
       $title="Campo de Contraseña"
-      $errorMessage="Error: la contraseña debe tener mas de 6 caracteres."
+      $errorMessage="Error: La contraseña debe tener mas de 6 caracteres."
       $helpText="Introduce una contraseña válida."
       type="password"
       pattern={/^.{6,}$/}
@@ -286,9 +289,9 @@ const App = () => (
     />
     <InputWithIcon
       $icon="plus"
-      $title="Title Input width 100% con value editable"
+      $title="Titulo Input width 100% con value editable."
       $helpText="Value editado desde el componente padre."
-      $value="texto set"
+      value="texto set2"
     />
 
     <h3>Input con con variación de colores</h3>
@@ -342,6 +345,19 @@ const App = () => (
       $isWarning={true}
     />
 
+    <h3>Dropdown</h3>
+    <Dropdown
+      $title="DropDown basic"
+      $helpText="Texto de ayuda"
+      placeholder="dropdown"
+      $options={[
+        { text: "Value1", value: "id1" },
+        { text: "Value2", value: "id2" },
+        { text: "valuE3", value: "id3" },
+        { text: "value41", value: "id4" },
+        { text: "value5", value: "id" },
+      ]}
+    />
     <h3>Tables</h3>
     <Table data={data} columns={columns} itemsPerPage={2} />
 
@@ -350,7 +366,10 @@ const App = () => (
 
     <h3>Accordion</h3>
     <Accordion contentColor="green">
-      <AccordionTab header="Placeholder I">
+      <AccordionTab
+        header="Placeholder I"
+        contentClassName="custom-content-color active"
+      >
         <Text3>
           Lorem ipsum I dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -368,6 +387,46 @@ const App = () => (
 
     <h3>Circulo</h3>
     <Circle />
+    <h3>Sección Acordeon</h3>
+    <SectionAccordion
+      colorTitle="green"
+      title="Title"
+      content="Amet dolor deserunt consequat voluptate aliqua tempor. Minim dolore reprehenderit duis sunt incididunt aliquip pariatur consequat exercitation do eu nulla officia. Eiusmod veniam sint qui nisi consequat et cupidatat."
+    >
+      <Accordion contentColor="green">
+        <AccordionTab header="Placeholder">
+          <Text3>
+            Lorem ipsum I dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+          </Text3>
+        </AccordionTab>
+        <AccordionTab header="Placeholder">
+          <Text3>
+            Lorem ipsum II dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+          </Text3>
+        </AccordionTab>
+        <AccordionTab header="Placeholder">
+          <Text3>
+            Lorem ipsum III dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+          </Text3>
+        </AccordionTab>
+        <AccordionTab header="Placeholder">
+          <Text3>
+            Lorem ipsum IV dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+          </Text3>
+        </AccordionTab>
+      </Accordion>
+    </SectionAccordion>
+
+    <h3>Stepper</h3>
+    <Stepper steps={3} currentStep={0} />
   </div>
 );
 

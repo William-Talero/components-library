@@ -19,7 +19,7 @@
   }
 
   &:active {
-    background-color: darken(map-get($general-colors, "orange-dark-1"), 15%);
+    background-color: map-get($general-colors, "orange-dark-1");
     fill: white !important;
   }
 

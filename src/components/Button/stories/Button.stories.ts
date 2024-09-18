@@ -3,7 +3,7 @@ import { Button } from "@/components/Button/Button";
 import { ButtonProps } from "@/components/Button/IButton";
 
 const meta: Meta<ButtonProps> = {
-  title: "Components/Buttons/PrincipalButton",
+  title: "Components/Atoms/Buttons/PrincipalButton",
   component: Button,
   argTypes: {
     $type: {

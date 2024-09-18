@@ -3,7 +3,7 @@ import { Breadcrumb } from "./../Breadcrumb";
 import { BreadcrumbProps } from "./../IBreadcrumb";
 
 const meta: Meta<BreadcrumbProps> = {
-  title: "Components/Navigation/Breadcrumb",
+  title: "Components/Atoms/Navigation/Breadcrumb",
   component: Breadcrumb,
   argTypes: {
     items: {

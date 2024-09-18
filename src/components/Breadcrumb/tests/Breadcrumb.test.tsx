@@ -38,4 +38,12 @@ describe("Breadcrumb Component", () => {
 
     expect(screen.getByText("Products")).toHaveClass("breadcrumb-current");
   });
+
+  it("should apply 'breadcrumb-link' class to the first item", () => {
+    const items = [{ label: "Home", href: "/" }, { label: "Products" }];
+
+    render(<Breadcrumb items={items} />);
+
+    expect(screen.getByText("Home")).toHaveClass("breadcrumb-link");
+  });
 });

@@ -3,7 +3,7 @@ import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { CheckboxProps } from "@/components/Checkbox/ICheckbox";
 
 const meta: Meta<CheckboxProps> = {
-  title: "Components/CheckBox/Checkbox",
+  title: "Components/Atoms/CheckBox/Checkbox",
   component: Checkbox,
   argTypes: {
     label: { control: "text" },

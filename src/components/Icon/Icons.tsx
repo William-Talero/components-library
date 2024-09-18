@@ -2,6 +2,7 @@ import React from "react";
 import PlusIcon from "@/assets/icons/PlusIcon";
 import LeftArrow from "@/assets/icons/LeftArrowIcon";
 import RightArrow from "@/assets/icons/RightArrowIcon";
+import ArrowDropdown from "@/assets/icons/ArrowDropdown";
 import DownArrow from "@/assets/icons/DownArrow";
 import "./Icons.styles.scss";
 
@@ -9,6 +10,7 @@ const icons = {
   plus: PlusIcon,
   leftArrow: LeftArrow,
   rightArrow: RightArrow,
+  arrowDropDown: ArrowDropdown,
   downArrow: DownArrow,
 };
 

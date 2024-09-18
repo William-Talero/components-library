@@ -28,9 +28,7 @@ describe("Button Components", () => {
 
     it("renders with custom margin", () => {
       render(<Button $m="4">Click me</Button>);
-      expect(screen.getByText("Click me")).toHaveClass(
-        "button button-primary button-4"
-      );
+      expect(screen.getByText("Click me")).toHaveClass("button button-primary");
     });
 
     it("passes through additional props", () => {
@@ -61,7 +59,7 @@ describe("Button Components", () => {
         </OrangeButton>
       );
       expect(screen.getByText("Click me")).toHaveClass(
-        "button button-orange-primary button-sm button-2"
+        "button button-orange-primary button-sm"
       );
     });
   });

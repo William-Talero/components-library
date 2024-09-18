@@ -1,4 +1,8 @@
+@import "./parameters/colors.scss";
+
 @import "./components/Button/Button.styles.scss";
+@import "./components/Input/Input.styles.scss";
+@import "./components/Dropdown/Dropdown.styles.scss";
 @import "./components/Alert/Alert.styles.scss";
 @import "./parameters/fonts.scss";
 @import "./components/Checkbox/Checkbox.styles.scss";
@@ -9,9 +13,15 @@
 @import "./components/Accordion/Accordion.styles.scss";
 @import "./components/Breadcrumb/Breadcrumb.styles.scss";
 @import "./components/Circle/Circle.styles.scss";
+@import "./components/SectionAccordion/SectionAccordion.styles.scss";
+@import "./components/Stepper/Stepper.styles.scss";
 
 :root {
   color-scheme: dark light;
+
+  // variables
+  --var-color-orange: map-get($general-colors, "orange-dark-2");
+  --var-color-green: map-get($general-colors, "green-2-dark-1");
 
   .dark {
     color-scheme: dark;

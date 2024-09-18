@@ -3,7 +3,7 @@ import { Text1 } from "@/components/Text/Text";
 import { TextBaseProps } from "@/components/Text/IText";
 
 const meta: Meta<TextBaseProps> = {
-  title: "Components/Textos/Texto1",
+  title: "Components/Atoms/Textos/Texto1",
   component: Text1,
   argTypes: {
     children: { control: "text" },

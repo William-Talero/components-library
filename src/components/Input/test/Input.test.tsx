@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, InputWithIcon } from '../Input'; // Ajusta la ruta según sea necesario
 import { fireEvent, render, screen} from '@testing-library/react';
-import { performValidation } from '../validationUtils';
+import { performValidation } from '../utils/validationUtils';
 
 describe('Input Component', () => {
   it('renders without crashing', () => {
@@ -11,7 +11,7 @@ describe('Input Component', () => {
   });
 
   it('renders with default value', () => {
-    render(<Input $value="default value" />);
+    render(<Input value="default value" />);
     const inputElement = screen.getByDisplayValue('default value');
     expect(inputElement).toBeInTheDocument();
   });
@@ -25,9 +25,15 @@ describe('Input Component', () => {
   });
   
   it('renders value', () => {
-    render(<Input $value="edited" />);
+    render(<Input value="edited" />);
     const inputElement = screen.getByDisplayValue('edited');
     expect(inputElement).toBeInTheDocument();
+  });
+
+  it('does not show help text when $showHelpText is false', () => {
+    render(<Input value="edited" $helpText='This is help text' $showHelpText={false} />);
+    const helpText = screen.queryByText('This is help text');
+    expect(helpText).not.toBeInTheDocument();
   });
 });
 
@@ -86,7 +92,7 @@ describe('Input Component Functionality', () => {
         type="email"
         pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i} // Expresión regular para email
         $errorMessage="Invalid email address"
-        $value="test"
+        value="test"
         $helpText="Please enter a valid email"
       />
     );
@@ -107,7 +113,7 @@ describe('Input Component Functionality', () => {
       <Input
         $title="Url"
         pattern={/^http$/i}
-        $value="test"
+        value="test"
         $helpText="Please enter a valid url"
       />
     );
@@ -128,7 +134,7 @@ describe('Input Component Functionality', () => {
         $title="Url"
         pattern={/^http$/i}
         $errorMessage="Custom error"
-        $value="test"
+        value="test"
         $helpText="Please enter a valid url"
       />
     );
@@ -145,7 +151,7 @@ describe('Input Component Functionality', () => {
   it('should display error message when input does not match the pattern', () => {
     render(
       <Input
-        $value=""
+        value=""
         pattern={/^.{6,}$/}
         $errorMessage="Input does not match the pattern."
         $helpText="Please enter valid input."
@@ -165,7 +171,7 @@ describe('Input Component Functionality', () => {
   it('should display help text when input matches the pattern', () => {
     render(
       <Input
-        $value=""
+        value=""
         pattern={/^.{6,}$/}
         $errorMessage="Input does not match the pattern."
         $helpText="Please enter valid input."
@@ -177,6 +183,27 @@ describe('Input Component Functionality', () => {
 
     const helpText = screen.getByText('Please enter valid input.');
     expect(helpText).toBeInTheDocument();
+
+    const errorMessage = screen.queryByText('Input does not match the pattern.');
+    expect(errorMessage).toBeNull();
+  });
+
+  it('does not display help text when input matches the pattern and $showHelpText is false', () => {
+    render(
+      <Input
+        value=""
+        pattern={/^.{6,}$/}
+        $errorMessage="Input does not match the pattern."
+        $helpText="Please enter valid input."
+        $showHelpText={false}
+      />
+    );
+
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: 'abcdef' } });
+
+    const helpText = screen.queryByText('Please enter valid input.');
+    expect(helpText).toBeNull();
 
     const errorMessage = screen.queryByText('Input does not match the pattern.');
     expect(errorMessage).toBeNull();
@@ -211,9 +238,27 @@ describe('InputWithIcon Component', () => {
     const iconElement = document.querySelector('.input-icon');
     expect(iconElement).toBeInTheDocument();
   });
+
   it('renders input with icon', () => {
     render(<InputWithIcon $icon="plus" />);
     const iconElement = document.querySelector('.input-icon');
     expect(iconElement).toBeInTheDocument();
+  });
+
+  it('renders input with icon and handles icon click', () => {
+    const handleClick = jest.fn();
+    render(<InputWithIcon $icon="arrowDropDown" $onClickIcon={handleClick} />);
+
+    const inputElement = screen.getByRole('textbox');
+    const iconElement = document.querySelector('.input-icon');
+
+    expect(inputElement).toBeInTheDocument();
+    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toHaveClass('input-icon');
+
+    if (iconElement) {
+      fireEvent.click(iconElement);
+      expect(handleClick).toHaveBeenCalledTimes(1);
+    }
   });
 });

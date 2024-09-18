@@ -1,0 +1,41 @@
+
+.dropdown-container {
+  position: relative;
+
+  .dropdown-list {
+    position: absolute;
+    top: calc(100% - 12px);
+    border-top: 2px solid map-get($general-colors, 'neutral-dark-1');
+    left: 0;
+    right: 0;
+    background-color: map-get($general-colors, 'neutral-light-5');
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 8px map-get($general-colors, 'neutral-dark-4');
+    display: flex;
+    flex-direction: column;
+
+    .dropdown-item {
+      cursor: pointer;
+
+      &:hover {
+        background-color: map-get($general-colors, 'orange-light-3');
+      }
+
+      .dropdown-text {
+        height: Hug (34px)px;
+        padding: 8px 0px 8px 16px;
+        gap: 8px;
+        border: 0.5px 0px 0.5px 0px;
+        opacity: 0px;
+      }
+
+      .dropdown-separator {
+        border: none;
+        border-top: 1px solid map-get($general-colors, 'neutral-dark-4');
+        margin: 0;
+      }
+    }
+  }
+}

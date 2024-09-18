@@ -6,6 +6,8 @@ const Circle: React.FC<CircleProps> = ({
   size = 20,
   className = "",
   isActive = false,
+  onClick,
+  ...props
 }) => {
   return (
     <div
@@ -14,7 +16,12 @@ const Circle: React.FC<CircleProps> = ({
       style={{
         width: `${size}px`,
         height: `${size}px`,
+        cursor: onClick ? "pointer" : "default",
       }}
+      onClick={onClick}
+      role="button"
+      tabIndex={onClick ? 0 : undefined}
+      {...props}
     />
   );
 };

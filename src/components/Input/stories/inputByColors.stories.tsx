@@ -5,7 +5,7 @@ import { InputWithIconProps } from '@/components/Input/IInput';
 import React from 'react';
 
 const meta: Meta<InputWithIconProps> = {
-  title: 'Components/Inputs/InputByColors',
+  title: 'Components/Atoms/Inputs/InputByColors',
   argTypes: {
     type: {
       control: { type: "select" },

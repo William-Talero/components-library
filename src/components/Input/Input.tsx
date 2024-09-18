@@ -5,10 +5,9 @@ import Icon from '../Icon/Icons';
 import {
   emailPattern,
   alphabetPattern
-} from "./communPatterns";
-import { performValidation, capitalizeFirstLetter } from './validationUtils';
+} from "./utils/communPatterns";
+import { performValidation, capitalizeFirstLetter } from './utils/validationUtils';
 import { Text2, Text4 } from '../Text/Text';
-
 
 const InputBase: React.FC<InputProps> = ({
   $m,
@@ -21,7 +20,7 @@ const InputBase: React.FC<InputProps> = ({
   $isSuccess = false,
   disabled = false,
   readOnly = false,
-  $value = '',
+  value,
   onChange,
   onSubmit,
   $maxLength,
@@ -31,12 +30,18 @@ const InputBase: React.FC<InputProps> = ({
   $errorMessage,
   required,
   renderIcon,
+  $showHelpText = true,
   ...props
 }) => {
-  const [_value, setValue] = React.useState<string>($value);
+  const [_value, setValue] = React.useState<string>(value || "");
   const [inputError, setInputError] = React.useState<string>('');
   const [showInputError, setShowInputError] = React.useState<boolean>(false);
 
+  // Sincroniza cambios externos en `value`
+  React.useEffect(() => {
+    setValue(value || "");
+  }, [value]);
+  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     
     let newValue = event.target.value;
@@ -60,7 +65,7 @@ const InputBase: React.FC<InputProps> = ({
     setShowInputError(errors.length > 0);
 
     if (onChange) {
-      onChange(event); // Disparamos el onChange para activar tu interceptor/validación
+      onChange(event); // Disparamos el onChange para activar interceptor/validación
     }
   };
 
@@ -96,7 +101,7 @@ const InputBase: React.FC<InputProps> = ({
         <input
           type={type}
           className={`input input-${$size}`}
-          value={_value}
+          value={_value || ""}
           onChange={handleChange}
           disabled={disabled}
           readOnly={readOnly}
@@ -105,10 +110,10 @@ const InputBase: React.FC<InputProps> = ({
         />
         {renderIcon && renderIcon()} {/* Renderiza el ícono si se proporciona */}
       </div>
-      {$helpText && !showInputError  && (
+      {$helpText && !showInputError  && $showHelpText && (
         <Text4 bold className="help-text">{$helpText}</Text4>
       )}
-      {showInputError && <Text4 bold  className="help-text">{inputError}</Text4>}
+      {showInputError && $showHelpText && <Text4 bold  className="help-text">{inputError}</Text4>}
     </div>
   );
 };
@@ -135,13 +140,16 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
 
 const InputWithIcon: React.FC<InputWithIconProps> = ({
   $icon,
+  $onClickIcon,
   ...props
 }) => {
   return (
     <Input
       {...props}
       renderIcon={() => (
-        <Icon $name={$icon} $w="10%" className="input-icon" />
+        <div className="input-icon-container" onClick={$onClickIcon}>
+          <Icon $name={$icon} $w="10%" className="input-icon"/>
+        </div>
       )}
     />
   );

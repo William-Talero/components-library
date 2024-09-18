@@ -2,13 +2,13 @@
 @import "../../parameters/sizes";
 
 .accordion {
-
-  &>div:not(:first-of-type) {
-    margin-top: 0.25rem;
+  & > div:not(:first-of-type) {
+    margin-top: 0.25em;
   }
 
   &-header {
-    padding: 0rem 0.625rem 0.625rem 0.625rem;
+    height: 2.75em;
+    padding: 0em 0.625em 0.625em 0.625em;
     cursor: pointer;
 
     &-recipient {
@@ -16,8 +16,8 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 0.625rem;
-      height: 2.125rem;
+      padding: 0.75em 0.625em;
+      height: auto;
     }
 
     a {
@@ -26,10 +26,13 @@
   }
 
   &-tab {
-    transition: all .35s;
+    transition: all 0.35s;
     overflow: hidden;
-    background-color: map-get($map: $general-colors, $key: neutral-light-5);
-    border-bottom: 0.5px solid map-get($map: $general-colors, $key: neutral-dark-4);
+    background-color: light-dark(
+      map-get($general-colors, "neutral-light-5"),
+      transparent
+    );
+    border-bottom: 0.5px solid map-get($general-colors, "neutral-dark-4");
 
     &-active {
       svg {
@@ -37,9 +40,9 @@
       }
     }
 
-    &-active>.accordion-content {
-      max-height: 100vh;
-      padding: 0.75rem;
+    &-active > .accordion-content {
+      display: flex;
+      padding: 0.75em;
     }
 
     svg {
@@ -47,23 +50,29 @@
     }
   }
 
-
   &-content {
-    max-height: 0;
+    display: none;
   }
 
   .content-orange {
-    background-color: map-get($map: $general-colors , $key: orange-light-3);
-    border-left: 2px solid map-get($map: $general-colors , $key: secondaryHover);
+    background-color: map-get($general-colors, " orange-light-3");
+    border-left: 2px solid map-get($general-colors, "secondaryHover");
+
+    p {
+      color: #000;
+    }
   }
 
   .content-green {
-    background-color: map-get($map: $general-colors , $key: green-light-5);
-    border-left: 2px solid map-get($map: $general-colors , $key: green-light-1);
+    background-color: map-get($general-colors, "green-light-5");
+    border-left: 2px solid map-get($general-colors, "green-light-1");
+
+    p {
+      color: #000;
+    }
   }
 
   .icon-color-orange {
-    fill: map-get($map: $general-colors , $key: secondaryHover);
+    fill: map-get($general-colors, "secondaryHover");
   }
-
 }

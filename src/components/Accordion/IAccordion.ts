@@ -14,5 +14,7 @@ export interface AccordionProps {
 export interface AccordionTabProps {
     header: string;
     disabled?: boolean;
-    children?: React.ReactNode
+    children?: React.ReactNode;
+    headerClassName?: string;
+    contentClassName?: string;
 }

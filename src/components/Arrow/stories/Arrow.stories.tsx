@@ -3,7 +3,7 @@ import { Arrow } from "../Arrow";
 import { ArrowProps } from "../IArrow";
 
 const meta: Meta<ArrowProps> = {
-  title: "Components/Arrows/Arrows",
+  title: "Components/Atoms/Arrows/Arrows",
   component: Arrow,
   argTypes: {
     direction: {

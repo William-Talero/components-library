@@ -1,6 +1,7 @@
 import React, { act } from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Accordion, AccordionTab } from "../Accordion";
+import { mergeClassNames } from "../utils/MergeClassNames";
 
 
 describe("Accordion Component", () => {
@@ -74,6 +75,12 @@ describe("Accordion Component", () => {
     })
 
     expect(screen.getByText("Example")).toBeInTheDocument()
+  })
+
+  it("Should merge props", () => {
+    const classNames = mergeClassNames("class-1                class-2", "class-3                  class-4")
+
+    expect(classNames).toBe("class-1 class-2 class-3 class-4")
   })
 
 });

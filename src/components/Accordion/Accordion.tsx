@@ -4,8 +4,9 @@ import { UniqueComponentId } from '@/utils';
 import Icon, { IconName } from '../Icon/Icons';
 import { Title5 } from '../Text/Text';
 import type { AccordionProps, AccordionTabProps } from './IAccordion';
+import { mergeClassNames } from './utils';
 
-export const AccordionTab = (props: AccordionTabProps ) => { return <>{props.children}</> }
+export const AccordionTab = (props: AccordionTabProps) => { return <>{props.children}</> }
 
 const PREFIX = "por_accordion_id_"
 
@@ -37,7 +38,9 @@ export const Accordion = (props: AccordionProps) => {
       id
     }
 
-    return <div tabIndex={0} onClick={() => updateActiveIndex(index)} className='accordion-header highlight'>
+    const containerClassName = mergeClassNames("accordion-header highlight", tab.props.headerClassName)
+
+    return <div tabIndex={0} onClick={() => updateActiveIndex(index)} className={containerClassName}>
       <div className='accordion-header-recipient'>
         <a onClick={(e) => e.preventDefault()} {...headerProps} className='accordion-header-link' aria-expanded={activeIndex === index}>
           <Title5 bold>
@@ -58,7 +61,8 @@ export const Accordion = (props: AccordionProps) => {
       key,
       id
     }
-    return <div className={`accordion-content content-${props.contentColor ?? 'orange'}`} {...contentProps}>{tab.props.children}</div>
+    const contentClassName = mergeClassNames(`accordion-content content-${props.contentColor ?? 'orange'}`, tab.props.contentClassName)
+    return <div className={contentClassName} {...contentProps}>{tab.props.children}</div>
   }
 
   const createTab = (tab: JSX.Element, index: number) => {
@@ -76,7 +80,9 @@ export const Accordion = (props: AccordionProps) => {
     const header = createTabHeader(tab, index);
     const content = createTabContent(tab, index)
 
-    return <div {...tabAdditionalsProps} {...tab.props}>
+    const { contentClassName, ...rest } = tab.props
+
+    return <div {...tabAdditionalsProps} {...rest} contentclassname={contentClassName}>
       {header}
       {content}
     </div>

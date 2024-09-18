@@ -4,9 +4,6 @@
 @mixin button-base(
   $type: "primary",
   $size: "md",
-  $w: null,
-  $h: null,
-  $m: null,
   $variant: null
 ) {
   $sizes: map-get($button-sizes, $size);
@@ -43,8 +40,8 @@
     )
   );
 
-  width: if($w, $w, map-get($sizes, "width"));
-  height: if($h, $h, map-get($sizes, "height"));
+  width: var(--width, map-get($sizes, "width"));
+  height:  map-get($sizes, "height");
   padding: map-get($sizes, "padding");
   background-color: $bg-color;
   border: if($is-primary, none, 2px solid $border-color);
@@ -54,7 +51,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: if($m, $m, 1rem 0);
+  margin: var(--margin, 1rem 0);
   cursor: pointer;
   border-radius: if($is-orange, 1rem, 0.5rem);
   @if $is-orange {
@@ -124,7 +121,7 @@
   }
 
   @media screen and (max-width: 60rem) {
-    width: if($w, $w, map-get($sizes, "smWidth"));
+    width: var(--width, map-get($sizes, "smWidth"));
     font-size: 0.8rem;
   }
 

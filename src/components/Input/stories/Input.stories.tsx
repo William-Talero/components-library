@@ -5,7 +5,7 @@ import { InputProps } from '@/components/Input/IInput';
 import React from 'react';
 
 const meta: Meta<InputProps> = {
-  title: 'Components/Inputs/Input',
+  title: 'Components/Atoms/Inputs/Input',
   argTypes: {
     type: {
       control: { type: "select" },
@@ -94,8 +94,8 @@ export const inputSetValue: Story = {
   render: Template,
   args: {
     type: "text",
-    $value: "vulue 2",
-    $title: 'Title input',
+    value: "vulue 2",
+    $title: 'Titulo input',
     $helpText: 'Texto ayuda',
   },
 };
@@ -123,8 +123,8 @@ export const inputReadOnly: Story = {
   render: Template,
   args: {
     type: "text",
-    $value: "vulue 1",
-    $title: 'Title input',
+    value: "vulue 1",
+    $title: 'Titulo input',
     $helpText: 'Texto ayuda',
     readOnly: true,
   },

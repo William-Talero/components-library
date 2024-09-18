@@ -3,7 +3,7 @@ import { Alert } from "@/components/Alert/Alert";
 import { AlertProps } from "@/components/Alert/IAlert";
 
 const meta: Meta<AlertProps> = {
-  title: "Components/Alerts/Alert",
+  title: "Components/Atoms/Alerts/Alert",
   component: Alert,
   argTypes: {
     type: {

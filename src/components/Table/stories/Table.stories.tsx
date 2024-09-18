@@ -15,7 +15,7 @@ interface DataItem {
 }
 
 const meta: Meta<TableProps<DataItem>> = {
-  title: "Components/Table/Table",
+  title: "Components/Atoms/Table/Table",
   component: Table,
   argTypes: {
     itemsPerPage: {

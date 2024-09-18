@@ -6,7 +6,7 @@ import React from 'react';
 import { Button } from '@/components/Button';
 
 const meta: Meta<InputWithIconProps> = {
-  title: 'Components/Inputs/InputByValidations',
+  title: 'Components/Atoms/Inputs/InputByValidations',
   component: InputWithIcon,
 };
 

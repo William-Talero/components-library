@@ -46,7 +46,7 @@
   }
 
   &:hover .checkbox-custom {
-    border-color: darken(map-get($general-colors, "orange-dark-1"), 10%);
+    border-color: map-get($general-colors, "orange-dark-1");
   }
 
   &.disabled {
@@ -55,10 +55,7 @@
 
     .checkbox-custom {
       border-color: map-get($general-colors, "disabledSecond");
-      background-color: lighten(
-        map-get($general-colors, "disabledSecond"),
-        30%
-      );
+      background-color: map-get($general-colors, "disabledSecond");
     }
 
     input[type="checkbox"]:checked + .checkbox-custom {

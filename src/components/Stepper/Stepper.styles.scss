@@ -1,0 +1,25 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.stepper button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  fill: #ff6600 !important;
+  margin: 0 0.75rem;
+}
+
+.stepper button:disabled {
+  fill: #ccc !important;
+  cursor: not-allowed;
+}
+
+.stepper .status-circle {
+  margin: 0 0.75rem;
+  cursor: pointer;
+}
