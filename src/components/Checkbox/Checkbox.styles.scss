@@ -1,7 +1,7 @@
 @import "../../parameters/colors";
 @import "../../parameters/sizes";
 
-.custom-checkbox {
+.tvr-comp-custom-checkbox {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -13,7 +13,7 @@
     display: none;
   }
 
-  .checkbox-custom {
+  .tvr-comp-checkbox-custom {
     width: 20px;
     height: 20px;
     border: 2px solid map-get($general-colors, "orange-dark-1");
@@ -37,7 +37,7 @@
     }
   }
 
-  input[type="checkbox"]:checked + .checkbox-custom {
+  input[type="checkbox"]:checked + .tvr-comp-checkbox-custom {
     border-color: map-get($general-colors, "orange-dark-1");
 
     &::after {
@@ -45,7 +45,7 @@
     }
   }
 
-  &:hover .checkbox-custom {
+  &:hover .tvr-comp-checkbox-custom {
     border-color: map-get($general-colors, "orange-dark-1");
   }
 
@@ -53,7 +53,7 @@
     cursor: not-allowed;
     opacity: 0.6;
 
-    .checkbox-custom {
+    .tvr-comp-checkbox-custom {
       border-color: map-get($general-colors, "disabledSecond");
       background-color: map-get($general-colors, "disabledSecond");
     }
@@ -64,7 +64,7 @@
   }
 }
 
-.checkbox-label {
+.tvr-comp-checkbox-label {
   color: map-get($general-colors, "orange-dark-1");
   margin-right: 1rem;
   font-weight: 500;

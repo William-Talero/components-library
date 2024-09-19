@@ -31,11 +31,11 @@ const Icon: React.FC<IconProps> = ({
   const SvgIcon = icons[$name];
   return (
     <div
-      className={`icon-container ${className}`}
+      className={`tvr-comp-icon-container ${className}`}
       style={{ "--w-container": $w } as React.CSSProperties}
       {...props}
     >
-      <SvgIcon className="styled-svg-icon" />
+      <SvgIcon className="tvr-comp-styled-svg-icon" />
     </div>
   );
 };

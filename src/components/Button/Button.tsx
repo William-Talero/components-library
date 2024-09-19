@@ -7,9 +7,9 @@ const Button = (data: ButtonProps) => {
   const { children, $type = "primary", $size, $m, $w, ...rest } = data;
 
   const buttonClasses = [
-    "button",
-    `button-${$type}`,
-    $size && `button-${$size}`,
+    "tvr-comp-button",
+    `tvr-comp-button-${$type}`,
+    $size && `tvr-comp-button-${$size}`,
   ]
     .filter(Boolean)
     .join(" ");
@@ -29,9 +29,9 @@ const ButtonWithIcon = (data: ButtonWithIconProps) => {
   const { children, $type = "primary", $size, $m, $w, $icon, ...rest } = data;
 
   const buttonClasses = [
-    "button",
-    `button-${$type}`,
-    $size && `button-${$size}`,
+    "tvr-comp-button",
+    `tvr-comp-button-${$type}`,
+    $size && `tvr-comp-button-${$size}`,
   ]
     .filter(Boolean)
     .join(" ");
@@ -55,9 +55,9 @@ const OrangeButton = (data: ButtonProps) => {
   const { children, $type = "primary", $size, $m, $w, ...rest } = data;
 
   const buttonClasses = [
-    "button",
-    `button-orange-${$type}`,
-    $size && `button-${$size}`,
+    "tvr-comp-button",
+    `tvr-comp-button-orange-${$type}`,
+    $size && `tvr-comp-button-${$size}`,
   ]
     .filter(Boolean)
     .join(" ");

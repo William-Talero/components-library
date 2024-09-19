@@ -10,9 +10,9 @@ const Alert: React.FC<AlertProps> = ({ type, message }) => {
   };
 
   return (
-    <div className={`alert alert-${type}`}>
-      <span className="alert-icon">{iconMap[type]}</span>
-      <span className="alert-message">{message}</span>
+    <div className={`tvr-comp-alert tvr-comp-alert-${type}`}>
+      <span className="tvr-comp-alert-icon">{iconMap[type]}</span>
+      <span className="tvr-comp-alert-message">{message}</span>
     </div>
   );
 };

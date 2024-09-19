@@ -131,13 +131,13 @@
 }
 
 @mixin generate-button-classes($type, $variant: null) {
-  $class-name: if($variant, "button-#{$variant}-#{$type}", "button-#{$type}");
+  $class-name: if($variant, "tvr-comp-button-#{$variant}-#{$type}", "tvr-comp-button-#{$type}");
 
   .#{$class-name} {
     @include button-base($type: $type, $variant: $variant);
 
     @each $size in ("sm", "md", "lg") {
-      &.button-#{$size} {
+      &.tvr-comp-button-#{$size} {
         @include button-base($type: $type, $size: $size, $variant: $variant);
       }
     }

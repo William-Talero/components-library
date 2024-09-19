@@ -1,11 +1,11 @@
-.stepper {
+.tvr-comp-stepper {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
 }
 
-.stepper button {
+.tvr-comp-stepper button {
   background: none;
   border: none;
   font-size: 20px;
@@ -14,12 +14,12 @@
   margin: 0 0.75rem;
 }
 
-.stepper button:disabled {
+.tvr-comp-stepper button:disabled {
   fill: #ccc !important;
   cursor: not-allowed;
 }
 
-.stepper .status-circle {
+.tvr-comp-stepper .tvr-comp-status-circle {
   margin: 0 0.75rem;
   cursor: pointer;
 }

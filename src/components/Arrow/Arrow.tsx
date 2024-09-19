@@ -5,7 +5,7 @@ import Icon from "../Icon/Icons";
 
 export const Arrow: React.FC<ArrowProps> = ({ direction, onClick }) => {
   return (
-    <button className={`arrow arrow-${direction}`} onClick={onClick}>
+    <button className={`tvr-comp-arrow tvr-comp-arrow-${direction}`} onClick={onClick}>
       {direction === "left" ? (
         <Icon $name="leftArrow" $w="50%" />
       ) : (

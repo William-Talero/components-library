@@ -1,6 +1,6 @@
 @import "../../parameters/colors";
 
-.textContainer {
+.tvr-comp-textContainer {
   display: flex;
   justify-content: var(--justify);
   flex-direction: var(--align);
@@ -13,32 +13,32 @@
   color: light-dark(var(--color), var(--dark-color)) !important;
 }
 
-.title1 {
+.tvr-comp-title1 {
   @include title-base;
   font-size: 48px;
 }
 
-.title2 {
+.tvr-comp-title2 {
   @include title-base;
   font-size: 32px;
 }
 
-.title3 {
+.tvr-comp-title3 {
   @include title-base;
   font-size: 24px;
 }
 
-.title4 {
+.tvr-comp-title4 {
   @include title-base;
   font-size: 20px;
 }
 
-.title5 {
+.tvr-comp-title5 {
   @include title-base;
   font-size: 16px;
 }
 
-.title6 {
+.tvr-comp-title6 {
   @include title-base;
   font-size: 16px;
 }
@@ -50,39 +50,39 @@
   color: light-dark(var(--color), var(--dark-color));
 }
 
-.text1 {
+.tvr-comp-text1 {
   @include text-base;
   font-size: 20px;
 }
 
-.text2 {
+.tvr-comp-text2 {
   @include text-base;
   font-size: 14px;
 }
 
-.text3 {
+.tvr-comp-text3 {
   @include text-base;
   font-size: 14px;
 }
 
-.text4 {
+.tvr-comp-text4 {
   @include text-base;
   font-size: 12px;
 }
 
-.textCta {
+.tvr-comp-textCta {
   @include text-base;
   font-size: 14px;
   font-weight: normal;
 }
 
-.textLink {
+.tvr-comp-textLink {
   @include text-base;
   font-size: 14px;
   color: var(--color) !important;
   text-decoration-line: underline;
 }
 
-.bold {
+.tvr-comp-bold {
   font-weight: bold;
 }

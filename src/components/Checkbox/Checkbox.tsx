@@ -9,15 +9,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
 }) => {
   return (
-    <label className={`custom-checkbox ${disabled ? "disabled" : ""}`}>
+    <label className={`tvr-comp-custom-checkbox ${disabled ? "disabled" : ""}`}>
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
         disabled={disabled}
       />
-      <span className="checkbox-custom"></span>
-      <span className="checkbox-label">{label}</span>
+      <span className="tvr-comp-checkbox-custom"></span>
+      <span className="tvr-comp-checkbox-label">{label}</span>
     </label>
   );
 };

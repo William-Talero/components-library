@@ -1,11 +1,11 @@
 @import "../../parameters/colors";
 
-.table-container {
+.tvr-comp-table-container {
   width: 100%;
   overflow-x: auto;
 }
 
-.custom-table {
+.tvr-comp-custom-table {
   width: 100%;
   border-collapse: collapse;
 
@@ -48,7 +48,7 @@
   //   }
 }
 
-.pagination {
+.tvr-comp-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +75,7 @@
 
 }
 
-.pagination-number {
+.tvr-comp-pagination-number {
   width: auto;
   height: 100%;
   display: flex;

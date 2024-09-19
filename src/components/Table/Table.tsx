@@ -52,8 +52,8 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
 
   return (
     <>
-      <div className="table-container">
-        <table className="custom-table">
+      <div className="tvr-comp-table-container">
+        <table className="tvr-comp-custom-table">
           <thead>
             <tr>
               {columns.map((column) => (
@@ -108,7 +108,7 @@ function Pagination({
   }
 
   return (
-    <div className="pagination">
+    <div className="tvr-comp-pagination">
       <button
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
@@ -122,7 +122,7 @@ function Pagination({
       >
         {"<"}
       </button>
-      <div className="pagination-number">
+      <div className="tvr-comp-pagination-number">
         <input value={currentPage} onChange={onChange} /> / {totalPages}
       </div>
       <button

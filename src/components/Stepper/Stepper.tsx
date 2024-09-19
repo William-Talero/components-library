@@ -31,7 +31,7 @@ const Stepper: React.FC<StepperProps> = ({
   };
 
   return (
-    <div className="stepper">
+    <div className="tvr-comp-stepper">
       <button onClick={handlePrevious} disabled={activeStep === 0} data-testid="previous-button">
         <Icon $name="leftArrow" $w="8px" />
       </button>

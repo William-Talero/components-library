@@ -12,7 +12,7 @@ const Circle: React.FC<CircleProps> = ({
   return (
     <div
       data-testid="status-circle"
-      className={`status-circle ${isActive ? "active" : ""} ${className}`}
+      className={`tvr-comp-status-circle ${isActive ? "active" : ""} ${className}`}
       style={{
         width: `${size}px`,
         height: `${size}px`,
