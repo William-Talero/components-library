@@ -1,1 +1,1 @@
-export * from "./SectionAccordion"
+export * from './SectionAccordion';

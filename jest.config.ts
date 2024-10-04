@@ -1,10 +1,12 @@
 import type { Config } from "jest";
 
 const config: Config = {
+  verbose: true,
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
+  coverageReporters: ["text", "html", "clover", "lcov"],
   preset: "ts-jest",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],

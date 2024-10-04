@@ -4,8 +4,8 @@
 .tvr-comp-alert {
   display: flex;
   align-items: center;
-  padding: .7rem 1rem;
-  border-radius: .5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
   margin-bottom: 10px;
   font-size: map-get($font-sizes, "medium");
   font-weight: 600;
@@ -16,32 +16,32 @@
   }
 
   &.tvr-comp-alert-success {
-    background-color: lighten(map-get($general-colors, "success-color"), 40%);
-    border: 2px solid map-get($general-colors, "success-color");
-    color: darken(map-get($general-colors, "success-color"), 10%);
+    background-color: map-get($general-colors, "green-2-light-5");
+    border: 2px solid map-get($general-colors, "green-2-light-1");
+    color: map-get($general-colors, "green-2-light-1");
 
     .tvr-comp-alert-icon {
-      color: map-get($general-colors, "success-color");
+      color: map-get($general-colors, "green-2-light-1");
     }
   }
 
   &.tvr-comp-alert-error {
-    background-color: lighten(map-get($general-colors, "error-color"), 40%);
-    border: 2px solid map-get($general-colors, "error-color");
-    color: darken(map-get($general-colors, "error-color"), 10%);
+    background-color: map-get($general-colors, "semantic-light-3");
+    border: 2px solid map-get($general-colors, "semantic-dark-1");
+    color: map-get($general-colors, "semantic-dark-1");
 
     .tvr-comp-alert-icon {
-      color: map-get($general-colors, "error-color");
+      color: map-get($general-colors, "semantic-dark-1");
     }
   }
 
   &.tvr-comp-alert-alert {
-    background-color: lighten(map-get($general-colors, "warning-color"), 40%);
-    border: 2px solid map-get($general-colors, "warning-color");
-    color: darken(map-get($general-colors, "warning-color"), 10%);
+    background-color: map-get($general-colors, "orange-light-3");
+    border: 2px solid map-get($general-colors, "orange-dark-1");
+    color: map-get($general-colors, "orange-dark-1");
 
     .tvr-comp-alert-icon {
-      color: map-get($general-colors, "warning-color");
+      color: map-get($general-colors, "orange-dark-1");
     }
   }
 }

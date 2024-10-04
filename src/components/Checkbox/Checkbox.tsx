@@ -1,6 +1,6 @@
-import React from "react";
-import "@/styles.scss";
-import { CheckboxProps } from "./ICheckbox";
+import React from 'react';
+import '@/styles.scss';
+import { CheckboxProps } from './ICheckbox';
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
@@ -9,7 +9,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
 }) => {
   return (
-    <label className={`tvr-comp-custom-checkbox ${disabled ? "disabled" : ""}`}>
+    <label className={`tvr-comp-custom-checkbox ${disabled ? 'disabled' : ''}`}>
       <input
         type="checkbox"
         checked={checked}

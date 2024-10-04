@@ -1,4 +1,4 @@
 export interface ArrowProps {
-  direction: "left" | "right";
+  direction: 'left' | 'right';
   onClick?: () => void;
 }

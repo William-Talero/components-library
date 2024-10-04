@@ -1,3 +1,3 @@
-import { mergeClassNames } from "./MergeClassNames";
+import { mergeClassNames } from './MergeClassNames';
 
 export { mergeClassNames };

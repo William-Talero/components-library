@@ -1,12 +1,12 @@
-import React from "react";
-import "@/styles.scss";
-import { AlertProps } from "./IAlert";
+import React from 'react';
+import '@/styles.scss';
+import { AlertProps } from './IAlert';
 
 const Alert: React.FC<AlertProps> = ({ type, message }) => {
   const iconMap = {
-    success: "✓",
-    error: "✕",
-    alert: "!",
+    success: '✓',
+    error: '✕',
+    alert: '!',
   };
 
   return (

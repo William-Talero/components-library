@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Circle } from "@/components/Circle/Circle";
-import "@/styles.scss";
-import Icon from "../Icon/Icons";
-import { StepperProps } from "./IStepper";
+import React, { useState } from 'react';
+import { Circle } from '@/components/Circle/Circle';
+import '@/styles.scss';
+import Icon from '../Icon/Icons';
+import { StepperProps } from './IStepper';
 
 const Stepper: React.FC<StepperProps> = ({
   steps,
@@ -32,7 +32,11 @@ const Stepper: React.FC<StepperProps> = ({
 
   return (
     <div className="tvr-comp-stepper">
-      <button onClick={handlePrevious} disabled={activeStep === 0} data-testid="previous-button">
+      <button
+        onClick={handlePrevious}
+        disabled={activeStep === 0}
+        data-testid="previous-button"
+      >
         <Icon $name="leftArrow" $w="8px" />
       </button>
       {[...Array(steps)].map((_, index) => (
@@ -44,7 +48,11 @@ const Stepper: React.FC<StepperProps> = ({
           data-testid="status-circle"
         />
       ))}
-      <button onClick={handleNext} disabled={activeStep === steps - 1} data-testid="next-button">
+      <button
+        onClick={handleNext}
+        disabled={activeStep === steps - 1}
+        data-testid="next-button"
+      >
         <Icon $name="rightArrow" $w="8px" />
       </button>
     </div>

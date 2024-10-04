@@ -1,14 +1,13 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Stepper } from "@/components/Stepper/Stepper";
-import { StepperProps } from "../IStepper";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Stepper } from '@/components/Stepper/Stepper';
+import { StepperProps } from '../IStepper';
 
 const meta: Meta<StepperProps> = {
-  title: "Components/Molecules/Stepper/Stepper",
+  title: 'Components/Molecules/Stepper/Stepper',
   component: Stepper,
   argTypes: {
-    steps: { control: "number" },
-    currentStep: { control: "number" },
+    steps: { control: 'number' },
+    currentStep: { control: 'number' },
   },
 };
 

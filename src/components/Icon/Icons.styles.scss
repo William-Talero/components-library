@@ -1,13 +1,12 @@
 .tvr-comp-icon-container {
   width: var(--w-container);
-  height: 100%;
+  height: var(--h-container, '100%');
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .tvr-comp-styled-svg-icon {
-  width: 100%;
-  height: auto;
-  max-height: 60%;
+  height: 100%;
+  width: autoF;
 }

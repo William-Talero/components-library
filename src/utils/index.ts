@@ -1,3 +1,3 @@
-import UniqueComponentId from "./UniqueComponentId";
+import UniqueComponentId from './UniqueComponentId';
 
-export { UniqueComponentId }
+export { UniqueComponentId };

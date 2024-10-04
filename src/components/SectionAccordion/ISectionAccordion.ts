@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
-import { Accordion } from "../Accordion";
+import { ReactElement } from 'react';
+import { Accordion } from '../Accordion';
 
 export interface SectionAccordionProps{
     title: string;

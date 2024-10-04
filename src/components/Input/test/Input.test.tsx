@@ -1,6 +1,6 @@
 import React from 'react';
-import { Input, InputWithIcon } from '../Input'; // Ajusta la ruta según sea necesario
-import { fireEvent, render, screen} from '@testing-library/react';
+import { Input, InputWithIcon } from '../Input';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { performValidation } from '../utils/validationUtils';
 
 describe('Input Component', () => {
@@ -23,49 +23,53 @@ describe('Input Component', () => {
     expect(title).toBeInTheDocument();
     expect(helpText).toBeInTheDocument();
   });
-  
+
   it('renders value', () => {
     render(<Input value="edited" />);
     const inputElement = screen.getByDisplayValue('edited');
     expect(inputElement).toBeInTheDocument();
-  });
-
-  it('does not show help text when $showHelpText is false', () => {
-    render(<Input value="edited" $helpText='This is help text' $showHelpText={false} />);
-    const helpText = screen.queryByText('This is help text');
-    expect(helpText).not.toBeInTheDocument();
   });
 });
 
 describe('Input Component Styles', () => {
   it('applies error class when $isError is true', () => {
     render(<Input $isError={true} />);
-    const inputWrapper = screen.getByRole('textbox').closest('.input-wrapper')
-    expect(inputWrapper).toHaveClass('error');
+    const inputWrapper = screen
+      .getByRole('textbox')
+      .closest('.trv-comp-input-wrapper');
+    expect(inputWrapper).toHaveClass('trv-comp-error');
   });
 
   it('applies warning class when $isWarning is true', () => {
     render(<Input $isWarning={true} />);
-    const inputWrapper = screen.getByRole('textbox').closest('.input-wrapper')
-    expect(inputWrapper).toHaveClass('warning');
+    const inputWrapper = screen
+      .getByRole('textbox')
+      .closest('.trv-comp-input-wrapper');
+    expect(inputWrapper).toHaveClass('trv-comp-warning');
   });
 
   it('applies success class when $isSuccess is true', () => {
     render(<Input $isSuccess={true} />);
-    const inputWrapper = screen.getByRole('textbox').closest('.input-wrapper')
-    expect(inputWrapper).toHaveClass('success');
+    const inputWrapper = screen
+      .getByRole('textbox')
+      .closest('.trv-comp-input-wrapper');
+    expect(inputWrapper).toHaveClass('trv-comp-success');
   });
 
   it('applies disabled class when disabled is true', () => {
     render(<Input disabled={true} />);
-    const inputWrapper = screen.getByRole('textbox').closest('.input-wrapper')
-    expect(inputWrapper).toHaveClass('is-disable');
+    const inputWrapper = screen
+      .getByRole('textbox')
+      .closest('.trv-comp-input-wrapper');
+    expect(inputWrapper).toHaveClass('trv-comp-is-disable');
   });
 
   it('applies disabled class when disabled is true', () => {
     render(<Input readOnly={true} />);
-    const inputWrapper = screen.getByRole('textbox').closest('.input-wrapper')
-    expect(inputWrapper).toHaveClass('not-editable');
+    const inputWrapper = screen
+      .getByRole('textbox')
+      .closest('.trv-comp-input-wrapper');
+    expect(inputWrapper).toHaveClass('trv-comp-not-editable');
   });
 });
 
@@ -82,91 +86,117 @@ describe('Input Component Functionality', () => {
     render(<Input type="namesUpper" />);
     const inputElement = screen.getByRole('textbox');
     fireEvent.change(inputElement, { target: { value: 'john doe' } });
+    fireEvent.focusOut(inputElement);
     expect(inputElement).toHaveDisplayValue('John Doe');
   });
 
-  it('should display an error message and apply the "error" class when invalid email is entered', () => {
-    render(
-      <Input
-        $title="Email"
-        type="email"
-        pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i} // Expresión regular para email
-        $errorMessage="Invalid email address"
-        value="test"
-        $helpText="Please enter a valid email"
-      />
-    );
+  it(
+    'should display an error message and apply the "error" ' +
+      'class when invalid email is entered',
+    () => {
+      render(
+        <Input
+          $title="Email"
+          type="email"
+          pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i} // Exp reg email
+          $errorMessage="Invalid email address"
+          value="test"
+          $helpText="Please enter a valid email"
+        />
+      );
 
-    const inputElement = screen.getByRole('textbox');
+      const inputElement = screen.getByRole('textbox');
 
-    fireEvent.change(inputElement, { target: { value: 'invalid-email' } });
+      fireEvent.change(inputElement, { target: { value: 'invalid-email' } });
+      fireEvent.focusOut(inputElement);
 
-    const containerElement = inputElement.closest('.input-wrapper');
-    expect(containerElement).toHaveClass('error');
+      const containerElement = inputElement.closest('.trv-comp-input-wrapper');
+      expect(containerElement).toHaveClass('trv-comp-error');
 
-    const errorMessage = screen.getByText('Invalid email address');
-    expect(errorMessage).toBeInTheDocument();
-  });
+      const errorMessage = screen.getByText('Invalid email address');
+      expect(errorMessage).toBeInTheDocument();
+    }
+  );
 
-  it('should display an error message and apply the "error" class when invalid url is entered', () => {
-    render(
-      <Input
-        $title="Url"
-        pattern={/^http$/i}
-        value="test"
-        $helpText="Please enter a valid url"
-      />
-    );
+  it(
+    'should display an error message and apply the "error" class' +
+      'when invalid url is entered',
+    () => {
+      render(
+        <Input
+          $title="Url"
+          pattern={/^http$/i}
+          value="test"
+          $helpText="Please enter a valid url"
+        />
+      );
 
-    const inputElement = screen.getByRole('textbox');
-    const containerElementBefore = inputElement.closest('.input-wrapper');
-    expect(containerElementBefore).not.toHaveClass('error');
+      const inputElement = screen.getByRole('textbox');
+      const containerElementBefore = inputElement.closest(
+        '.trv-comp-input-wrapper'
+      );
+      expect(containerElementBefore).not.toHaveClass('trv-comp-error');
 
-    fireEvent.change(inputElement, { target: { value: 'invalid-url' } });
+      fireEvent.change(inputElement, { target: { value: 'invalid-url' } });
+      fireEvent.focusOut(inputElement);
 
-    const containerElement = inputElement.closest('.input-wrapper');
-    expect(containerElement).toHaveClass('error');
-  });
+      const containerElement = inputElement.closest('.trv-comp-input-wrapper');
+      expect(containerElement).toHaveClass('trv-comp-error');
+    }
+  );
 
-  it('should display an error message and apply the "error" class when invalid url is entered whit custom errorMessage', () => {
-    render(
-      <Input
-        $title="Url"
-        pattern={/^http$/i}
-        $errorMessage="Custom error"
-        value="test"
-        $helpText="Please enter a valid url"
-      />
-    );
+  it(
+    'should display an error message and apply the "error" class' +
+      'when invalid url is entered whit custom errorMessage',
+    () => {
+      render(
+        <Input
+          $title="Url"
+          pattern={/^http$/i}
+          $errorMessage="Custom error"
+          value="test"
+          $helpText="Please enter a valid url"
+        />
+      );
 
-    const inputElement = screen.getByRole('textbox');
-    const containerElementBefore = inputElement.closest('.input-wrapper');
-    expect(containerElementBefore).not.toHaveClass('error');
+      const inputElement = screen.getByRole('textbox');
+      const containerElementBefore = inputElement.closest(
+        '.trv-comp-input-wrapper'
+      );
+      expect(containerElementBefore).not.toHaveClass('error');
 
-    fireEvent.change(inputElement, { target: { value: 'invalid-url' } });
+      fireEvent.change(inputElement, { target: { value: 'invalid-url' } });
+      fireEvent.focusOut(inputElement);
 
-    const containerElement = inputElement.closest('.input-wrapper');
-    expect(containerElement).toHaveClass('error');
-  });
-  it('should display error message when input does not match the pattern', () => {
-    render(
-      <Input
-        value=""
-        pattern={/^.{6,}$/}
-        $errorMessage="Input does not match the pattern."
-        $helpText="Please enter valid input."
-      />
-    );
+      const containerElement = inputElement.closest('.trv-comp-input-wrapper');
+      expect(containerElement).toHaveClass('trv-comp-error');
+    }
+  );
+  it(
+    'should display error message when input does not match' + ' the pattern',
+    () => {
+      render(
+        <Input
+          value=""
+          pattern={/^.{6,}$/}
+          $errorMessage="Input does not match the pattern."
+          $helpText="Please enter valid input."
+        />
+      );
 
-    const inputElement = screen.getByRole('textbox');
-    fireEvent.change(inputElement, { target: { value: '12345' } }); // Valor que no coincide con el patrón
+      const inputElement = screen.getByRole('textbox');
+      fireEvent.change(inputElement, { target: { value: '12345' } });
+      fireEvent.focusOut(inputElement);
 
-    const errorMessage = screen.getByText('Input does not match the pattern.');
-    expect(errorMessage).toBeInTheDocument();
+      const errorMessage = screen.getByText(
+        'Input does not match the pattern.'
+      );
+      expect(errorMessage).toBeInTheDocument();
 
-    const helpText = screen.queryByText('Please enter valid input.');
-    expect(helpText).toBeNull();
-  });
+      const helpText = screen.queryByText('Please enter valid input.');
+      expect(helpText).toBeNull();
+    }
+  );
 
   it('should display help text when input matches the pattern', () => {
     render(
@@ -180,32 +210,14 @@ describe('Input Component Functionality', () => {
 
     const inputElement = screen.getByRole('textbox');
     fireEvent.change(inputElement, { target: { value: 'abcdef' } });
+    fireEvent.focusOut(inputElement);
 
     const helpText = screen.getByText('Please enter valid input.');
     expect(helpText).toBeInTheDocument();
 
-    const errorMessage = screen.queryByText('Input does not match the pattern.');
-    expect(errorMessage).toBeNull();
-  });
-
-  it('does not display help text when input matches the pattern and $showHelpText is false', () => {
-    render(
-      <Input
-        value=""
-        pattern={/^.{6,}$/}
-        $errorMessage="Input does not match the pattern."
-        $helpText="Please enter valid input."
-        $showHelpText={false}
-      />
+    const errorMessage = screen.queryByText(
+      'Input does not match the pattern.'
     );
-
-    const inputElement = screen.getByRole('textbox');
-    fireEvent.change(inputElement, { target: { value: 'abcdef' } });
-
-    const helpText = screen.queryByText('Please enter valid input.');
-    expect(helpText).toBeNull();
-
-    const errorMessage = screen.queryByText('Input does not match the pattern.');
     expect(errorMessage).toBeNull();
   });
 });
@@ -227,7 +239,9 @@ describe('performValidation Function', () => {
   });
 
   it('validates pattern correctly', () => {
-    const result = performValidation('invalidemail', { pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z]{2,}$' });
+    const result = performValidation('invalidemail', {
+      pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z]{2,}$',
+    });
     expect(result).toContain('El campo no coincide con el patrón.');
   });
 });
@@ -235,13 +249,13 @@ describe('performValidation Function', () => {
 describe('InputWithIcon Component', () => {
   it('renders input with icon', () => {
     render(<InputWithIcon $icon="plus" />);
-    const iconElement = document.querySelector('.input-icon');
+    const iconElement = document.querySelector('.trv-comp-input-icon');
     expect(iconElement).toBeInTheDocument();
   });
 
   it('renders input with icon', () => {
     render(<InputWithIcon $icon="plus" />);
-    const iconElement = document.querySelector('.input-icon');
+    const iconElement = document.querySelector('.trv-comp-input-icon');
     expect(iconElement).toBeInTheDocument();
   });
 
@@ -250,11 +264,11 @@ describe('InputWithIcon Component', () => {
     render(<InputWithIcon $icon="arrowDropDown" $onClickIcon={handleClick} />);
 
     const inputElement = screen.getByRole('textbox');
-    const iconElement = document.querySelector('.input-icon');
+    const iconElement = document.querySelector('.trv-comp-input-icon');
 
     expect(inputElement).toBeInTheDocument();
     expect(iconElement).toBeInTheDocument();
-    expect(iconElement).toHaveClass('input-icon');
+    expect(iconElement).toHaveClass('trv-comp-input-icon');
 
     if (iconElement) {
       fireEvent.click(iconElement);

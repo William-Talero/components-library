@@ -20,7 +20,7 @@ const Template = (args: InputProps) => {
   // Handle change event
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    
+
     if (args.onChange) {
       args.onChange(event);
     }
@@ -29,14 +29,17 @@ const Template = (args: InputProps) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
-      <InputWithIcon 
-        {...args} value={value}
-        $icon='plus'
+      <InputWithIcon
+        {...args}
+        value={value}
+        $icon="plus"
         onChange={handleChange}
-        onFocus={(event: React.ChangeEvent<HTMLInputElement>)=>console.log(event)}
+        onFocus={(event: React.ChangeEvent<HTMLInputElement>) =>
+          console.log(event)
+        }
         required
       />
       <Button
@@ -56,9 +59,9 @@ const Template = (args: InputProps) => {
 export const emailPatternValidation: Story = {
   render: Template,
   args: {
-    type: "email",
-    $title: "Correo Electrónico",
-    value: "example@mail.com",
+    type: 'email',
+    $title: 'Correo Electrónico',
+    value: 'example@mail.com',
     $helpText: 'Texto ayuda',
   },
 };
@@ -66,9 +69,8 @@ export const emailPatternValidation: Story = {
 export const customPatternValidation: Story = {
   render: Template,
   args: {
-    $title: "Sitio Web, sólo valida http.",
+    $title: 'Sitio Web, sólo valida http.',
     pattern: /^http.+/gi,
     $helpText: 'Texto ayuda',
-    
   },
 };

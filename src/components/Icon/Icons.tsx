@@ -1,10 +1,12 @@
-import React from "react";
-import PlusIcon from "@/assets/icons/PlusIcon";
-import LeftArrow from "@/assets/icons/LeftArrowIcon";
-import RightArrow from "@/assets/icons/RightArrowIcon";
-import ArrowDropdown from "@/assets/icons/ArrowDropdown";
-import DownArrow from "@/assets/icons/DownArrow";
-import "./Icons.styles.scss";
+import React from 'react';
+import PlusIcon from '@/assets/icons/PlusIcon';
+import LeftArrow from '@/assets/icons/LeftArrowIcon';
+import RightArrow from '@/assets/icons/RightArrowIcon';
+import ArrowDropdown from '@/assets/icons/ArrowDropdown';
+import DownArrow from '@/assets/icons/DownArrow';
+import Info from '@/assets/icons/Info';
+import './Icons.styles.scss';
+import GroupAdd from '@/assets/icons/GroupAdd';
 
 const icons = {
   plus: PlusIcon,
@@ -12,6 +14,8 @@ const icons = {
   rightArrow: RightArrow,
   arrowDropDown: ArrowDropdown,
   downArrow: DownArrow,
+  groupAdd: GroupAdd,
+  info: Info,
 };
 
 export type IconName = keyof typeof icons;
@@ -19,20 +23,23 @@ export type IconName = keyof typeof icons;
 interface IconProps {
   $name: IconName;
   $w: string;
+  $h?: string;
   className?: string;
+  [key: string]: unknown;
 }
 
 const Icon: React.FC<IconProps> = ({
-  $name = "plus",
+  $name = 'plus',
   $w,
-  className = "",
+  $h = '100%',
+  className = '',
   ...props
 }) => {
   const SvgIcon = icons[$name];
   return (
     <div
       className={`tvr-comp-icon-container ${className}`}
-      style={{ "--w-container": $w } as React.CSSProperties}
+      style={{ '--w-container': $w, '--h-container': $h } as React.CSSProperties}
       {...props}
     >
       <SvgIcon className="tvr-comp-styled-svg-icon" />

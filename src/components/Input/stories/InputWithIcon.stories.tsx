@@ -21,8 +21,8 @@ const Template = (args: InputProps) => {
     console.log(event, 'value');
   };
 
-   // Handle change event
-   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // Handle change event
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     console.log(value);
     

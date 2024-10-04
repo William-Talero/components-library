@@ -1,0 +1,93 @@
+@import "../../parameters/colors";
+
+.tvr-comp-info-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 1.8rem;
+  font-size: 14px;
+  margin: var(--margin, 0);
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  &__text {
+    margin-left: 8px;
+  }
+
+  &--with-text {
+    padding-right: 12px;
+  }
+
+  // Color variants
+  &--green {
+    background-color: map-get($general-colors, "green-dark-1");
+    color: white;
+
+    .tvr-comp-info-badge__icon {
+      background-color: white;
+      color: map-get($general-colors, "green-dark-1");
+      fill: map-get($general-colors, "green-dark-1");
+    }
+  }
+
+  &--orange {
+    background-color: map-get($general-colors, "yellow-dark");
+    color: map-get($general-colors, "primary-gray");
+
+    .tvr-comp-info-badge__icon {
+      background-color: map-get($general-colors, "primary-gray");
+      color: map-get($general-colors, "yellow-dark");
+      fill: map-get($general-colors, "yellow-dark");
+    }
+  }
+
+  &--white {
+    background-color: map-get($general-colors, "secondary-light-grey");
+    color: map-get($general-colors, "primary-gray");
+
+    .tvr-comp-info-badge__icon {
+      background-color: map-get($general-colors, "primary-gray");
+      fill: map-get($general-colors, "secondary-light-grey");
+    }
+  }
+
+  &--light {
+    background-color: map-get($general-colors, "secondary-light-yellow");
+    color: map-get($general-colors, "primary-gray");
+
+    .tvr-comp-info-badge__icon {
+      background-color: map-get($general-colors, "primary-gray");
+      fill: map-get($general-colors, "secondary-light-yellow");
+    }
+  }
+
+  &--dark {
+    background-color: map-get($general-colors, "primary-gray");
+    color: map-get($general-colors, "secondary-light-grey");
+
+    .tvr-comp-info-badge__icon {
+      background-color: map-get($general-colors, "secondary-light-grey");
+      color: map-get($general-colors, "primary-gray");
+    }
+  }
+
+  &--default {
+    background-color: map-get($general-colors, "green-dark-1");
+    color: white;
+
+    .tvr-comp-info-badge__icon {
+      background-color: white;
+      color: map-get($general-colors, "green-dark-1");
+      fill: map-get($general-colors, "green-dark-1");
+    }
+  }
+}

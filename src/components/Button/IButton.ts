@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Props for the Button component.
  * @extends React.ButtonHTMLAttributes<HTMLButtonElement>
@@ -8,7 +10,7 @@ export interface ButtonProps
    * Defines the visual style of the button.
    * @default "primary"
    */
-  $type?: "primary" | "secondary";
+  $type?: 'primary' | 'secondary';
 
   /**
    * Sets the width of the button. Can be any valid CSS width value.
@@ -26,7 +28,7 @@ export interface ButtonProps
    * Determines the size preset of the button.
    * @default "md"
    */
-  $size?: "sm" | "md" | "lg";
+  $size?: 'small' | 'normal' | 'large';
 
   /**
    * Sets the margin around the button. Can be any valid CSS margin value.
@@ -37,7 +39,24 @@ export interface ButtonProps
   /**
    * The content to be rendered inside the button.
    */
-  children: React.ReactNode;
+
+  /**
+   * Show icon in the button left
+   */
+  iconLeft?: boolean;
+  /**
+   * Show icon in the button right
+   */
+  iconRight?: boolean;
+  /**
+   * Only show icon (omit the text)
+   */
+  iconOnly?: boolean;
+  /**
+   * Icon to show in the button
+   */
+  icon?: 'plus';
+  children?: React.ReactNode;
 }
 
 /**
@@ -49,5 +68,19 @@ export interface ButtonWithIconProps extends ButtonProps {
    * Specifies the icon to be displayed in the button.
    * Currently only supports "plus" icon.
    */
-  $icon: "plus";
+  $icon: 'plus';
+}
+
+export interface ButtonStyleProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Button width
+   * @example "small", "normal", "large"
+   */
+  width?: string;
+  /**
+   * Define the Button size
+   * @default "normal"
+   */
+  size?: 'small' | 'normal' | 'large';
 }

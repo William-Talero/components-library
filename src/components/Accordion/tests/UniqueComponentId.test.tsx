@@ -1,12 +1,12 @@
-import { UniqueComponentId } from "@/utils"
+import { UniqueComponentId } from '@/utils';
 
-describe("UniqueComponentId function", () => {
+describe('UniqueComponentId function', () => {
 
-    it("Should increment counter ID", () => {
-        UniqueComponentId();
-        UniqueComponentId();
-        const value = UniqueComponentId()
-        expect(value).toBe('por_id_3')
-    })
+  it('Should increment counter ID', () => {
+    UniqueComponentId();
+    UniqueComponentId();
+    const value = UniqueComponentId();
+    expect(value).toBe('por_id_3');
+  });
 
-})
+});

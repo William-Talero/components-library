@@ -1,3 +1,3 @@
-import { useMountEffect } from "./useMountEffect";
+import { useMountEffect } from './useMountEffect';
 
-export {useMountEffect}
+export {useMountEffect};

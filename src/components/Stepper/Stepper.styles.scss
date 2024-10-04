@@ -1,3 +1,5 @@
+@import "../../parameters/colors";
+
 .tvr-comp-stepper {
   display: flex;
   align-items: center;
@@ -10,12 +12,12 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
-  fill: #ff6600 !important;
+  fill: map-get($general-colors, 'orange-dark-2') !important;
   margin: 0 0.75rem;
 }
 
 .tvr-comp-stepper button:disabled {
-  fill: #ccc !important;
+  fill: map-get($general-colors, 'neutral-light-1') !important;
   cursor: not-allowed;
 }
 

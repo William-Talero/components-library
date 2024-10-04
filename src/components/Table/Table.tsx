@@ -1,23 +1,23 @@
-import React, { useState, useMemo } from "react";
-import "@/styles.scss";
-import { Column, TableProps, PaginationProps } from "./ITable";
+import React, { useState, useMemo } from 'react';
+import '@/styles.scss';
+import { TableProps, PaginationProps } from './ITable';
 
 export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
   const [sortConfig, setSortConfig] = useState<{
     key: keyof T;
-    direction: "asc" | "desc";
+    direction: 'asc' | 'desc';
   } | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(() => {
-    let sortableItems = [...data];
+    const sortableItems = [...data];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === "asc" ? -1 : 1;
+          return sortConfig.direction === 'asc' ? -1 : 1;
         }
         if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === "asc" ? 1 : -1;
+          return sortConfig.direction === 'asc' ? 1 : -1;
         }
         return 0;
       });
@@ -34,13 +34,13 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
   const pages = Math.ceil(data.length / itemsPerPage);
 
   const requestSort = (key: keyof T) => {
-    let direction: "asc" | "desc" = "asc";
+    let direction: 'asc' | 'desc' = 'asc';
     if (
       sortConfig &&
       sortConfig.key === key &&
-      sortConfig.direction === "asc"
+      sortConfig.direction === 'asc'
     ) {
-      direction = "desc";
+      direction = 'desc';
     }
     setSortConfig({ key, direction });
   };
@@ -60,11 +60,11 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
                 <th
                   key={column.key.toString()}
                   onClick={() => column.sortable && requestSort(column.key)}
-                  className={column.sortable ? "sortable" : ""}
+                  className={column.sortable ? 'sortable' : ''}
                 >
                   {column.header}
                   {sortConfig?.key === column.key && (
-                    <span>{sortConfig.direction === "asc" ? " ▲" : " ▼"}</span>
+                    <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
                   )}
                 </th>
               ))}
@@ -120,7 +120,7 @@ function Pagination({
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        {"<"}
+        {'<'}
       </button>
       <div className="tvr-comp-pagination-number">
         <input value={currentPage} onChange={onChange} /> / {totalPages}
@@ -129,7 +129,7 @@ function Pagination({
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        {">"}
+        {'>'}
       </button>
       <button
         onClick={() => onPageChange(totalPages)}

@@ -8,15 +8,15 @@ const meta: Meta<InputWithIconProps> = {
   title: 'Components/Atoms/Inputs/InputByColors',
   argTypes: {
     type: {
-      control: { type: "select" },
-      options: ["text", "password", "email", "namesUpper"],
+      control: { type: 'select' },
+      options: ['text', 'password', 'email', 'namesUpper'],
     },
     $size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
     },
-    children: { control: "text" },
-    disabled: { control: "boolean" },
+    children: { control: 'text' },
+    disabled: { control: 'boolean' },
   },
   component: InputWithIcon,
 };
@@ -52,27 +52,27 @@ const Template = (args: InputWithIconProps) => {
 export const inputSuccess: Story = {
   render: Template,
   args: {
-    type: "email",
-    $title: "Email",
-    $helpText: "texto de ayuda",
+    type: 'email',
+    $title: 'Email',
+    $helpText: 'texto de ayuda',
     $isSuccess: true,
   },
 };
 export const inputError: Story = {
   render: Template,
   args: {
-    type: "email",
-    $title: "Email",
-    $helpText: "texto de ayuda",
+    type: 'email',
+    $title: 'Email',
+    $helpText: 'texto de ayuda',
     $isError:true,
   },
 };
 export const inputOrange: Story = {
   render: Template,
   args: {
-    type: "email",
-    $title: "Email",
-    $helpText: "texto de ayuda",
+    type: 'email',
+    $title: 'Email',
+    $helpText: 'texto de ayuda',
     $isWarning:true,
   },
 };

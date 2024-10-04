@@ -1,14 +1,14 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-const container = document.getElementById("root");
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('root');
 const root = createRoot(container!);
 import {
   Button,
   ButtonWithIcon,
   OrangeButton,
-} from "../components/Button/Button";
-import { Checkbox } from "@/components/Checkbox/Checkbox";
-import { Alert } from "@/components/Alert/Alert";
+} from '../components/Button/Button';
+import { Checkbox } from '@/components/Checkbox/Checkbox';
+import { Alert } from '@/components/Alert/Alert';
 import {
   Title1,
   Title2,
@@ -22,16 +22,21 @@ import {
   Text4,
   TextCTA,
   TextLink,
-} from "@/components/Text/Text";
-import { Arrow } from "@/components/Arrow/Arrow";
-import { Input, InputWithIcon } from "@/components/Input";
-import { Table } from "@/components/Table/Table";
-import { Dropdown } from "@/components/Dropdown";
-import { Accordion, AccordionTab } from "@/components/Accordion/Accordion";
-import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
-import { Circle } from "@/components/Circle/Circle";
-import { SectionAccordion } from "@/components/SectionAccordion/SectionAccordion";
-import { Stepper } from "@/components/Stepper/Stepper";
+} from '@/components/Text/Text';
+import { Arrow } from '@/components/Arrow/Arrow';
+import { Input, InputWithIcon } from '@/components/Input';
+import { Table } from '@/components/Table/Table';
+import { Dropdown } from '@/components/Dropdown';
+import { Accordion, AccordionTab } from '@/components/Accordion/Accordion';
+import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
+import { Circle } from '@/components/Circle/Circle';
+import { SectionAccordion } from '@/components/SectionAccordion/SectionAccordion';
+import { MenuList } from '@/components/MenuList';
+import { Stepper } from '@/components/Stepper/Stepper';
+import { Tooltip } from '@/components/Tooltip/Tooltip';
+import { Option } from '@/components/Dropdown/IDropdown';
+import { FileUploader } from '@/components/FileUploader/FileUploader';
+import { ExampleButton } from '../components/Button/Button';
 
 interface DataItem {
   id: string;
@@ -52,94 +57,103 @@ interface Column<T> {
 }
 
 const columns: Column<DataItem>[] = [
-  { key: "id", header: "ID Aporte", sortable: true },
-  { key: "fechaPago", header: "Fecha de pago", sortable: true },
-  { key: "fechaAcreditacion", header: "Fecha de acreditación", sortable: true },
-  { key: "operacion", header: "Operación", sortable: true },
-  { key: "inversion", header: "Inversión", sortable: true },
-  { key: "objetivo", header: "Objetivo", sortable: true },
-  { key: "nitAcreditador", header: "NIT acreditador", sortable: true },
-  { key: "razonSocial", header: "Razón social", sortable: true },
-  { key: "valor", header: "Valor", sortable: true },
+  { key: 'id', header: 'ID Aporte', sortable: true },
+  { key: 'fechaPago', header: 'Fecha de pago', sortable: true },
+  { key: 'fechaAcreditacion', header: 'Fecha de acreditación', sortable: true },
+  { key: 'operacion', header: 'Operación', sortable: true },
+  { key: 'inversion', header: 'Inversión', sortable: true },
+  { key: 'objetivo', header: 'Objetivo', sortable: true },
+  { key: 'nitAcreditador', header: 'NIT acreditador', sortable: true },
+  { key: 'razonSocial', header: 'Razón social', sortable: true },
+  { key: 'valor', header: 'Valor', sortable: true },
 ];
 
 const data: DataItem[] = [
   {
-    id: "10310313820",
-    fechaPago: "8/03/23",
-    fechaAcreditacion: "8/03/23",
-    operacion: "Acreditación",
-    inversion: "Efectivo Colombia Pesos",
-    objetivo: "Ahorro",
-    nitAcreditador: "6476783",
-    razonSocial: "-",
+    id: '10310313820',
+    fechaPago: '8/03/23',
+    fechaAcreditacion: '8/03/23',
+    operacion: 'Acreditación',
+    inversion: 'Efectivo Colombia Pesos',
+    objetivo: 'Ahorro',
+    nitAcreditador: '6476783',
+    razonSocial: '-',
     valor: 50000,
   },
   {
-    id: "10310313821",
-    fechaPago: "8/03/23",
-    fechaAcreditacion: "8/03/23",
-    operacion: "Acreditación",
-    inversion: "Efectivo Colombia Pesos",
-    objetivo: "Ahorro",
-    nitAcreditador: "64242",
-    razonSocial: "-",
+    id: '10310313821',
+    fechaPago: '8/03/23',
+    fechaAcreditacion: '8/03/23',
+    operacion: 'Acreditación',
+    inversion: 'Efectivo Colombia Pesos',
+    objetivo: 'Ahorro',
+    nitAcreditador: '64242',
+    razonSocial: '-',
     valor: 50000,
   },
   {
-    id: "10310313822",
-    fechaPago: "8/03/23",
-    fechaAcreditacion: "8/03/23",
-    operacion: "Acreditación",
-    inversion: "Efectivo Colombia Pesos",
-    objetivo: "Ahorro",
-    nitAcreditador: "646353",
-    razonSocial: "-",
+    id: '10310313822',
+    fechaPago: '8/03/23',
+    fechaAcreditacion: '8/03/23',
+    operacion: 'Acreditación',
+    inversion: 'Efectivo Colombia Pesos',
+    objetivo: 'Ahorro',
+    nitAcreditador: '646353',
+    razonSocial: '-',
     valor: 50000,
   },
   {
-    id: "10310313823",
-    fechaPago: "8/03/23",
-    fechaAcreditacion: "8/03/23",
-    operacion: "Acreditación",
-    inversion: "Efectivo Colombia Pesos",
-    objetivo: "Ahorro",
-    nitAcreditador: "52342",
-    razonSocial: "-",
+    id: '10310313823',
+    fechaPago: '8/03/23',
+    fechaAcreditacion: '8/03/23',
+    operacion: 'Acreditación',
+    inversion: 'Efectivo Colombia Pesos',
+    objetivo: 'Ahorro',
+    nitAcreditador: '52342',
+    razonSocial: '-',
     valor: 50000,
   },
 ];
 
 const breadcrumbItems = [
-  { label: "Breadcrumb", href: "/" },
-  { label: "Breadcrumb", href: "/category" },
-  { label: "Breadcrumb" },
+  { label: 'Breadcrumb', href: '/' },
+  { label: 'Breadcrumb', href: '/category' },
+  { label: 'Breadcrumb' },
+];
+
+const dropdownOptions: Option[] = [
+  { text: 'Depende', value: 'id1' },
+  { text: 'Depende', value: 'id2' },
+  { text: 'Depende', value: 'id3' },
+  { text: 'value41', value: 'id4' },
+  { text: 'value5', value: 'id6' },
+  { text: 'value', value: 'id7' },
 ];
 
 const App = () => (
   <div>
     <h1>Componentes de Ejemplo</h1>
     <h3>Botones Generales</h3>
-    <Button $type="primary" $size="lg" $m="10px">
+    <Button $type="primary" $size="large" $m="10px">
       Botón Primario
     </Button>
-    <Button $type="secondary" $size="lg" $m="10px">
+    <Button $type="secondary" $size="large" $m="10px">
       Botón Primario
     </Button>
-    <Button $type="secondary" $size="lg" $m="10px" disabled={true}>
+    <Button $type="secondary" $size="large" $m="10px" disabled={true}>
       Botón Primario
     </Button>
 
     <h3>Botones Generales</h3>
-    <ButtonWithIcon $type="primary" $size="lg" $m="10px" $icon="plus">
+    <ButtonWithIcon $type="primary" $size="large" $m="10px" $icon="plus">
       Botón Primario
     </ButtonWithIcon>
-    <ButtonWithIcon $type="secondary" $size="lg" $m="10px" $icon="plus">
+    <ButtonWithIcon $type="secondary" $size="large" $m="10px" $icon="plus">
       Botón Primario
     </ButtonWithIcon>
     <ButtonWithIcon
       $type="secondary"
-      $size="lg"
+      $size="large"
       $m="10px"
       $icon="plus"
       disabled={true}
@@ -148,13 +162,13 @@ const App = () => (
     </ButtonWithIcon>
 
     <h3>Orange Button</h3>
-    <OrangeButton $type="primary" $size="lg" $m="10px">
+    <OrangeButton $type="primary" $size="large" $m="10px">
       Botón Primario
     </OrangeButton>
-    <OrangeButton $type="secondary" $size="lg" $m="10px">
+    <OrangeButton $type="secondary" $size="large" $m="10px">
       Botón Primario
     </OrangeButton>
-    <OrangeButton $type="secondary" $size="lg" $m="10px" disabled={true}>
+    <OrangeButton $type="secondary" $size="large" $m="10px" disabled={true}>
       Botón Primario
     </OrangeButton>
 
@@ -347,16 +361,31 @@ const App = () => (
 
     <h3>Dropdown</h3>
     <Dropdown
+      $w="170px"
       $title="DropDown basic"
-      $helpText="Texto de ayuda"
       placeholder="dropdown"
-      $options={[
-        { text: "Value1", value: "id1" },
-        { text: "Value2", value: "id2" },
-        { text: "valuE3", value: "id3" },
-        { text: "value41", value: "id4" },
-        { text: "value5", value: "id" },
-      ]}
+      $options={dropdownOptions}
+    />
+    <Dropdown
+      $w="267px"
+      $title="DropDown basic"
+      placeholder="dropdown"
+      $options={dropdownOptions}
+      $helpText="Texto de ayuda"
+    />
+
+    <Dropdown
+      $w="558px"
+      placeholder="dropdown"
+      $options={dropdownOptions}
+      $helpText="Texto de ayuda"
+    />
+
+    <Dropdown
+      placeholder="dropdown"
+      $options={dropdownOptions}
+      $helpText="Texto de ayuda"
+      $errorMessage="Error"
     />
     <h3>Tables</h3>
     <Table data={data} columns={columns} itemsPerPage={2} />
@@ -391,42 +420,119 @@ const App = () => (
     <SectionAccordion
       colorTitle="green"
       title="Title"
-      content="Amet dolor deserunt consequat voluptate aliqua tempor. Minim dolore reprehenderit duis sunt incididunt aliquip pariatur consequat exercitation do eu nulla officia. Eiusmod veniam sint qui nisi consequat et cupidatat."
+      content={
+        'Amet dolor deserunt consequat voluptate aliqua tempor. Minim dol' +
+        'ore reprehenderit duis sunt incididunt aliquip pariatur consequa' +
+        't exercitation do eu nulla officia. Eiusmod veniam sint qui nisi' +
+        ' consequat et cupidatat.'
+      }
     >
       <Accordion contentColor="green">
         <AccordionTab header="Placeholder">
           <Text3>
             Lorem ipsum I dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
           </Text3>
         </AccordionTab>
         <AccordionTab header="Placeholder">
           <Text3>
             Lorem ipsum II dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
           </Text3>
         </AccordionTab>
         <AccordionTab header="Placeholder">
           <Text3>
             Lorem ipsum III dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
           </Text3>
         </AccordionTab>
         <AccordionTab header="Placeholder">
           <Text3>
             Lorem ipsum IV dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
           </Text3>
         </AccordionTab>
       </Accordion>
     </SectionAccordion>
 
+    <h3>DropdownList</h3>
+    <div
+      style={{
+        padding: '3rem',
+        background:
+          'linear-gradient(90deg, #517C13 -7.04%, #89AE42 100.95%, #8BAF43 ' +
+          '100.95%)',
+      }}
+    >
+      <MenuList content="Afiliciones" icon="groupAdd" iconExpand="downArrow">
+        {[
+          {
+            id: '001',
+            label: 'Confirmación Modelo Afiliaciones',
+            href: '/confirmaciones',
+          },
+          {
+            id: '002',
+            label: 'Parametría de Afiliación',
+            href: '/afiliacion',
+          },
+          {
+            id: '003',
+            label: 'Procesos Masivos',
+            href: '/masivos',
+          },
+          {
+            id: '004',
+            label: 'Saldos por cuenta',
+            href: '/saldos',
+          },
+        ].map((option, index) => {
+          return (
+            <a href={option.href} id={option.id} key={index}>
+              {option.label}
+            </a>
+          );
+        })}
+      </MenuList>
+    </div>
     <h3>Stepper</h3>
     <Stepper steps={3} currentStep={0} />
+
+    <h3>Tooltip</h3>
+    <Tooltip color="green" text="Information" margin="0.3rem" />
+    <Tooltip color="green" margin="0.3rem" />
+    <Tooltip color="orange" text="Information" margin="0.3rem" />
+    <Tooltip color="orange" margin="0.3rem" />
+    <Tooltip color="white" text="Information" margin="0.3rem" />
+    <Tooltip color="white" />
+    <Tooltip color="light" text="Information" margin="0.3rem" />
+    <Tooltip color="light" margin="0.3rem" />
+    <Tooltip color="dark" text="Information" margin="0.3rem" />
+    <Tooltip color="dark" margin="0.3rem" />
+
+    <h3>File Uploader</h3>
+    <FileUploader
+      maxFileSize={2}
+      maxFileNameLength={50}
+      allowedExtensions={[
+        '.doc',
+        '.pdf',
+        '.jpg',
+        '.gif',
+        '.bmp',
+        '.jpeg',
+        '.docx',
+        '.png',
+      ]}
+      maxFiles={5}
+      onFilesChange={(files) => console.log(files)}
+    />
+
+    <ExampleButton iconLeft={true} iconRight={true} >Hola</ExampleButton>
   </div>
 );
 

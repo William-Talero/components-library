@@ -1,13 +1,12 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Circle } from "../Circle";
-import { CircleProps } from "../ICircle";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Circle } from '../Circle';
+import { CircleProps } from '../ICircle';
 
 const meta: Meta<CircleProps> = {
-  title: "Components/Atoms/Circle/Circle",
+  title: 'Components/Atoms/Circle/Circle',
   component: Circle,
   argTypes: {
-    size: { control: "number" },
+    size: { control: 'number' },
   },
 };
 

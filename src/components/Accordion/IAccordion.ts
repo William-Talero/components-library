@@ -1,4 +1,4 @@
-import { IconName } from "../Icon/Icons";
+import { IconName } from '../Icon/Icons';
 
 export interface AccordionProps {
     children: JSX.Element | JSX.Element[];
@@ -6,7 +6,7 @@ export interface AccordionProps {
     activeIndex?: number;
     headerIcon?: IconName;
     w?: string;
-    contentColor?: "green" | "orange";
+    contentColor?: 'green' | 'orange';
     className?: string;
 }
 

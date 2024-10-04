@@ -8,15 +8,15 @@ const meta: Meta<InputProps> = {
   title: 'Components/Atoms/Inputs/Input',
   argTypes: {
     type: {
-      control: { type: "select" },
-      options: ["text", "password", "email", "namesUpper"],
+      control: { type: 'select' },
+      options: ['text', 'password', 'email', 'namesUpper'],
     },
     $size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
     },
-    children: { control: "text" },
-    disabled: { control: "boolean" },
+    children: { control: 'text' },
+    disabled: { control: 'boolean' },
   },
   component: InputText,
 };
@@ -38,9 +38,9 @@ const Template = (args: InputProps) => {
   };
 
   return <InputText {...args} value={value} 
-  onChange={handleChange}
-  onFocus={(event: React.ChangeEvent<HTMLInputElement>)=>console.log(event)}
-  required
+    onChange={handleChange}
+    onFocus={(event: React.ChangeEvent<HTMLInputElement>)=>console.log(event)}
+    required
   />;
 };
 
@@ -48,26 +48,26 @@ const Template = (args: InputProps) => {
 export const textInput: Story = {
   render: Template,
   args: {
-    type: "text",
+    type: 'text',
     $title: 'Title input',
-    $helpText: "texto de ayuda",
+    $helpText: 'texto de ayuda',
   },
 };
 
 export const InputNumber: Story = {
   render: Template,
   args: {
-    type: "number",
-    $title: " Title input Number",
-    $helpText: "texto de ayuda",
+    type: 'number',
+    $title: ' Title input Number',
+    $helpText: 'texto de ayuda',
   },
 };
 
 export const inputPassword: Story = {
   render: Template,
   args: {
-    type: "password",
-    $title: "Title input Password",
+    type: 'password',
+    $title: 'Title input Password',
     $helpText: 'Texto ayuda',
   },
 };
@@ -75,8 +75,8 @@ export const inputPassword: Story = {
 export const inputEmail: Story = {
   render: Template,
   args: {
-    type: "email",
-    $title: "Title input Email",
+    type: 'email',
+    $title: 'Title input Email',
     $helpText: 'Texto ayuda',
   },
 };
@@ -84,17 +84,17 @@ export const inputEmail: Story = {
 export const inputUppercase: Story = {
   render: Template,
   args: {
-    type: "namesUpper",
-    $title: "Nombres en Mayúscula",
-    $helpText: "El texto se capitaliza automáticamente",
+    type: 'namesUpper',
+    $title: 'Nombres en Mayúscula',
+    $helpText: 'El texto se capitaliza automáticamente',
   },
 };
 
 export const inputSetValue: Story = {
   render: Template,
   args: {
-    type: "text",
-    value: "vulue 2",
+    type: 'text',
+    value: 'vulue 2',
     $title: 'Titulo input',
     $helpText: 'Texto ayuda',
   },
@@ -103,8 +103,8 @@ export const inputSetValue: Story = {
 export const inputPlaceholder: Story = {
   render: Template,
   args: {
-    type: "text",
-    placeholder: "Ejemplo llenado",
+    type: 'text',
+    placeholder: 'Ejemplo llenado',
     $title: 'Title input',
     $helpText: 'Texto ayuda',
   },
@@ -112,9 +112,9 @@ export const inputPlaceholder: Story = {
 export const inputDisable: Story = {
   render: Template,
   args: {
-    type: "email",
-    $title: "Email",
-    $helpText: "texto de ayuda",
+    type: 'email',
+    $title: 'Email',
+    $helpText: 'texto de ayuda',
     disabled: true
   },
 };
@@ -122,8 +122,8 @@ export const inputDisable: Story = {
 export const inputReadOnly: Story = {
   render: Template,
   args: {
-    type: "text",
-    value: "vulue 1",
+    type: 'text',
+    value: 'vulue 1',
     $title: 'Titulo input',
     $helpText: 'Texto ayuda',
     readOnly: true,

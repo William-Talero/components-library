@@ -1,0 +1,3 @@
+sonarArgs: "-Dsonar.projectKey=pendig-fro-transversal-lib-react -Dsonar.sources=."
+project: "pendig-fro-transversal-lib-react"
+artifactName: "pendig-fro-layout-mf-react-next"

@@ -1,7 +1,7 @@
-import React from "react";
-import "@/styles.scss";
-import Icon from "../Icon/Icons";
-import { BreadcrumbItem, BreadcrumbProps } from "./IBreadcrumb";
+import React from 'react';
+import '@/styles.scss';
+import Icon from '../Icon/Icons';
+import { BreadcrumbProps } from './IBreadcrumb';
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
@@ -17,7 +17,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
             {index === items.length - 1 ? (
               <span className="tvr-comp-breadcrumb-current">{item.label}</span>
             ) : (
-              <a href={item.href || "#"} className="tvr-comp-breadcrumb-link">
+              <a href={item.href || '#'} className="tvr-comp-breadcrumb-link">
                 {item.label}
               </a>
             )}

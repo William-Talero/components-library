@@ -14,14 +14,12 @@
 @import "./components/Breadcrumb/Breadcrumb.styles.scss";
 @import "./components/Circle/Circle.styles.scss";
 @import "./components/SectionAccordion/SectionAccordion.styles.scss";
+@import "./components/MenuList/MenuList.styles.scss";
 @import "./components/Stepper/Stepper.styles.scss";
+@import "./components/Tooltip/Tooltip.styles.scss";
 
 :root {
   color-scheme: dark light;
-
-  // variables
-  --var-color-orange: map-get($general-colors, "orange-dark-2");
-  --var-color-green: map-get($general-colors, "green-2-dark-1");
 
   .dark {
     color-scheme: dark;

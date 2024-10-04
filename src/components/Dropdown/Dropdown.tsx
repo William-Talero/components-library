@@ -1,85 +1,147 @@
-import { useState, useCallback, useMemo } from 'react';
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState, useRef, useEffect } from 'react';
+
+import { DropdownProps, Option } from './IDropdown';
 import { InputWithIcon } from '../Input';
-import { DropdownProps } from './IDropdown';
 
 const Dropdown: React.FC<DropdownProps> = ({
   $options,
   $classNameContainer,
   $classNameList,
+  onSelect,
+  $w,
+  $m,
+  $initialValue,
   ...props
 }) => {
-  const [inputValue, setInputValue] = useState('');
-  const [openList, setOpenList] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [filteredOptions, setFilteredOptions] = useState<Option[]>($options);
+  const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
+  const [inputValue, setInputValue] = useState<string>($initialValue || '');
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Función para remover acentos de un texto
-  const removeAccents = useCallback((text: string) => 
-    text.normalize('NFD').replace(/[\u0300-\u036f]/g, ''), []);
+  useEffect(() => {
+    if ($initialValue) {
+      const matchingOption = $options.find(
+        (option) => option.value === $initialValue
+      );
+      if (matchingOption) {
+        setInputValue(matchingOption.text);
+      } else {
+        console.error(
+          'Error: El valor inicial "${$initialValue}" no coincide' +
+            'con ninguna opción.'
+        );
+      }
+    }
+  }, [$initialValue, $options]);
 
-  // Función separada para manejar el filtrado de las opciones
-  const filteredOptions = useMemo(() => 
-    $options.filter(({ text }) => {
-      const filterText = removeAccents(text);
-      const normalizedInput = inputValue.toLowerCase();
-      return filterText.toLowerCase().includes(normalizedInput) ||
-             text.toLowerCase().includes(normalizedInput);
-    }), [$options, inputValue, removeAccents]);
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
-  // Resalta las coincidencias del input en las opciones filtradas
-  const getHighlightedText = useCallback((text: string) => {
-    const regex = new RegExp(`(${inputValue})`, 'gi');
-    return text.split(regex).map((part, idx) => 
-      part.toLowerCase() === inputValue.toLowerCase() 
-        ? <b key={idx}>{part}</b> 
-        : part
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    setFilteredOptions(
+      $options.filter((option) =>
+        option.text.toLowerCase().includes(value.toLowerCase())
+      )
     );
-  }, [inputValue]);
-
-  // Maneja el clic en una opción del dropdown
-  const handleOptionClick = useCallback((text: string) => {
-    setInputValue(text);
-    setOpenList(false);
-  }, []);
-
-  // Renderiza la lista de opciones filtradas
-  const renderList = useMemo(() => 
-    filteredOptions.map((item, index) => (
-      <div 
-        key={`dropdown_${index}`} 
-        className="dropdown-item" 
-        onClick={() => handleOptionClick(item.text)}
-      >
-        <div className="dropdown-text">{getHighlightedText(item.text)}</div>
-        <hr className="dropdown-separator" />
-      </div>
-    )), [filteredOptions, handleOptionClick, getHighlightedText]);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    setOpenList(true);
+    setHighlightedIndex(-1);
   };
 
-  // Alterna la visibilidad de la lista desplegable
-  const toggleDropdown = () => setOpenList(prev => !prev);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'ArrowDown') {
+      setHighlightedIndex((prevIndex) =>
+        Math.min(prevIndex + 1, filteredOptions.length - 1)
+      );
+    } else if (e.key === 'ArrowUp') {
+      setHighlightedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    } else if (e.key === 'Enter') {
+      if (highlightedIndex >= 0) {
+        handleSelect(filteredOptions[highlightedIndex]);
+      }
+    }
+  };
+
+  const handleSelect = (option: Option) => {
+    setInputValue(option.text);
+    setIsOpen(false);
+    if (onSelect) {
+      const event = new Event('select', { bubbles: true });
+      Object.defineProperty(event, 'target', {
+        writable: false,
+        value: option,
+      });
+      onSelect(event as any);
+    }
+  };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(e.target as Node)
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  const highList = () => {
+    if (props.$title) {
+      return 'trv-comp-title ';
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
-    <div className={$classNameContainer}>
-      <div className="dropdown-container">
-        <InputWithIcon
-          $icon="arrowDropDown"
-          value={inputValue}
-          onChange={handleInputChange}
-          $onClickIcon={toggleDropdown}
-          onClick={toggleDropdown}
-          $showHelpText={!openList}
-          {...props}
-        />
-        {openList && (
-          <div className={`dropdown-list ${$classNameList}`}>
-            {renderList}
-          </div>
-        )}
-      </div>
+    <div
+      className={`trv-comp-dropdown-input ${$classNameContainer || ''}`}
+      ref={dropdownRef}
+      style={{
+        width: $w,
+        margin: $m,
+      }}
+    >
+      <InputWithIcon
+        $icon="arrowDropDown"
+        value={inputValue}
+        onChange={handleInputChange}
+        $onClickIcon={toggleDropdown}
+        onClick={toggleDropdown}
+        onKeyDown={handleKeyDown}
+        {...props}
+      />
+      {isOpen && (
+        <ul
+          className={`trv-comp-dropdown-menu ${highList()} ${
+            $classNameList || ''
+          }`}
+        >
+          {filteredOptions.length === 0 && (
+            <li className="trv-comp-dropdown-text">
+              {props.$errorMessage ? props.$errorMessage : 'No options found'}
+            </li>
+          )}
+          {filteredOptions.map((option, index) => (
+            <React.Fragment key={`${option.value}-${index}`}>
+              <li
+                className={
+                  index === highlightedIndex
+                    ? 'trv-comp-highlighted trv-comp-dropdown-text'
+                    : 'trv-comp-dropdown-text'
+                }
+                onClick={() => handleSelect(option)}
+              >
+                {option.text}
+              </li>
+              <hr className="trv-comp-dropdown-separator" />
+            </React.Fragment>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

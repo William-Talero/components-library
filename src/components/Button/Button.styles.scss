@@ -3,7 +3,7 @@
 
 @mixin button-base(
   $type: "primary",
-  $size: "md",
+  $size: "normal",
   $variant: null
 ) {
   $sizes: map-get($button-sizes, $size);
@@ -136,7 +136,7 @@
   .#{$class-name} {
     @include button-base($type: $type, $variant: $variant);
 
-    @each $size in ("sm", "md", "lg") {
+    @each $size in ("small", "normal", "large") {
       &.tvr-comp-button-#{$size} {
         @include button-base($type: $type, $size: $size, $variant: $variant);
       }

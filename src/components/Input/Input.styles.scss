@@ -1,20 +1,18 @@
 @import '../../parameters/colors';
 @import '../../parameters/sizes';
-
-.input-wrapper {
-  margin-bottom: 1rem;
+.trv-comp-input-wrapper {
   
-  .title-description {
+  .trv-comp-title-description {
     color: light-dark(map-get($general-colors, 'neutral-dark-1'), #fff);
   }
 
-  .input-container {
+  .trv-comp-input-container {
     position: relative;
     display: flex;
     align-items: center;
     color: light-dark(map-get($general-colors, 'neutral-dark-1'), #fff);
 
-    .input {
+    .trv-comp-input {
       flex-grow: 1;
       margin-top: 0.375rem;
       margin-bottom: 0.375rem;
@@ -49,7 +47,7 @@
       }
     }
 
-    .input-icon-container {
+    .trv-comp-input-icon-container {
       display: flex;
       position: absolute;
       bottom: 9px;
@@ -61,7 +59,7 @@
       cursor: pointer;
     }
 
-    .input-icon {
+    .trv-comp-input-icon {
       width: 20px;
       height: 33px;
       transition: fill 0.3s ease;
@@ -75,82 +73,82 @@
     }
   }
 
-  .help-text {
+  .trv-comp-help-text {
     padding-left: 0.4rem;
     width: 100%;
     color: light-dark(map-get($general-colors, 'neutral-dark-1'), #fff);
   }
 
-  &.success {
-    .title-description {
+  &.trv-comp-success {
+    .trv-comp-title-description {
       color: map-get($general-colors, 'green-2-light-1') !important;
     }
 
-    .input-container {
-      .input {
+    .trv-comp-input-container {
+      .trv-comp-input {
         border-color: map-get($general-colors, 'green-2-light-1') !important;
       }
 
-      .input-icon {
+      .trv-comp-input-icon {
         fill: map-get($general-colors, 'green-2-light-1') !important;
       }
     }
 
-    .help-text {
+    .trv-comp-help-text {
       color: map-get($general-colors, 'green-dark-1') !important;
       background-color: map-get($general-colors, 'green-2-light-5');
     }
   }
 
-  &.warning {
-    .title-description {
+  &.trv-comp-warning {
+    .trv-comp-title-description {
       color: map-get($general-colors, 'orange-dark-2') !important;
     }
 
-    .input-container {
-      .input {
+    .trv-comp-input-container {
+      .trv-comp-input {
         border-color: map-get($general-colors, 'orange-dark-2') !important;
       }
 
-      .input-icon {
+      .trv-comp-input-icon {
         fill: map-get($general-colors, 'orange-dark-2') !important;
       }
     }
 
-    .help-text {
+    .trv-comp-help-text {
       color: map-get($general-colors, 'orange-dark-1') !important;
       background-color: map-get($general-colors, 'orange-light-3');
     }
   }
 
-  &.error {
-    .title-description {
+  &.trv-comp-error {
+    .trv-comp-title-description {
       color: map-get($general-colors, 'semantic-dark-1') !important;
     }
 
-    .input-container {
-      .input {
+    .trv-comp-input-container {
+      .trv-comp-input {
         border-color: map-get($general-colors, 'semantic-dark-1') !important;
       }
 
-      .input-icon {
+      .trv-comp-input-icon {
         fill: map-get($general-colors, 'semantic-dark-1') !important;
       }
     }
 
-    .help-text {
+    .trv-comp-help-text {
       color: map-get($general-colors, 'semantic-dark-1') !important;
       background-color: map-get($general-colors, 'semantic-light-4');
     }
   }
 
-  &.is-disable {
-    .title-description {
+  &.trv-comp-is-disable {
+    .trv-comp-title-description {
       color: map-get($general-colors, 'neutral-light-1') !important;
     }
 
-    .input-container {
-      .input {
+    .trv-comp-input-container {
+      .trv-comp-input {
         color: map-get($general-colors, 'neutral-light-4') !important;
         border-color: map-get($general-colors, 'neutral-light-1') !important;
         background-color: map-get($general-colors, 'neutral-light-4') !important;
@@ -161,19 +159,19 @@
         }
       }
 
-      .input-icon {
+      .trv-comp-input-icon {
         fill: map-get($general-colors, 'neutral-light-1') !important;
       }
     }
 
-    .help-text {
+    .trv-comp-help-text {
       color: map-get($general-colors, 'neutral-light-1') !important;
     }
   }
 
-  &.not-editable {
-    .input-container {
-      .input {
+  &.trv-comp-not-editable {
+    .trv-comp-input-container {
+      .trv-comp-input {
         color: map-get($general-colors, 'neutral-light-3') !important;
         border-color: map-get($general-colors, 'neutral-dark-4') !important;
         background-color: map-get($general-colors, 'neutral-light-3') !important;
@@ -183,12 +181,12 @@
         }
       }
 
-      .input-icon {
+      .trv-comp-input-icon {
         fill: map-get($general-colors, 'neutral-dark-4') !important;
       }
     }
 
-    .help-text {
+    .trv-comp-help-text {
       color: map-get($general-colors, 'neutral-dark-1') !important;
     }
   }

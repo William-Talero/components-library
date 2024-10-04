@@ -44,6 +44,7 @@ export default {
       exclude: "node_modules/**",
       extensions,
       babelHelpers: "bundled",
+      plugins: ["babel-plugin-styled-components"],
     }),
     alias({
       entries: [{ find: "@", replacement: "./src" }],
@@ -64,5 +65,9 @@ export default {
     terser(),
     analyze({ summaryOnly: true }),
   ],
-  external: ["react", "react-dom", ...Object.keys(pkg.peerDependencies || {})],
+  external: [
+    "react",
+    "react-dom",
+    ...Object.keys(pkg.peerDependencies || {}),
+  ],
 };
