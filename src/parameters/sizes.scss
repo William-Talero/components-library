@@ -1,0 +1,27 @@
+$button-sizes: (
+  small: (
+    width: 6rem,
+    height: 2rem,
+    padding: 0.2rem 0.4rem,
+    fontSize: 0.6rem,
+    smWidth: 40%,
+  ),
+  normal: (
+    width: 10rem,
+    height: 2.5rem,
+    padding: 0.3rem 0.5rem,
+    fontSize: 0.8rem,
+    smWidth: 60%,
+  ),
+  large: (
+    width: 16rem,
+    height: 2.8rem,
+    padding: 0.3rem 0.5rem,
+    fontSize: 0.9rem,
+    smWidth: 100%,
+  ),
+);
+
+$font-sizes: (
+  medium: 0.8rem,
+);

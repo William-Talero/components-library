@@ -6,24 +6,21 @@
     "jsx": "react",
     "declaration": true,
     "declarationDir": "dist",
+    "sourceMap": true,
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "rootDir": "src",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "jsx": "react",
-  "moduleResolution": "node",
-  "esModuleInterop": true,
-  "allowSyntheticDefaultImports": true,
-  "include": [
-    "src",
-    "src/utils/createTimestamp.js",
-    "webpack.config.js"
-  ],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

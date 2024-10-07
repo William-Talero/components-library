@@ -1,0 +1,216 @@
+$general-colors: (
+  // Primary colors
+  primary: #659125,
+  secondary: #fc802a,
+  terciary: #3e6a27,
+  quaternary: #fc8029,
+  disabled: #efefef,
+  disabledSecond: #8f8f8f,
+  primaryHover: #b9cc56,
+  secondaryHover: #fb6903,
+  principalDark: #292929,
+  success-color: #28a745,
+  error-color: #dc3545,
+  warning-color: #ffc107,
+
+  //Grey colors
+  primary-gray: #4d4d4d,
+  secondary-light-grey: #f4f4f4,
+
+  // Neutral colors
+  neutral-light-1: #c2c2c2,
+  neutral-light-2: #d6d6d6,
+  neutral-light-3: #efefef,
+  neutral-light-4: #f7f7f7,
+  neutral-light-5: #fdfdfd,
+  neutral-dark-1: #292929,
+  neutral-dark-3: #666666,
+  neutral-dark-4: #8f8f8f,
+  neutral-dark-2: #474747,
+
+  // Orange colors
+  orange-light-1: #ffbf95,
+  orange-light-2: #fdd6b8,
+  orange-light-3: #faefe8,
+  orange-dark-1: #fb6903,
+  orange-dark-2: #fc8029,
+
+  // Yellow colors
+  yellow-light-1: #fdde96,
+  yellow-light-2: #fde9b8,
+  yellow-light-3: #fef4dd,
+  yellow-dark: #fabd2c,
+  secondary-light-yellow: #fff1ce,
+
+  // Semantic colors
+  semantic-light-1: #db7b76,
+  semantic-light-2: #e7a7a4,
+  semantic-light-3: #f3d3d1,
+  semantic-light-4: #f8e7e6,
+  semantic-dark-1: #b0352e,
+  semantic-dark-2: #cf5048,
+
+  // Green colors
+  green-light-5: #e8f4e1,
+  green-light-1: #a5c93d,
+  green-light-2: #b9cc56,
+  green-dark-1: #87a62e,
+  green-light-3: #c9df8a,
+  green-light-4: #dbe9b1,
+  green-2-light-1: #72b11c,
+  green-2-light-2: #93de2b,
+  green-2-light-3: #aee760,
+  green-2-light-4: #c8ef95,
+  green-2-light-5: #e8f4e1,
+  green-2-dark-1: #3e6a27,
+
+  // Gradients
+  gradient-orange: linear-gradient(to right, #fa8035, #ffc956),
+  gradient-green: linear-gradient(to right, #517c13, #89ae42, #8baf43),
+
+
+  //NUEVOS COLORES
+
+
+  // Primary Orange
+  primary-orange-50: #fff2ea,
+  primary-orange-100: #fed8bd,
+  primary-orange-200: #fec59d,
+  primary-orange-300: #fdaa70,
+  primary-orange-400: #fd9955,
+  primary-orange-500: #fc802a,
+  primary-orange-600: #e57426,
+  primary-orange-700: #b35b1e,
+  primary-orange-800: #8b4617,
+  primary-orange-900: #6a3612,
+
+  // Primary Yellow
+  primary-yellow-50: #fff8ea,
+  primary-yellow-100: #fdebbe,
+  primary-yellow-200: #fde19e,
+  primary-yellow-300: #fcd372,
+  primary-yellow-400: #fbca56,
+  primary-yellow-500: #fabd2c,
+  primary-yellow-600: #e4ac28,
+  primary-yellow-700: #b2861f,
+  primary-yellow-800: #8a6818,
+  primary-yellow-900: #694f12,
+
+  // Secondary Brown
+  secondary-brown-50: #f7ebea,
+  secondary-brown-100: #e7c0be,
+  secondary-brown-200: #dba29f,
+  secondary-brown-300: #ca7873,
+  secondary-brown-400: #c05d58,
+  secondary-brown-500: #b0352e,
+  secondary-brown-600: #a0302a,
+  secondary-brown-700: #7d2621,
+  secondary-brown-800: #611d19,
+  secondary-brown-900: #4a1613,
+
+  // Secondary Green
+  secondary-green-50: #f2f4ea,
+  secondary-green-100: #d6debd,
+  secondary-green-200: #c2ce9d,
+  secondary-green-300: #a6b870,
+  secondary-green-400: #95aa54,
+  secondary-green-500: #7a9529,
+  secondary-green-600: #6f8825,
+  secondary-green-700: #576a1d,
+  secondary-green-800: #435217,
+  secondary-green-900: #333f11,
+
+  // Secondary Green 2
+  secondary-green-2-50: #eef2e7,
+  secondary-green-2-100: #c9d6b6,
+  secondary-green-2-200: #afc392,
+  secondary-green-2-300: #8aa761,
+  secondary-green-2-400: #739642,
+  secondary-green-2-500: #507c13,
+  secondary-green-2-600: #467111,
+  secondary-green-2-700: #39580d,
+  secondary-green-2-800: #2c440a,
+  secondary-green-2-900: #223408,
+
+  // Semantic Colors
+  error-light: #f8e8e8,
+  error-light-hover: #f4dddd,
+  error-light-active: #e9b8b9,
+  error-normal: #b71b1c,
+  error-normal-hover: #a51819,
+  error-normal-active: #a51819,
+  error-dark: #891415,
+  error-dark-hover: #6e1011,
+  error-dark-active: #520c0d,
+  error-darker: #40090a,
+
+  success-light: #e8efe9,
+  success-light-hover: #dde7de,
+  success-light-active: #b8cdba,
+  success-normal: #1b5e21,
+  success-normal-hover: #18551e,
+  success-normal-active: #164b1a,
+  success-dark: #144719,
+  success-dark-hover: #103814,
+  success-dark-active: #0c2a0f,
+  success-darker: #09210c,
+
+  warning-light: #fff3e6,
+  warning-light-hover: #feedd9,
+  warning-light-active: #fedbb0,
+  warning-normal: #fb8a00,
+  warning-normal-hover: #e27c00,
+  warning-normal-active: #c96e00,
+  warning-dark: #bc6800,
+  warning-dark-hover: #975300,
+  warning-dark-active: #713e00,
+  warning-darker: #583000,
+
+  // Text Colors - Black
+  text-black-light: #e6e6e6,
+  text-black-light-hover: #d9d9d9,
+  text-black-light-active: #b0b0b0,
+  text-black-normal: #000000,
+  text-black-normal-hover: #000000,
+  text-black-normal-active: #000000,
+  text-black-dark: #000000,
+  text-black-dark-hover: #000000,
+  text-black-dark-active: #000000,
+  text-black-darker: #000000,
+
+  // Text Colors - White
+  text-white-light: #ffffff,
+  text-white-light-hover: #ffffff,
+  text-white-light-active: #ffffff,
+  text-white-normal: #ffffff,
+  text-white-normal-hover: #e6e6e6,
+  text-white-normal-active: #cccccc,
+  text-white-dark: #bfbfbf,
+  text-white-dark-hover: #999999,
+  text-white-dark-active: #737373,
+  text-white-darker: #595959,
+
+  // Neutral Colors - Gray
+  neutral-gray-50: #f0f1f2,
+  neutral-gray-100: #d1d3d8,
+  neutral-gray-200: #d1d3d8,
+  neutral-gray-300: #9ca1aa,
+  neutral-gray-400: #898e99,
+  neutral-gray-500: #6b7280,
+  neutral-gray-600: #616874,
+  neutral-gray-700: #4c515b,
+  neutral-gray-800: #3b3f46,
+  neutral-gray-900: #2d3036,
+
+  // Neutral Colors - Neutral
+  neutral-neutral-50: #f1f1f1,
+  neutral-neutral-100: #d4d4d4,
+  neutral-neutral-200: #bfbfbf,
+  neutral-neutral-300: #a1a1a1,
+  neutral-neutral-400: #8f8f8f,
+  neutral-neutral-500: #737373,
+  neutral-neutral-600: #696969,
+  neutral-neutral-700: #525252,
+  neutral-neutral-800: #3f3f3f,
+  neutral-neutral-900: #303030
+);

@@ -1,0 +1,26 @@
+@import "../../parameters/colors";
+@import "../../parameters/sizes";
+
+.section-accordion {
+  border-radius: 1.5rem;
+  background: light-dark(#FFFFFF, transparent);
+  padding: 2.75rem 4.5rem;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  &-header {
+    margin-bottom: 2rem;
+    padding: 0rem 0.9375rem;
+    &-title {
+      margin-bottom: 0.5rem;
+      &__title{
+        font-size: 2rem;
+      }
+    }
+    &-description{
+      &__content {
+        font-size: 1.25rem;
+      }
+    }
+
+  }
+}
+

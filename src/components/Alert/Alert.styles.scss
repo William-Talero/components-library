@@ -1,0 +1,47 @@
+@import "../../parameters/colors";
+@import "../../parameters/sizes";
+
+.tvr-comp-alert {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 10px;
+  font-size: map-get($font-sizes, "medium");
+  font-weight: 600;
+
+  .tvr-comp-alert-icon {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  &.tvr-comp-alert-success {
+    background-color: map-get($general-colors, "green-2-light-5");
+    border: 2px solid map-get($general-colors, "green-2-light-1");
+    color: map-get($general-colors, "green-2-light-1");
+
+    .tvr-comp-alert-icon {
+      color: map-get($general-colors, "green-2-light-1");
+    }
+  }
+
+  &.tvr-comp-alert-error {
+    background-color: map-get($general-colors, "semantic-light-3");
+    border: 2px solid map-get($general-colors, "semantic-dark-1");
+    color: map-get($general-colors, "semantic-dark-1");
+
+    .tvr-comp-alert-icon {
+      color: map-get($general-colors, "semantic-dark-1");
+    }
+  }
+
+  &.tvr-comp-alert-alert {
+    background-color: map-get($general-colors, "orange-light-3");
+    border: 2px solid map-get($general-colors, "orange-dark-1");
+    color: map-get($general-colors, "orange-dark-1");
+
+    .tvr-comp-alert-icon {
+      color: map-get($general-colors, "orange-dark-1");
+    }
+  }
+}

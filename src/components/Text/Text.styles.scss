@@ -1,0 +1,88 @@
+@import "../../parameters/colors";
+
+.tvr-comp-textContainer {
+  display: flex;
+  justify-content: var(--justify);
+  flex-direction: var(--align);
+}
+
+@mixin title-base {
+  line-height: 140%;
+  font-weight: 300;
+  margin: 0;
+  color: light-dark(var(--color), var(--dark-color)) !important;
+}
+
+.tvr-comp-title1 {
+  @include title-base;
+  font-size: 48px;
+}
+
+.tvr-comp-title2 {
+  @include title-base;
+  font-size: 32px;
+}
+
+.tvr-comp-title3 {
+  @include title-base;
+  font-size: 24px;
+}
+
+.tvr-comp-title4 {
+  @include title-base;
+  font-size: 20px;
+}
+
+.tvr-comp-title5 {
+  @include title-base;
+  font-size: 16px;
+}
+
+.tvr-comp-title6 {
+  @include title-base;
+  font-size: 16px;
+}
+
+@mixin text-base {
+  line-height: 140%;
+  font-weight: 300;
+  margin: 0;
+  color: light-dark(var(--color), var(--dark-color));
+}
+
+.tvr-comp-text1 {
+  @include text-base;
+  font-size: 20px;
+}
+
+.tvr-comp-text2 {
+  @include text-base;
+  font-size: 14px;
+}
+
+.tvr-comp-text3 {
+  @include text-base;
+  font-size: 14px;
+}
+
+.tvr-comp-text4 {
+  @include text-base;
+  font-size: 12px;
+}
+
+.tvr-comp-textCta {
+  @include text-base;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.tvr-comp-textLink {
+  @include text-base;
+  font-size: 14px;
+  color: var(--color) !important;
+  text-decoration-line: underline;
+}
+
+.tvr-comp-bold {
+  font-weight: bold;
+}

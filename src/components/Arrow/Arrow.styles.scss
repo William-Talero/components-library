@@ -1,0 +1,29 @@
+@import "../../parameters/colors";
+
+.tvr-comp-arrow {
+  background-color: transparent;
+  border: none;
+  fill: map-get($general-colors, "orange-dark-2") !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: map-get($general-colors, "orange-dark-2");
+    fill: white !important;
+  }
+
+  &:active {
+    background-color: map-get($general-colors, "orange-dark-1");
+    fill: white !important;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

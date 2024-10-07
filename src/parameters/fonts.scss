@@ -1,0 +1,124 @@
+$font-path: "./../public/fonts/";
+
+//BANDA FONT
+// Regular weight
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaRegular.woff") format("woff"),
+       url("#{$font-path}BandaRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaRegular-Italic.woff") format("woff"),
+       url("#{$font-path}BandaRegular-Italic.woff2") format("woff2"),
+       url("#{$font-path}BandaRegular-Italic.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaRegular-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+// Bold weight
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaBold-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaBold-BoldItalic.woff") format("woff"),
+       url("#{$font-path}BandaBold-BoldItalic.woff2") format("woff2"),
+       url("#{$font-path}BandaBold-BoldItalic.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaBold-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+// Light weight
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaLight-Light.woff") format("woff"),
+       url("#{$font-path}BandaLight-Light.woff2") format("woff2"),
+       url("#{$font-path}BandaLight-Light.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaLight-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaLight-LightItalic.woff") format("woff"),
+       url("#{$font-path}BandaLight-LightItalic.woff2") format("woff2"),
+       url("#{$font-path}BandaLight-LightItalic.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaLight-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+// Extra Light weight
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaExtraLight-ExtraLight.woff") format("woff"),
+       url("#{$font-path}BandaExtraLight-ExtraLight.woff2") format("woff2"),
+       url("#{$font-path}BandaExtraLight-ExtraLight.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaExtraLight-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaExtraLight-ExtraLightItalic.woff") format("woff"),
+       url("#{$font-path}BandaExtraLight-ExtraLightItalic.woff2") format("woff2"),
+       url("#{$font-path}BandaExtraLight-ExtraLightItalic.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaExtraLight-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+// Thin weight
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaThin-Thin.woff") format("woff"),
+       url("#{$font-path}BandaThin-Thin.woff2") format("woff2"),
+       url("#{$font-path}BandaThin-Thin.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaThin-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}BandaThin-ThinItalic.woff") format("woff"),
+       url("#{$font-path}BandaThin-ThinItalic.woff2") format("woff2"),
+       url("#{$font-path}BandaThin-ThinItalic.eot") format("embedded-opentype"),
+       url("#{$font-path}BandaThin-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+// Ultra Thin weight
+@font-face {
+  font-family: "Banda";
+  src: url("#{$font-path}Bandaultrathin-UltraThin.woff") format("woff"),
+       url("#{$font-path}Bandaultrathin-UltraThin.woff2") format("woff2"),
+       url("#{$font-path}Bandaultrathin-UltraThin.eot") format("embedded-opentype"),
+       url("#{$font-path}Bandaultrathin-UltraThin.ttf") format("truetype");
+  font-weight: 50;
+  font-style: normal;
+}
+
+// Font family variables
+$font-primary: "Banda", sans-serif;
+
+// Font weight variables
+$font-ultraThin: 50;
+$font-thin: 100;
+$font-extraLight: 200;
+$font-light: 300;
+$font-regular: 400;
+$font-bold: 700;

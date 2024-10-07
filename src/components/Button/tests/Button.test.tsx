@@ -1,25 +1,115 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { Button, ButtonWithIcon, OrangeButton } from "./../Button";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { Button, OrangeButton, ButtonWithIcon } from '../Button';
 
-describe("Button Component", () => {
-  it("should render a basic Button with children", () => {
-    render(<Button>Click me</Button>);
-    expect(screen.getByText("Click me")).toBeInTheDocument();
+describe('Button Components', () => {
+  describe('Button', () => {
+    it('renders with default props', () => {
+      render(<Button>Click me</Button>);
+      const button = screen.getByText('Click me');
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass('tvr-comp-button tvr-comp-button-primary');
+    });
+
+    it('renders with custom type', () => {
+      render(<Button $type="secondary">Click me</Button>);
+      expect(screen.getByText('Click me')).toHaveClass(
+        'tvr-comp-button tvr-comp-button-secondary'
+      );
+    });
+
+    it('renders with custom size', () => {
+      render(<Button $size="lg">Click me</Button>);
+      expect(screen.getByText('Click me')).toHaveClass(
+        'tvr-comp-button tvr-comp-button-primary tvr-comp-button-lg'
+      );
+    });
+
+    it('renders with custom margin', () => {
+      render(<Button $m="4">Click me</Button>);
+      expect(screen.getByText('Click me')).toHaveClass(
+        'tvr-comp-button tvr-comp-button-primary'
+      );
+    });
+
+    it('passes through additional props', () => {
+      render(<Button data-testid="custom-button">Click me</Button>);
+      expect(screen.getByTestId('custom-button')).toBeInTheDocument();
+    });
   });
 
-  it("should render an OrangeButton with children", () => {
-    render(<OrangeButton>Click me</OrangeButton>);
-    expect(screen.getByText("Click me")).toBeInTheDocument();
+  describe('OrangeButton', () => {
+    it('renders with default props', () => {
+      render(<OrangeButton>Click me</OrangeButton>);
+      const button = screen.getByText('Click me');
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass(
+        'tvr-comp-button tvr-comp-button-orange-primary'
+      );
+    });
+
+    it('renders with custom type', () => {
+      render(<OrangeButton $type="secondary">Click me</OrangeButton>);
+      expect(screen.getByText('Click me')).toHaveClass(
+        'tvr-comp-button tvr-comp-button-orange-secondary'
+      );
+    });
+
+    it('renders with custom size and margin', () => {
+      render(
+        <OrangeButton $size="sm" $m="2">
+          Click me
+        </OrangeButton>
+      );
+      expect(screen.getByText('Click me')).toHaveClass(
+        'tvr-comp-button tvr-comp-button-orange-primary tvr-comp-button-sm'
+      );
+    });
   });
 
-  it("should render ButtonWithIcon with icon and size", () => {
-    render(
-      <ButtonWithIcon $icon="plus" $size="lg">
-        Click me
-      </ButtonWithIcon>
-    );
+  describe('ButtonWithIcon', () => {
+    it('renders with default props', () => {
+      render(<ButtonWithIcon $icon="plus">Click me</ButtonWithIcon>);
+      const button = screen.getByText('Click me');
+      expect(button).toBeInTheDocument();
+      expect(button.closest('button')).toHaveClass(
+        'tvr-comp-button tvr-comp-button-primary'
+      );
+      expect(screen.getByTestId('icon-plus')).toBeInTheDocument();
+    });
 
-    expect(screen.getByText("Click me")).toBeInTheDocument();
+    it('renders with custom type and size', () => {
+      render(
+        <ButtonWithIcon $type="secondary" $size="md" $icon="plus">
+          Click me
+        </ButtonWithIcon>
+      );
+      const button = screen.getByText('Click me').closest('button');
+      expect(button).toHaveClass(
+        'tvr-comp-button tvr-comp-button-secondary tvr-comp-button-md'
+      );
+      expect(screen.getByTestId('icon-plus')).toBeInTheDocument();
+    });
+
+    it('renders two "plus" icons when size is "lg"', () => {
+      render(
+        <ButtonWithIcon $size="lg" $icon="plus">
+          Click me
+        </ButtonWithIcon>
+      );
+      const plusIcons = screen.getAllByTestId('icon-plus');
+      expect(plusIcons).toHaveLength(2);
+    });
+
+    it('renders only one "plus" icon when size is not "lg"', () => {
+      render(
+        <ButtonWithIcon $size="sm" $icon="plus">
+          Click me
+        </ButtonWithIcon>
+      );
+      const plusIcons = screen.getAllByTestId('icon-plus');
+      expect(plusIcons).toHaveLength(1);
+    });
   });
 });

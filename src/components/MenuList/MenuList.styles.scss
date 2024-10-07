@@ -1,0 +1,116 @@
+@import "../../parameters/colors.scss";
+
+@mixin commonBackgroundAfterStyle() {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-menu-list);
+  opacity: 0.2;
+  z-index: -1;
+
+}
+
+@mixin commonBackgroundStyle() {
+  position: relative;
+  z-index: 1;
+  border: 0.5px solid var(--color-menu-list);
+}
+
+@mixin borderStyle() {
+  background-image: linear-gradient(180deg, var(--color-menu-list-content), var(--color-menu-list-content));
+  background-size: 100% .52px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+
+.menu-list-container {
+  width: 13.5625rem;
+
+  &__selector {
+    height: 3rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 0.5px solid transparent;
+    border-radius: 0.5rem;
+
+    &-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 2rem;
+
+      &> :last-child {
+        margin-left: 0.5rem;
+      }
+    }
+
+    &:hover {
+      @include commonBackgroundStyle();
+    }
+
+    &:hover::after {
+      @include commonBackgroundAfterStyle();
+    }
+
+
+  }
+
+  svg {
+    fill: var(--color-menu-list-content);
+
+    path {
+      fill: var(--color-menu-list-content);
+    }
+  }
+
+  .menu-list-active {
+    @include commonBackgroundStyle();
+
+    &::after {
+      @include commonBackgroundAfterStyle();
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      height: fit-content;
+      padding: 0.5rem 1rem;
+      box-sizing: border-box;
+      font-size: 0.875rem;
+      font-family: "Gill Sans", sans-serif;
+      font-weight: 400;
+      line-height: 1.0675rem;
+      text-align: left;
+      color: var(--color-menu-list-content);
+      cursor: pointer;
+      @include borderStyle();
+      position: relative;
+
+      a {
+        color: var(--color-menu-list-content);
+        text-decoration: none;
+      }
+
+      &:hover {
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1.0675rem;
+        text-align: left;
+        text-decoration: underline;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import './parameters/colors.scss';
+
+@import './components/Button/Button.styles.scss';
+@import './components/Input/Input.styles.scss';
+@import './components/Dropdown/Dropdown.styles.scss';
+@import './components/Alert/Alert.styles.scss';
+@import './parameters/fonts.scss';
+@import './components/Checkbox/Checkbox.styles.scss';
+@import './components/Text/Text.styles.scss';
+@import './components/Arrow/Arrow.styles.scss';
+@import './components/Input/Input.styles.scss';
+@import './components//Table/Table.styles.scss';
+@import './components/Accordion/Accordion.styles.scss';
+@import './components/Breadcrumb/Breadcrumb.styles.scss';
+@import './components/Circle/Circle.styles.scss';
+@import './components/SectionAccordion/SectionAccordion.styles.scss';
+@import './components/MenuList/MenuList.styles.scss';
+@import './components/Stepper/Stepper.styles.scss';
+@import './components/Tooltip/Tooltip.styles.scss';
+
+:root {
+  color-scheme: dark light;
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  .light {
+    color-scheme: light;
+  }
+}
+
+* {
+  font-family: $font-primary;
+}
+
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}

@@ -1,0 +1,22 @@
+@import "../../parameters/colors";
+
+.tvr-comp-status-circle {
+  border-radius: 50%;
+  border: 2px solid map-get($general-colors, "orange-dark-2");
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: map-get($general-colors, "orange-light-1");
+    border: 2px solid map-get($general-colors, "orange-light-1");
+  }
+
+  &:active {
+    background-color: map-get($general-colors, "orange-dark-2");
+    border: 2px solid map-get($general-colors, "orange-dark-2");
+  }
+}
+
+.tvr-comp-status-circle.active {
+    background-color: #ff6600;
+  }
+  

@@ -3,6 +3,7 @@ import path from "path";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  staticDirs: ["../public"],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",
@@ -12,6 +13,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    'storybook-dark-mode',
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -27,6 +29,15 @@ const config: StorybookConfig = {
         "@": path.resolve(__dirname, "../src"),
       };
     }
+
+    if (config.module && config.module.rules) {
+      config.module.rules.push({
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+        include: path.resolve(__dirname, "../src"),
+      });
+    }
+    
     return config;
   },
 };

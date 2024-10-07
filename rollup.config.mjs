@@ -1,29 +1,76 @@
-import typescript from "rollup-plugin-typescript2";
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import typescript from 'rollup-plugin-typescript2';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import alias from '@rollup/plugin-alias';
+import terser from '@rollup/plugin-terser';
+import { babel } from '@rollup/plugin-babel';
+import analyze from 'rollup-plugin-analyzer';
+import json from '@rollup/plugin-json';
+import pkg from './package.json' assert { type: 'json' };
+import cssnano from 'cssnano';
 
-import pkg from "./package.json" with { type: "json" };
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default {
-  input: "src/index.ts",
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
-      format: "cjs",
+      format: 'cjs',
       sourcemap: true,
     },
     {
       file: pkg.module,
-      format: "esm",
+      format: 'esm',
       sourcemap: true,
     },
   ],
   plugins: [
     peerDepsExternal(),
-    resolve(),
+    resolve({
+      extensions,
+      preferBuiltins: true,
+    }),
     commonjs(),
-    typescript({ useTsconfigDeclarationDir: true })
+    json(),
+    typescript({
+      useTsconfigDeclarationDir: true,
+      clean: true,
+      tsconfig: './tsconfig.json',
+      tsconfigOverride: {
+        exclude: ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
+      },
+    }),
+    babel({
+      exclude: 'node_modules/**',
+      extensions,
+      babelHelpers: 'bundled',
+    }),
+    alias({
+      entries: [{ find: '@', replacement: './src' }],
+    }),
+    postcss({
+      extensions: ['.css', '.scss'],
+      extract: false,
+      minimize: true,
+      use: [
+        [
+          'sass',
+          {
+            includePaths: ['./src/**/*.scss'],
+          },
+        ],
+      ],
+      plugins: [
+        cssnano({
+          preset: 'default',
+        }),
+      ],
+    }),
+    terser(),
+    analyze({ summaryOnly: true }),
   ],
-  external: ["react", "react-dom", "styled-components"],
+  external: ['react', 'react-dom', ...Object.keys(pkg.peerDependencies || {})],
 };
