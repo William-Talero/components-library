@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { ButtonWithIconProps } from "@/components/Button/IButton";
+import type { Meta, StoryObj } from '@storybook/react';
+import { ButtonWithIconProps } from '@/components/Button/IButton';
 declare const meta: Meta<ButtonWithIconProps>;
 export default meta;
 type Story = StoryObj<ButtonWithIconProps>;

@@ -1,19 +1,19 @@
 export declare const buttonSizes: {
-    sm: {
+    small: {
         width: string;
         height: string;
         padding: string;
         fontSize: string;
         smWidth: string;
     };
-    md: {
+    normal: {
         width: string;
         height: string;
         padding: string;
         fontSize: string;
         smWidth: string;
     };
-    lg: {
+    large: {
         width: string;
         height: string;
         padding: string;
