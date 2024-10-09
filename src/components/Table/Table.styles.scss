@@ -1,4 +1,4 @@
-@import "../../parameters/colors";
+@import '../../parameters/colors';
 
 .tvr-comp-table-container {
   width: 100%;
@@ -11,6 +11,7 @@
 
   th,
   td {
+    border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     padding: 1rem 0.5rem;
     text-align: left;
@@ -20,8 +21,19 @@
     }
   }
 
+  tr {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+
   th {
-    font-weight: bold;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    color: light-dark(
+      map-get($general-colors, 'neutral-gray-500'),
+      map-get($general-colors, 'text-white-normal')
+    );
 
     &.sortable {
       cursor: pointer;
@@ -34,7 +46,14 @@
   }
 
   tr {
-    font-weight: 300;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.5%;
+    color: light-dark(
+      map-get($general-colors, 'text-black-dark'),
+      map-get($general-colors, 'text-white-normal')
+    );
   }
 
   //   tr:nth-child(even) {
@@ -64,7 +83,7 @@
     font-weight: bold;
 
     &.text {
-      color: map-get($general-colors, "orange-dark-1");
+      color: map-get($general-colors, 'orange-dark-1');
     }
 
     &:disabled {
@@ -72,7 +91,6 @@
       cursor: not-allowed;
     }
   }
-
 }
 
 .tvr-comp-pagination-number {

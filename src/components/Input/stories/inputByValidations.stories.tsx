@@ -45,7 +45,7 @@ const Template = (args: InputProps) => {
       <Button
         $h="50px"
         $m="1px"
-        $size="md"
+        $size="normal"
         $type="primary"
         $w="200px"
         type="submit"
