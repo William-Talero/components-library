@@ -6,7 +6,7 @@ const meta: Meta<ButtonProps> = {
   title: 'Components/Atoms/Buttons/PrincipalButton',
   component: Button,
   argTypes: {
-    $type: {
+    $variant: {
       control: { type: 'select' },
       options: ['primary', 'secondary'],
     },
@@ -25,7 +25,7 @@ type Story = StoryObj<ButtonProps>;
 
 export const Primary: Story = {
   args: {
-    $type: 'primary',
+    $variant: 'primary',
     $size: 'normal',
     $w: '200px',
     $h: '50px',
@@ -36,7 +36,7 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
-    $type: 'secondary',
+    $variant: 'secondary',
     $size: 'normal',
     $w: '200px',
     $h: '50px',
@@ -47,7 +47,7 @@ export const Secondary: Story = {
 
 export const Disabled: Story = {
   args: {
-    $type: 'secondary',
+    $variant: 'secondary',
     $size: 'normal',
     $w: '200px',
     $h: '50px',

@@ -1,127 +1,98 @@
-@import "../../parameters/sizes";
-@import "../../parameters/colors";
+@import '../../parameters/sizes';
+@import '../../parameters/colors';
 
-@mixin button-base(
-  $type: "primary",
-  $size: "normal",
-  $variant: null
-) {
+@mixin button-base($type: 'primary', $size: 'normal', $outline: false) {
   $sizes: map-get($button-sizes, $size);
-  $is-primary: $type == "primary";
-  $is-orange: $variant == "orange";
+  $is-primary: $type == 'primary';
 
+  $primary-color: map-get($general-colors, 'primary-orange-500');
+  $secondary-color: map-get($general-colors, 'secondary-green-2-500');
+  $primary-hover: map-get($general-colors, 'primary-orange-400');
+  $secondary-hover: map-get($general-colors, 'secondary-green-2-400');
+
+  // Determinar colores basados en tipo y outline
   $bg-color: if(
-    $is-primary,
-    if(
-      $is-orange,
-      map-get($general-colors, "secondary"),
-      map-get($general-colors, "primary")
-    ),
-    transparent
+    $outline,
+    transparent,
+    if($is-primary, $primary-color, $secondary-color)
   );
-  $text-color: if(
-    $is-primary,
-    white,
-    if(
-      $is-orange,
-      map-get($general-colors, "secondary"),
-      light-dark(
-        map-get($general-colors, "terciary"),
-        map-get($general-colors, "primary")
-      )
-    )
-  );
-  $border-color: if(
-    $is-orange,
-    map-get($general-colors, "secondary"),
-    light-dark(
-      map-get($general-colors, "terciary"),
-      map-get($general-colors, "primary")
-    )
-  );
+  $text-color: if($outline, light-dark(#000, #fff), if($is-primary, #000, #fff));
+  $border-color: if($is-primary, $primary-color, $secondary-color);
 
-  width: var(--width, map-get($sizes, "width"));
-  height:  map-get($sizes, "height");
-  padding: map-get($sizes, "padding");
+  width: var(--width, map-get($sizes, 'width'));
+  height: var(--height, map-get($sizes, 'height'));
+  padding: map-get($sizes, 'padding');
   background-color: $bg-color;
-  border: if($is-primary, none, 2px solid $border-color);
+  border: if($outline, 2px solid $border-color, none);
   color: $text-color !important;
   text-align: center;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: var(--margin, 1rem 0);
+  margin: var(--margin, 0);
   cursor: pointer;
-  border-radius: if($is-orange, 1rem, 0.5rem);
-  @if $is-orange {
-    border-top-right-radius: 0;
-  }
+  border-radius: 0.5rem;
+  overflow: hidden;
+
   font: {
-    size: map-get($sizes, "fontSize") !important;
+    size: map-get($sizes, 'fontSize') !important;
     weight: 500 !important;
   }
 
+  // Estados del botón
   &:not(:disabled) {
     &:hover {
-      $hover-color: if(
-        $is-orange,
-        map-get($general-colors, "secondaryHover"),
-        map-get($general-colors, "primaryHover")
-      );
-      background-color: $hover-color;
-      color: if($is-orange, #fff, #000) !important;
+      $hover-bg-color: if($is-primary, $primary-hover, $secondary-hover);
+      background-color: $hover-bg-color;
+      color: if($is-primary, #000, #fff) !important;
       border: none;
 
       :only-child {
-        fill: if($is-orange, #fff, #000) !important;
+        fill: if($is-primary, #000, #fff) !important;
       }
     }
 
     &:active {
-      $active-color: if(
-        $is-orange,
-        map-get($general-colors, "quaternary"),
-        map-get($general-colors, "terciary")
-      );
+      $active-color: if($is-primary, $primary-color, $secondary-color);
       background-color: $active-color;
-      color: #fff !important;
-      @if $is-orange {
-        border: 4px solid map-get($general-colors, "secondaryHover");
-      }
+      color: if($is-primary, #000, #fff) !important;
+
+      // @if $is-primary {F
+      //   border: 4px solid $primary-hover;
+      // }
 
       :only-child {
-        fill: #fff !important;
+        fill: if($is-primary, #000, #fff) !important;
       }
     }
   }
 
   :only-child {
-    fill: if($is-primary, white, $border-color) !important;
+    fill: if($outline, $border-color, if($is-primary, #000, white)) !important;
   }
 
+  // Estado deshabilitado
   &:disabled {
-    $disabled-color: light-dark(
-      map-get($general-colors, "disabled"),
-      map-get($general-colors, "disabledSecond")
+    $disabled-color: if(
+      $is-primary,
+      map-get($general-colors, 'primary-orange-400'),
+      map-get($general-colors, 'secondary-green-2-400')
     );
-    $disabled-text-color: light-dark(
-      map-get($general-colors, "disabledSecond"),
-      map-get($general-colors, "disabled")
-    );
-    background-color: $disabled-color;
+    $disabled-text-color: light-dark(#000, #fff);
+    background-color: if($outline, transparent, $disabled-color);
     cursor: not-allowed;
     color: $disabled-text-color !important;
-    border: none;
-    opacity: 0.7;
+    border: if($outline, 2px solid $disabled-color, none);
 
     :only-child {
       fill: $disabled-text-color !important;
     }
   }
 
+  // Media queries
   @media screen and (max-width: 60rem) {
-    width: var(--width, map-get($sizes, "smWidth"));
+    width: var(--width, map-get($sizes, 'smWidth'));
     font-size: 0.8rem;
   }
 
@@ -130,21 +101,30 @@
   }
 }
 
-@mixin generate-button-classes($type, $variant: null) {
-  $class-name: if($variant, "tvr-comp-button-#{$variant}-#{$type}", "tvr-comp-button-#{$type}");
+.tvr-comp-button-only-icon {
+  border-radius: 1.3rem !important;
+}
 
-  .#{$class-name} {
-    @include button-base($type: $type, $variant: $variant);
+@mixin generate-button-classes($type) {
+  .tvr-comp-button-#{$type} {
+    @include button-base($type: $type);
 
-    @each $size in ("small", "normal", "large") {
+    &.tvr-comp-button-outline {
+      @include button-base($type: $type, $outline: true);
+    }
+
+    @each $size in ('small', 'normal', 'large') {
       &.tvr-comp-button-#{$size} {
-        @include button-base($type: $type, $size: $size, $variant: $variant);
+        @include button-base($type: $type, $size: $size);
+
+        &.tvr-comp-button-outline {
+          @include button-base($type: $type, $size: $size, $outline: true);
+        }
       }
     }
   }
 }
 
-@include generate-button-classes("primary");
-@include generate-button-classes("secondary");
-@include generate-button-classes("primary", "orange");
-@include generate-button-classes("secondary", "orange");
+// Generar clases
+@include generate-button-classes('primary');
+@include generate-button-classes('secondary');

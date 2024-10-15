@@ -22,8 +22,9 @@ export type IconName = keyof typeof icons;
 
 interface IconProps {
   $name: IconName;
-  $w: string;
+  $w?: string;
   $h?: string;
+  $m?: string;
   className?: string;
   [key: string]: unknown;
 }
@@ -32,6 +33,7 @@ const Icon: React.FC<IconProps> = ({
   $name = 'plus',
   $w,
   $h = '100%',
+  $m,
   className = '',
   ...props
 }) => {
@@ -39,7 +41,7 @@ const Icon: React.FC<IconProps> = ({
   return (
     <div
       className={`tvr-comp-icon-container ${className}`}
-      style={{ '--w-container': $w, '--h-container': $h } as React.CSSProperties}
+      style={{ '--w-container': $w, '--h-container': $h, '--m-container': $m } as React.CSSProperties}
       {...props}
     >
       <SvgIcon className="tvr-comp-styled-svg-icon" />

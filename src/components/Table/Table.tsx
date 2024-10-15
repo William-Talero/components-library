@@ -1,8 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import '@/styles.scss';
-import { TableProps, PaginationProps } from './ITable';
+import { TableProps, PaginationProps, Column } from './ITable';
 
-export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
+export function Table<T>({
+  data,
+  columns,
+  itemsPerPage = 10,
+  actions,
+}: TableProps<T>) {
   const [sortConfig, setSortConfig] = useState<{
     key: keyof T;
     direction: 'asc' | 'desc';
@@ -31,19 +36,32 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
     return sortedData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, itemsPerPage, sortedData]);
 
-  const pages = Math.ceil(data.length / itemsPerPage);
-
   const requestSort = (key: keyof T) => {
     let direction: 'asc' | 'desc' = 'asc';
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === 'asc'
-    ) {
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
       direction = 'desc';
     }
     setSortConfig({ key, direction });
   };
+
+  const renderCell = (item: T, column: Column<T>) => {
+    const value = item[column.key];
+
+    if (column.isLink && column.linkPath) {
+      return (
+        <td className="link-cell">
+          <a href={column.linkPath(item)}>
+            {String(value)}
+            <span className="link-icon">➚</span>
+          </a>
+        </td>
+      );
+    }
+
+    return <td>{String(value)}</td>;
+  };
+
+  const pages = Math.ceil(data.length / itemsPerPage);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const number = parseInt(e.target.value);
@@ -68,16 +86,25 @@ export function Table<T>({ data, columns, itemsPerPage = 10 }: TableProps<T>) {
                   )}
                 </th>
               ))}
+              {actions && <th>Actions</th>}
             </tr>
           </thead>
           <tbody>
             {currentTableData.map((item, index) => (
               <tr key={index}>
-                {columns.map((column) => (
-                  <td key={column.key.toString()}>
-                    {String(item[column.key])}
+                {columns.map((column) => renderCell(item, column))}
+                {actions && (
+                  <td className="action-cell">
+                    {actions.map((action, actionIndex) => (
+                      <button
+                        key={actionIndex}
+                        onClick={() => action.onClick(item)}
+                      >
+                        {action.label}
+                      </button>
+                    ))}
                   </td>
-                ))}
+                )}
               </tr>
             ))}
           </tbody>

@@ -3,68 +3,91 @@
 .tvr-comp-table-container {
   width: 100%;
   overflow-x: auto;
-}
 
-.tvr-comp-custom-table {
-  width: 100%;
-  border-collapse: collapse;
+  .tvr-comp-custom-table {
+    width: 100%;
+    border-collapse: collapse;
 
-  th,
-  td {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 1rem 0.5rem;
-    text-align: left;
+    th,
+    td {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0.5rem;
+      text-align: left;
 
-    @media (width < 60rem) {
-      font-size: 0.8rem;
+      @media (width < 60rem) {
+        font-size: 0.8rem;
+      }
     }
-  }
 
-  tr {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-  }
+    tr {
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+    }
 
-  th {
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 700;
-    color: light-dark(
-      map-get($general-colors, 'neutral-gray-500'),
-      map-get($general-colors, 'text-white-normal')
-    );
+    th {
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-weight: 700;
+      color: light-dark(
+        map-get($general-colors, 'neutral-gray-500'),
+        map-get($general-colors, 'text-white-normal')
+      );
 
-    &.sortable {
-      cursor: pointer;
+      &.sortable {
+        cursor: pointer;
 
-      &:hover {
-        background-color: #ddd;
-        color: #000;
+        &:hover {
+          background-color: #ddd;
+          color: #000;
+        }
+      }
+    }
+
+    tr {
+      font-weight: 600;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      letter-spacing: 0.5%;
+      color: light-dark(
+        map-get($general-colors, 'text-black-dark'),
+        map-get($general-colors, 'text-white-normal')
+      );
+    }
+
+    td {
+      &.link-cell {
+        a {
+          color: map-get($general-colors, 'secondary-green-2-600');
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          .link-icon {
+            margin-left: 0.25rem;
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+
+    .action-cell {
+
+      button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        color: #2563EB;
       }
     }
   }
-
-  tr {
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    letter-spacing: 0.5%;
-    color: light-dark(
-      map-get($general-colors, 'text-black-dark'),
-      map-get($general-colors, 'text-white-normal')
-    );
-  }
-
-  //   tr:nth-child(even) {
-  //     background-color: #f9f9f9;
-  //     color: #000;
-  //   }
-
-  //   tr:hover {
-  //     background-color: #f5f5f5;
-  //     color: #000;
-  //   }
 }
 
 .tvr-comp-pagination {

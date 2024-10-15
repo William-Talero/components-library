@@ -12,3 +12,5 @@ export * from './components/Circle';
 export * from './components/Accordion';
 export * from './components/Stepper';
 export * from './components/Tooltip';
+
+export * from './parameters/colors.scss';

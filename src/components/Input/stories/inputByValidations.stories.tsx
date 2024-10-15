@@ -46,7 +46,7 @@ const Template = (args: InputProps) => {
         $h="50px"
         $m="1px"
         $size="normal"
-        $type="primary"
+        $variant="primary"
         $w="200px"
         type="submit"
       >

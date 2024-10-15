@@ -1,0 +1,63 @@
+$prefix: 'tvr-comp-loading';
+
+.#{$prefix} {
+  &-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.#{$prefix}-small {
+      width: 2rem;
+      height: 2rem;
+      .#{$prefix}-dot {
+        width: 0.375rem;
+        height: 0.375rem;
+      }
+    }
+
+    &.#{$prefix}-medium {
+      width: 3rem;
+      height: 3rem;
+      .#{$prefix}-dot {
+        width: 0.6rem;
+        height: 0.6rem;
+      }
+    }
+
+    &.#{$prefix}-large {
+      width: 4rem;
+      height: 4rem;
+      .#{$prefix}-dot {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+    }
+  }
+
+  &-dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+
+    @for $i from 0 through 7 {
+      &:nth-child(#{$i + 1}) {
+        transform: rotate($i * 45deg) translate(120%, 0);
+        animation: #{$prefix}-animation 1.5s infinite ease-in-out;
+        animation-delay: $i * 0.125s;
+      }
+    }
+  }
+}
+
+@keyframes #{$prefix}-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

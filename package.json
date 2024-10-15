@@ -1,6 +1,6 @@
 {
   "name": "components-library",
-  "version": "2.0.7",
+  "version": "2.0.9",
   "description": "Mi librería de componentes React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

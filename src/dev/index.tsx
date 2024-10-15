@@ -2,11 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 const container = document.getElementById('root');
 const root = createRoot(container!);
-import {
-  Button,
-  ButtonWithIcon,
-  OrangeButton,
-} from '../components/Button/Button';
+import { Button } from '../components/Button/Button';
 import { Checkbox } from '@/components/Checkbox/Checkbox';
 import { Alert } from '@/components/Alert/Alert';
 import {
@@ -26,6 +22,7 @@ import {
 import { Arrow } from '@/components/Arrow/Arrow';
 import { Input, InputWithIcon } from '@/components/Input';
 import { Table } from '@/components/Table/Table';
+import {Column, Action} from '@/components/Table/ITable';
 import { Dropdown } from '@/components/Dropdown';
 import { Accordion, AccordionTab } from '@/components/Accordion/Accordion';
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
@@ -36,6 +33,7 @@ import { Stepper } from '@/components/Stepper/Stepper';
 import { Tooltip } from '@/components/Tooltip/Tooltip';
 import { Option } from '@/components/Dropdown/IDropdown';
 import { FileUploader } from '@/components/FileUploader/FileUploader';
+import { Loading } from '@/components/Loading/Loading';
 
 interface DataItem {
   id: string;
@@ -49,14 +47,14 @@ interface DataItem {
   valor: number;
 }
 
-interface Column<T> {
-  key: keyof T;
-  header: string;
-  sortable: boolean;
-}
-
 const columns: Column<DataItem>[] = [
-  { key: 'id', header: 'ID Aporte', sortable: true },
+  {
+    key: 'id',
+    header: 'ID Aporte',
+    sortable: true,
+    isLink: true, 
+    linkPath: (item) => `/user/${item.id}`,
+  },
   { key: 'fechaPago', header: 'Fecha de pago', sortable: true },
   { key: 'fechaAcreditacion', header: 'Fecha de acreditación', sortable: true },
   { key: 'operacion', header: 'Operación', sortable: true },
@@ -65,6 +63,17 @@ const columns: Column<DataItem>[] = [
   { key: 'nitAcreditador', header: 'NIT acreditador', sortable: true },
   { key: 'razonSocial', header: 'Razón social', sortable: true },
   { key: 'valor', header: 'Valor', sortable: true },
+];
+
+const actions: Action[] = [
+  {
+    label: 'Editar',
+    onClick: (item) => console.log('Editar', item),
+  },
+  {
+    label: 'Eliminar',
+    onClick: (item) => console.log('Eliminar', item),
+  }
 ];
 
 const data: DataItem[] = [
@@ -133,43 +142,90 @@ const App = () => (
   <div>
     <h1>Componentes de Ejemplo</h1>
     <h3>Botones Generales</h3>
-    <Button $type="primary" $size="large" $m="10px">
+    <Button $variant="primary" $size="large" $m="10px">
       Botón Primario
     </Button>
-    <Button $type="secondary" $size="large" $m="10px">
+    <Button $variant="secondary" $size="large" $m="10px">
       Botón Primario
     </Button>
-    <Button $type="secondary" $size="large" $m="10px" disabled={true}>
+    <Button $variant="primary" $size="large" $m="10px" $outline>
+      Botón Primario
+    </Button>
+    <Button $variant="secondary" $size="large" $m="10px" $outline>
+      Botón Primario
+    </Button>
+    <Button $variant="primary" $size="large" $m="10px" disabled={true}>
+      Botón Primario
+    </Button>
+    <Button $variant="secondary" $size="large" $m="10px" disabled={true}>
+      Botón Primario
+    </Button>
+    <Button $variant="secondary" $size="large" $m="10px" $outline disabled={true}>
+      Botón Primario
+    </Button>
+    <Button $variant="primary" $size="large" $m="10px" $outline disabled={true}>
       Botón Primario
     </Button>
 
-    <h3>Botones Generales</h3>
-    <ButtonWithIcon $type="primary" $size="large" $m="10px" $icon="plus">
+    <Button $variant="primary" $size="large" $m="10px" $iconLeft>
       Botón Primario
-    </ButtonWithIcon>
-    <ButtonWithIcon $type="secondary" $size="large" $m="10px" $icon="plus">
+    </Button>
+    <Button $variant="secondary" $size="large" $m="10px" $iconLeft>
       Botón Primario
-    </ButtonWithIcon>
-    <ButtonWithIcon
-      $type="secondary"
+    </Button>
+    <Button
+      $variant="secondary"
       $size="large"
       $m="10px"
-      $icon="plus"
       disabled={true}
+      $iconLeft
     >
       Botón Primario
-    </ButtonWithIcon>
+    </Button>
 
-    <h3>Orange Button</h3>
-    <OrangeButton $type="primary" $size="large" $m="10px">
+    <Button $variant="primary" $size="large" $m="10px" $iconRight>
       Botón Primario
-    </OrangeButton>
-    <OrangeButton $type="secondary" $size="large" $m="10px">
+    </Button>
+    <Button $variant="secondary" $size="large" $m="10px" $iconRight>
       Botón Primario
-    </OrangeButton>
-    <OrangeButton $type="secondary" $size="large" $m="10px" disabled={true}>
+    </Button>
+    <Button
+      $variant="secondary"
+      $size="large"
+      $m="10px"
+      disabled={true}
+      $iconRight
+    >
       Botón Primario
-    </OrangeButton>
+    </Button>
+
+    <Button $variant="primary" $size="large" $m="10px" $iconLeft $iconRight>
+      Botón Primario
+    </Button>
+    <Button $variant="secondary" $size="large" $m="10px" $iconLeft $iconRight>
+      Botón Primario
+    </Button>
+    <Button
+      $variant="secondary"
+      $size="large"
+      $m="10px"
+      disabled={true}
+      $iconLeft
+      $iconRight
+    >
+      Botón Primario
+    </Button>
+
+    <Button $variant="secondary" $size="large" $m="10px" disabled={true}>
+      <Loading size="small" color="#fff" />
+    </Button>
+
+    <Loading size="large" color="#fff" />
+    <Loading size="medium" color="#fff" />
+    <Loading size="small" color="#fff" />
+
+    <Button $variant="primary" $size="large" $m="10px" $onlyIcon></Button>
+    <Button $variant="secondary" $size="large" $m="10px" $onlyIcon></Button>
 
     <h3>CheckBox</h3>
     <Checkbox checked={true} onChange={() => {}} />
@@ -444,7 +500,7 @@ const App = () => (
       $errorMessage="Error"
     />
     <h3>Tables</h3>
-    <Table data={data} columns={columns} itemsPerPage={2} />
+    <Table data={data} columns={columns} actions={actions} itemsPerPage={2} />
 
     <h3>Breadcrumb</h3>
     <Breadcrumb items={breadcrumbItems} />

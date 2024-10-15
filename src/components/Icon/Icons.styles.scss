@@ -1,6 +1,7 @@
 .tvr-comp-icon-container {
   width: var(--w-container);
   height: var(--h-container, '100%');
+  margin: var(--m-container, '100%');
   display: flex;
   justify-content: center;
   align-items: center;
