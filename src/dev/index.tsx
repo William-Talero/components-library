@@ -49,30 +49,34 @@ interface DataItem {
 
 const columns: Column<DataItem>[] = [
   {
-    key: 'id',
-    header: 'ID Aporte',
-    sortable: true,
-    isLink: true,
-    linkPath: (item) => `/user/${item.id}`,
+    $key: 'id',
+    $header: 'ID Aporte',
+    $sortable: true,
+    $isLink: true,
+    $linkPath: (item) => `/user/${item.id}`,
   },
-  { key: 'fechaPago', header: 'Fecha de pago', sortable: true },
-  { key: 'fechaAcreditacion', header: 'Fecha de acreditación', sortable: true },
-  { key: 'operacion', header: 'Operación', sortable: true },
-  { key: 'inversion', header: 'Inversión', sortable: true, width: '15rem' },
-  { key: 'objetivo', header: 'Objetivo', sortable: true },
-  { key: 'nitAcreditador', header: 'NIT acreditador', sortable: true },
-  { key: 'razonSocial', header: 'Razón social', sortable: true },
-  { key: 'valor', header: 'Valor', sortable: true },
+  { $key: 'fechaPago', $header: 'Fecha de pago', $sortable: true },
+  {
+    $key: 'fechaAcreditacion',
+    $header: 'Fecha de acreditación',
+    $sortable: true,
+  },
+  { $key: 'operacion', $header: 'Operación', $sortable: true },
+  { $key: 'inversion', $header: 'Inversión', $sortable: true, $width: '15rem' },
+  { $key: 'objetivo', $header: 'Objetivo', $sortable: true },
+  { $key: 'nitAcreditador', $header: 'NIT acreditador', $sortable: true },
+  { $key: 'razonSocial', $header: 'Razón social', $sortable: true },
+  { $key: 'valor', $header: 'Valor', $sortable: true },
 ];
 
 const actions: Action[] = [
   {
-    label: 'Editar',
-    onClick: (item) => console.log('Editar', item),
+    $label: 'Editar',
+    $onClick: (item) => console.log('Editar', item),
   },
   {
-    label: 'Eliminar',
-    onClick: (item) => console.log('Eliminar', item),
+    $label: 'Eliminar',
+    $onClick: (item) => console.log('Eliminar', item),
   },
 ];
 
@@ -528,16 +532,17 @@ const App = () => {
       />
       <h3>Tables</h3>
       <Table
-        data={data}
-        columns={columns}
-        actions={actions}
-        selectionType="radio"
-        onSelectionChange={handleSelectionChange}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        itemsPerPage={2}
-        totalItems={4}
-        onPageChange={handlePageChange}
+        $data={data}
+        $columns={columns}
+        $actions={actions}
+        $selectionType="radio"
+        $onSelectionChange={handleSelectionChange}
+        $currentPage={currentPage}
+        $totalPages={totalPages}
+        $itemsPerPage={2}
+        $totalItems={4}
+        $onPageChange={handlePageChange}
+        $onSort={(key, direction) => console.log(key, direction)}
       />
 
       <h3>Breadcrumb</h3>

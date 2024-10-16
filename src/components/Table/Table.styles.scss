@@ -2,7 +2,7 @@
 
 .tvr-comp-table {
   border: 1px solid
-    light-dark(map-get($general-colors, neutral-table-border-color), #374151);
+    light-dark(map-get($general-colors, neutral-table-border-color), map-get($general-colors, neutral-neutral-700));
   border-radius: 0.5rem;
   padding-bottom: 1rem;
   width: 100%;
@@ -19,10 +19,10 @@
   }
   &::-webkit-scrollbar-thumb {
     background-color: light-dark(#cbd5e1, #4b5563);
-    border-radius: 3px;
+    border-radius: .5rem;
   }
   border-bottom: 1px solid
-    light-dark(map-get($general-colors, neutral-table-border-color), #374151);
+    light-dark(map-get($general-colors, neutral-table-border-color), map-get($general-colors, neutral-neutral-700));
 
   .tvr-comp-custom-table {
     width: 100%;
@@ -35,7 +35,7 @@
     td {
       padding: 1rem 0.5rem;
       text-align: left;
-      border-bottom: 1px solid light-dark(#e5e7eb, #374151);
+      border-bottom: 1px solid light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
 
       &:first-child {
         padding-left: 1rem;
@@ -51,18 +51,24 @@
     }
 
     th {
-      background-color: light-dark(#f9fafb, #1f2937);
+      background-color: light-dark(
+        #f9fafb,
+        map-get($general-colors, neutral-neutral-700)
+      );
       font-size: 0.75rem;
       line-height: 1rem;
       font-weight: 600;
-      color: light-dark(#6b7280, #d1d5db);
+      color: light-dark(#6b7280, map-get($general-colors, text-white-light));
       text-transform: uppercase;
 
       &.sortable {
         cursor: pointer;
 
         &:hover {
-          background-color: light-dark(#f3f4f6, #374151);
+          background-color: light-dark(
+            #f3f4f6,
+            map-get($general-colors, neutral-neutral-800)
+          );
         }
       }
     }
@@ -75,7 +81,10 @@
       }
 
       &.selected {
-        background-color: light-dark(#f3f4f6, #374151);
+        background-color: light-dark(
+          #f3f4f6,
+          map-get($general-colors, neutral-neutral-800)
+        );
       }
     }
 
@@ -87,6 +96,7 @@
 
       &.link-cell {
         a {
+          width: fit-content;
           font-weight: 600;
           color: map-get($general-colors, secondary-green-placeholder);
           border-bottom: 2px solid
@@ -171,8 +181,8 @@
       width: 2.375rem;
       height: 2.375rem;
       background-color: map-get($general-colors, primary-orange-500);
-      color: #fff;
-      border-radius: .5rem;
+      color: map-get($general-colors, text-white-light);
+      border-radius: 0.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -180,7 +190,8 @@
       font-weight: 600;
     }
 
-    &-divider, &-total {
+    &-divider,
+    &-total {
       margin: 0 0.5rem;
       font-size: 1rem;
       font-weight: 600;
@@ -201,7 +212,7 @@
       height: 2rem;
       margin: 0 0.5rem;
       padding: 0 0.5rem;
-      border: 1px solid light-dark(#e5e7eb, #4b5563);
+      border: 1px solid light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
       border-radius: 0.25rem;
       text-align: start;
       font-size: 0.875rem;
@@ -215,9 +226,8 @@
   }
 }
 
-// Estilos para los inputs de selección (checkbox y radio)
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   width: 1rem;
   height: 1rem;
   margin-right: 0.5rem;

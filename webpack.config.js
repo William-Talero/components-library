@@ -35,6 +35,6 @@ module.exports = {
       directory: path.join(__dirname, 'src/dev'),
     },
     compress: true,
-    port: 3011,
+    port: 3007,
   },
 };
