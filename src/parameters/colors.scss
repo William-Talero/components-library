@@ -119,6 +119,7 @@ $general-colors: (
   secondary-green-700: #576a1d,
   secondary-green-800: #435217,
   secondary-green-900: #333f11,
+  secondary-green-placeholder: #497111,
 
   // Secondary Green 2
   secondary-green-2-50: #eef2e7,
@@ -212,5 +213,9 @@ $general-colors: (
   neutral-neutral-600: #696969,
   neutral-neutral-700: #525252,
   neutral-neutral-800: #3f3f3f,
-  neutral-neutral-900: #303030
+  neutral-neutral-900: #303030,
+
+
+  // Other colors
+  neutral-table-border-color: #BBBEC5
 );

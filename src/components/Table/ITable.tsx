@@ -4,6 +4,7 @@ export interface Column<T> {
   sortable?: boolean;
   isLink?: boolean;
   linkPath?: (item: T) => string;
+  width?: string;
 }
 
 export interface Action {
@@ -11,17 +12,25 @@ export interface Action {
   onClick: (item: unknown) => void;
 }
 
+export type SelectionType = 'checkbox' | 'radio' | 'none';
+
 export interface TableProps<T> {
   data: T[];
   columns: Column<T>[];
-  itemsPerPage?: number;
   actions?: Action[];
+  selectionType?: SelectionType;
+  onSelectionChange?: (selectedItems: T[]) => void;
+  currentPage: number;
+  totalPages: number;
+  itemsPerPage: number;
+  totalItems: number;
+  onPageChange: (newPage: number) => void;
 }
 
 export interface PaginationProps {
   currentPage: number;
-  totalCount: number;
-  pageSize: number;
-  onPageChange: (page: number) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  totalPages: number;
+  itemsPerPage: number;
+  totalItems: number;
+  onPageChange: (newPage: number) => void;
 }

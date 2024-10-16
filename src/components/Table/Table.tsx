@@ -1,98 +1,118 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import '@/styles.scss';
-import { TableProps, PaginationProps, Column } from './ITable';
+import { TableProps, Column, SelectionType, PaginationProps } from './ITable';
+import Icon from '../Icon/Icons';
 
 export function Table<T>({
   data,
   columns,
-  itemsPerPage = 10,
   actions,
+  selectionType = 'none',
+  onSelectionChange,
+  currentPage,
+  totalPages,
+  itemsPerPage,
+  totalItems,
+  onPageChange,
 }: TableProps<T>) {
-  const [sortConfig, setSortConfig] = useState<{
-    key: keyof T;
-    direction: 'asc' | 'desc';
-  } | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const sortedData = useMemo(() => {
-    const sortableItems = [...data];
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'asc' ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'asc' ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortableItems;
-  }, [data, sortConfig]);
-
-  const currentTableData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * itemsPerPage;
-    const lastPageIndex = firstPageIndex + itemsPerPage;
-    return sortedData.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, itemsPerPage, sortedData]);
-
-  const requestSort = (key: keyof T) => {
-    let direction: 'asc' | 'desc' = 'asc';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
-    }
-    setSortConfig({ key, direction });
-  };
+  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
 
   const renderCell = (item: T, column: Column<T>) => {
     const value = item[column.key];
 
     if (column.isLink && column.linkPath) {
-      return (
-        <td className="link-cell">
-          <a href={column.linkPath(item)}>
-            {String(value)}
-            <span className="link-icon">➚</span>
-          </a>
-        </td>
-      );
+      return <a href={column.linkPath(item)}>{String(value)}</a>;
     }
 
-    return <td>{String(value)}</td>;
+    return String(value);
   };
 
-  const pages = Math.ceil(data.length / itemsPerPage);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const number = parseInt(e.target.value);
-    setCurrentPage(Number.isNaN(number) ? 0 : number < pages ? number : pages);
+  const toggleRowSelection = (index: number) => {
+    let newSelectedRows: number[];
+    if (selectionType === 'radio') {
+      newSelectedRows = [index];
+    } else {
+      newSelectedRows = selectedRows.includes(index)
+        ? selectedRows.filter((i) => i !== index)
+        : [...selectedRows, index];
+    }
+    setSelectedRows(newSelectedRows);
+    if (onSelectionChange) {
+      onSelectionChange(newSelectedRows.map((i) => data[i]));
+    }
   };
 
   return (
-    <>
+    <div className="tvr-comp-table">
       <div className="tvr-comp-table-container">
         <table className="tvr-comp-custom-table">
+          <colgroup>
+            {selectionType !== 'none' && <col style={{ width: '40px' }} />}
+            {columns.map((column, index) => (
+              <col
+                key={index}
+                style={{ width: column.width || 'auto', minWidth: column.width }}
+              />
+            ))}
+            {actions && <col style={{ width: 'auto' }} />}
+          </colgroup>
           <thead>
             <tr>
+              {selectionType !== 'none' && (
+                <th style={{ width: '40px' }}>
+                  {selectionType === 'checkbox' && (
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        const newSelectedRows = e.target.checked
+                          ? data.map((_, index) => index)
+                          : [];
+                        setSelectedRows(newSelectedRows);
+                        if (onSelectionChange) {
+                          onSelectionChange(newSelectedRows.map((i) => data[i]));
+                        }
+                      }}
+                      checked={selectedRows.length === data.length}
+                    />
+                  )}
+                </th>
+              )}
               {columns.map((column) => (
                 <th
                   key={column.key.toString()}
-                  onClick={() => column.sortable && requestSort(column.key)}
                   className={column.sortable ? 'sortable' : ''}
+                  style={{ width: column.width, minWidth: column.width }}
                 >
                   {column.header}
-                  {sortConfig?.key === column.key && (
-                    <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
-                  )}
                 </th>
               ))}
               {actions && <th>Actions</th>}
             </tr>
           </thead>
           <tbody>
-            {currentTableData.map((item, index) => (
-              <tr key={index}>
-                {columns.map((column) => renderCell(item, column))}
+            {data.map((item, index) => (
+              <tr
+                key={index}
+                className={selectedRows.includes(index) ? 'selected' : ''}
+              >
+                {selectionType !== 'none' && (
+                  <td style={{ width: '40px' }}>
+                    <input
+                      type={selectionType}
+                      checked={selectedRows.includes(index)}
+                      onChange={() => toggleRowSelection(index)}
+                    />
+                  </td>
+                )}
+                {columns.map((column) => (
+                  <td
+                    key={column.key.toString()}
+                    className={column.isLink ? 'link-cell' : ''}
+                    style={{ width: column.width, minWidth: column.width }}
+                  >
+                    {renderCell(item, column)}
+                  </td>
+                ))}
                 {actions && (
                   <td className="action-cell">
                     {actions.map((action, actionIndex) => (
@@ -112,59 +132,67 @@ export function Table<T>({
       </div>
       <Pagination
         currentPage={currentPage}
-        totalCount={data.length}
-        pageSize={itemsPerPage}
-        onPageChange={(page) => setCurrentPage(page)}
-        onChange={handleChange}
+        totalPages={totalPages}
+        itemsPerPage={itemsPerPage}
+        totalItems={totalItems}
+        onPageChange={onPageChange}
       />
-    </>
+    </div>
   );
 }
 
 function Pagination({
   currentPage,
-  totalCount,
-  pageSize,
+  totalPages,
+  itemsPerPage,
+  totalItems,
   onPageChange,
-  onChange,
 }: PaginationProps) {
-  const totalPages = Math.ceil(totalCount / pageSize);
-
   if (totalPages <= 1) {
     return null;
   }
 
   return (
     <div className="tvr-comp-pagination">
-      <button
-        onClick={() => onPageChange(1)}
-        disabled={currentPage === 1}
-        className="text"
-      >
-        Ir al inicio
-      </button>
-      <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        {'<'}
-      </button>
-      <div className="tvr-comp-pagination-number">
-        <input value={currentPage} onChange={onChange} /> / {totalPages}
+      <div className="tvr-comp-pagination-controls">
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <Icon $name="leftArrow" $h="16px" />
+        </button>
+        <div className="tvr-comp-pagination-number">
+          <div className="tvr-comp-pagination-number-current">{currentPage}</div>
+          <div className="tvr-comp-pagination-number-divider">of</div>
+          <div className="tvr-comp-pagination-number-total">{totalPages}</div>
+        </div>
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <Icon $name="rightArrow" $h="16px" />
+        </button>
       </div>
-      <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        {'>'}
-      </button>
-      <button
-        onClick={() => onPageChange(totalPages)}
-        disabled={currentPage === totalPages}
-        className="text"
-      >
-        Ir al final
-      </button>
+      <div className="tvr-comp-pagination-input">
+        <span>Registro por página:</span>
+        <input
+          type="number"
+          value={itemsPerPage}
+          min={1}
+          max={totalPages}
+          disabled
+        />
+        <span>Total:</span>
+        <input
+          type="number"
+          value={totalItems}
+          min={1}
+          max={totalItems}
+          disabled
+        />
+      </div>
     </div>
   );
 }
+
+export default Table;
