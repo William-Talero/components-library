@@ -226,6 +226,22 @@
   }
 }
 
+.tvr-comp-pagination-select {
+  width: 4rem;
+  height: 2rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
+  background-color: transparent;
+  font-size: 0.875rem;
+  color: inherit;
+
+  option {
+    font-size: 0.875rem;
+    background-color: light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
+  }
+}
+
 input[type='checkbox'],
 input[type='radio'] {
   width: 1rem;

@@ -145,7 +145,7 @@ const dropdownOptions: Option[] = [
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState<DataItem[]>([]);
-  const itemsPerPage = 2;
+  const [itemsPerPage, setItemsPerPage] = useState(2);
 
   const totalPages = Math.ceil(allData.length / itemsPerPage);
 
@@ -162,6 +162,8 @@ const App = () => {
   const handleSelectionChange = (selectedItems: DataItem[]) => {
     console.log(selectedItems);
   };
+
+  const itemsPerPageOptions = [2, 10, 20, 30];
 
   return (
     <div>
@@ -539,10 +541,15 @@ const App = () => {
         $onSelectionChange={handleSelectionChange}
         $currentPage={currentPage}
         $totalPages={totalPages}
-        $itemsPerPage={2}
+        $itemsPerPage={itemsPerPage}
         $totalItems={4}
         $onPageChange={handlePageChange}
         $onSort={(key, direction) => console.log(key, direction)}
+        $itemsPerPageOptions={itemsPerPageOptions}
+        $onItemsPerPageChange={(newItemsPerPage: number) => {
+          setItemsPerPage(newItemsPerPage);
+          setCurrentPage(1);
+        }}
       />
 
       <h3>Breadcrumb</h3>

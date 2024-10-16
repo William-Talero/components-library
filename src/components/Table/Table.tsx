@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '@/styles.scss';
-import { TableProps, Column, SelectionType, PaginationProps } from './ITable';
+import { TableProps, Column, PaginationProps } from './ITable';
 import Icon from '../Icon/Icons';
 
 export function Table<T>({
@@ -15,12 +15,14 @@ export function Table<T>({
   $totalItems,
   $onPageChange,
   $onSort,
+  $itemsPerPageOptions,
+  $onItemsPerPageChange,
 }: TableProps<T>) {
-  const [selectedRows, setSelectedRows] = useState<number[]>([]);
-  const [sortConfig, setSortConfig] = useState<{
-    key: keyof T;
-    direction: 'asc' | 'desc';
-  } | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  const getItemId = (item: T): string => {
+    return (item as { id?: string }).id?.toString() || JSON.stringify(item);
+  };
 
   const renderCell = (item: T, column: Column<T>) => {
     const value = item[column.$key];
@@ -32,31 +34,38 @@ export function Table<T>({
     return String(value);
   };
 
-  const toggleRowSelection = (index: number) => {
-    let newSelectedRows: number[];
+  const toggleRowSelection = (item: T) => {
+    const itemId = getItemId(item);
+    const newSelectedIds = new Set(selectedIds);
+
     if ($selectionType === 'radio') {
-      newSelectedRows = [index];
+      newSelectedIds.clear();
+      newSelectedIds.add(itemId);
     } else {
-      newSelectedRows = selectedRows.includes(index)
-        ? selectedRows.filter((i) => i !== index)
-        : [...selectedRows, index];
+      if (newSelectedIds.has(itemId)) {
+        newSelectedIds.delete(itemId);
+      } else {
+        newSelectedIds.add(itemId);
+      }
     }
-    setSelectedRows(newSelectedRows);
+
+    setSelectedIds(newSelectedIds);
     if ($onSelectionChange) {
-      $onSelectionChange(newSelectedRows.map((i) => $data[i]));
+      const selectedItems = $data.filter((item) =>
+        newSelectedIds.has(getItemId(item))
+      );
+      $onSelectionChange(selectedItems);
     }
   };
 
   const handleSort = (key: keyof T) => {
-    let direction: 'asc' | 'desc' = 'asc';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
-    }
-    setSortConfig({ key, direction });
+    const direction: 'asc' | 'desc' = 'asc';
     if ($onSort) {
       $onSort(key, direction);
     }
   };
+
+  const isItemSelected = (item: T) => selectedIds.has(getItemId(item));
 
   return (
     <div className="tvr-comp-table">
@@ -83,17 +92,21 @@ export function Table<T>({
                     <input
                       type="checkbox"
                       onChange={(e) => {
-                        const newSelectedRows = e.target.checked
-                          ? $data.map((_, index) => index)
-                          : [];
-                        setSelectedRows(newSelectedRows);
+                        const newSelectedIds = e.target.checked
+                          ? new Set($data.map(getItemId))
+                          : new Set<string>();
+                        setSelectedIds(newSelectedIds);
                         if ($onSelectionChange) {
                           $onSelectionChange(
-                            newSelectedRows.map((i) => $data[i])
+                            $data.filter((item) =>
+                              newSelectedIds.has(getItemId(item))
+                            )
                           );
                         }
                       }}
-                      checked={selectedRows.length === $data.length}
+                      checked={
+                        $data.length > 0 && selectedIds.size === $data.length
+                      }
                     />
                   )}
                 </th>
@@ -106,26 +119,23 @@ export function Table<T>({
                   onClick={() => column.$sortable && handleSort(column.$key)}
                 >
                   {column.$header}
-                  {sortConfig && sortConfig.key === column.$key && (
-                    <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
-                  )}
                 </th>
               ))}
               {$actions && <th>Actions</th>}
             </tr>
           </thead>
           <tbody>
-            {$data.map((item, index) => (
+            {$data.map((item) => (
               <tr
-                key={index}
-                className={selectedRows.includes(index) ? 'selected' : ''}
+                key={getItemId(item)}
+                className={isItemSelected(item) ? 'selected' : ''}
               >
                 {$selectionType !== 'none' && (
                   <td style={{ width: '40px' }}>
                     <input
                       type={$selectionType}
-                      checked={selectedRows.includes(index)}
-                      onChange={() => toggleRowSelection(index)}
+                      checked={isItemSelected(item)}
+                      onChange={() => toggleRowSelection(item)}
                     />
                   </td>
                 )}
@@ -161,6 +171,8 @@ export function Table<T>({
         $itemsPerPage={$itemsPerPage}
         $totalItems={$totalItems}
         $onPageChange={$onPageChange}
+        $itemsPerPageOptions={$itemsPerPageOptions}
+        $onItemsPerPageChange={$onItemsPerPageChange}
       />
     </div>
   );
@@ -172,8 +184,10 @@ function Pagination({
   $itemsPerPage,
   $totalItems,
   $onPageChange,
+  $itemsPerPageOptions,
+  $onItemsPerPageChange,
 }: PaginationProps) {
-  if ($totalPages <= 1) {
+  if ($totalPages < 1) {
     return null;
   }
 
@@ -199,14 +213,18 @@ function Pagination({
         </button>
       </div>
       <div className="tvr-comp-pagination-input">
-        <span>Registro por página:</span>
-        <input
-          type="number"
+        <span>Registros por página:</span>
+        <select
           value={$itemsPerPage}
-          min={1}
-          max={$totalPages}
-          disabled
-        />
+          onChange={(e) => $onItemsPerPageChange(Number(e.target.value))}
+          className="tvr-comp-pagination-select"
+        >
+          {$itemsPerPageOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
         <span>Total:</span>
         <input
           type="number"
