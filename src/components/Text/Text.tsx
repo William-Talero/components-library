@@ -36,51 +36,27 @@ const TextBase: React.FC<TextBaseProps> = ({
 );
 
 export const Title1: React.FC<TextBaseProps> = (props) => (
-  <TextBase
-    {...props}
-    className={'tvr-comp-title1 ' + props.className}
-    as="h1"
-  />
+  <TextBase {...props} className={'tvr-comp-title1 ' + props.className} as="h1" />
 );
 
 export const Title2: React.FC<TextBaseProps> = (props) => (
-  <TextBase
-    {...props}
-    className={'tvr-comp-title2 ' + props.className}
-    as="h2"
-  />
+  <TextBase {...props} className={'tvr-comp-title2 ' + props.className} as="h2" />
 );
 
 export const Title3: React.FC<TextBaseProps> = (props) => (
-  <TextBase
-    {...props}
-    className={'tvr-comp-title3 ' + props.className}
-    as="h3"
-  />
+  <TextBase {...props} className={'tvr-comp-title3 ' + props.className} as="h3" />
 );
 
 export const Title4: React.FC<TextBaseProps> = (props) => (
-  <TextBase
-    {...props}
-    className={'tvr-comp-title4 ' + props.className}
-    as="h4"
-  />
+  <TextBase {...props} className={'tvr-comp-title4 ' + props.className} as="h4" />
 );
 
 export const Title5: React.FC<TextBaseProps> = (props) => (
-  <TextBase
-    {...props}
-    className={'tvr-comp-title5 ' + props.className}
-    as="h5"
-  />
+  <TextBase {...props} className={'tvr-comp-title5 ' + props.className} as="h5" />
 );
 
 export const Title6: React.FC<TextBaseProps> = (props) => (
-  <TextBase
-    {...props}
-    className={'tvr-comp-title6 ' + props.className}
-    as="h6"
-  />
+  <TextBase {...props} className={'tvr-comp-title6 ' + props.className} as="h6" />
 );
 
 export const Text1: React.FC<TextBaseProps> = (props) => (
@@ -103,11 +79,60 @@ export const TextCTA: React.FC<TextBaseProps> = (props) => (
   <TextBase {...props} className={'tvr-comp-textCta ' + props.className} />
 );
 
+export const TextSupporting: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-textSupporting ' + props.className}
+  />
+);
+
+export const TextTitleHeader: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-textTitleHeader ' + props.className}
+  />
+);
+
+export const TextXlBold: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-text-xl-bold ' + props.className}
+  />
+);
+
+export const TextMdRegular: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-text-md-regular ' + props.className}
+  />
+);
+
 export const TextLink: React.FC<TextBaseProps> = (props) => (
   <TextBase
     {...props}
     className={'tvr-comp-textLink ' + props.className}
     color="#FB6903"
     darkColor="#FB6903"
+  />
+);
+
+export const TextXsSemiBold: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-text-xs-semi-bold ' + props.className}
+  />
+);
+
+export const TextSmSemiBold: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-text-sm-semi-bold ' + props.className}
+  />
+);
+
+export const TextLgSemiBold: React.FC<TextBaseProps> = (props) => (
+  <TextBase
+    {...props}
+    className={'tvr-comp-text-lg-semi-bold ' + props.className}
   />
 );

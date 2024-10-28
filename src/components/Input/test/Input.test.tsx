@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, InputWithIcon } from '../Input';
+import { Input } from '../Input';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { performValidation } from '../utils/validationUtils';
 
@@ -28,6 +28,40 @@ describe('Input Component', () => {
     render(<Input value="edited" />);
     const inputElement = screen.getByDisplayValue('edited');
     expect(inputElement).toBeInTheDocument();
+  });
+  it('renders input with icon', () => {
+    render(<Input $icon="plus" />);
+    const iconElement = document.querySelector('.trv-comp-input-icon');
+    expect(iconElement).toBeInTheDocument();
+  });
+  it('renders input with icon and size', () => {
+    render(<Input $icon="plus" $size="large" />);
+    const iconElement = document.querySelector('.trv-comp-input-icon');
+    expect(iconElement).toBeInTheDocument();
+  });
+  it('renders input with left icon ', () => {
+    render(<Input $size="large" $iconLeft="plus" />);
+    const iconElement = document.querySelector('.trv-comp-input-icon');
+    expect(iconElement).toBeInTheDocument();
+  });
+
+  it('renders input with right icon ', () => {
+    render(<Input $size="large" $iconRight="plus" />);
+    const iconElement = document.querySelector('.trv-comp-input-icon');
+    expect(iconElement).toBeInTheDocument();
+  });
+  it('renders input with icon and handles icon click', () => {
+    const handleClick = jest.fn();
+    render(<Input $icon="arrowDropDown" $onClickIcon={handleClick} />);
+    const inputElement = screen.getByRole('textbox');
+    const iconElement = document.querySelector('.trv-comp-input-icon');
+    expect(inputElement).toBeInTheDocument();
+    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toHaveClass('trv-comp-input-icon');
+    if (iconElement) {
+      fireEvent.click(iconElement);
+      expect(handleClick).toHaveBeenCalledTimes(1);
+    }
   });
 });
 
@@ -70,6 +104,17 @@ describe('Input Component Styles', () => {
       .getByRole('textbox')
       .closest('.trv-comp-input-wrapper');
     expect(inputWrapper).toHaveClass('trv-comp-not-editable');
+  });
+
+  it('applies disabled class when disabled is true inline', () => {
+    render(<Input $variant="inline" />);
+    const iconElement = document.querySelector('.trv-comp-input-line');
+    expect(iconElement).toBeInTheDocument();
+  });
+  it('applies disabled class when disabled is true rounded', () => {
+    render(<Input $variant="rounded" />);
+    const iconElement = document.querySelector('.trv-comp-input-radius-all');
+    expect(iconElement).toBeInTheDocument();
   });
 });
 
@@ -188,9 +233,7 @@ describe('Input Component Functionality', () => {
       fireEvent.change(inputElement, { target: { value: '12345' } });
       fireEvent.focusOut(inputElement);
 
-      const errorMessage = screen.getByText(
-        'Input does not match the pattern.'
-      );
+      const errorMessage = screen.getByText('Input does not match the pattern.');
       expect(errorMessage).toBeInTheDocument();
 
       const helpText = screen.queryByText('Please enter valid input.');
@@ -215,9 +258,7 @@ describe('Input Component Functionality', () => {
     const helpText = screen.getByText('Please enter valid input.');
     expect(helpText).toBeInTheDocument();
 
-    const errorMessage = screen.queryByText(
-      'Input does not match the pattern.'
-    );
+    const errorMessage = screen.queryByText('Input does not match the pattern.');
     expect(errorMessage).toBeNull();
   });
 });
@@ -246,33 +287,55 @@ describe('performValidation Function', () => {
   });
 });
 
-describe('InputWithIcon Component', () => {
-  it('renders input with icon', () => {
-    render(<InputWithIcon $icon="plus" />);
-    const iconElement = document.querySelector('.trv-comp-input-icon');
-    expect(iconElement).toBeInTheDocument();
-  });
-
-  it('renders input with icon', () => {
-    render(<InputWithIcon $icon="plus" />);
-    const iconElement = document.querySelector('.trv-comp-input-icon');
-    expect(iconElement).toBeInTheDocument();
-  });
-
-  it('renders input with icon and handles icon click', () => {
-    const handleClick = jest.fn();
-    render(<InputWithIcon $icon="arrowDropDown" $onClickIcon={handleClick} />);
-
+describe('Input Component handleChange', () => {
+  it('updates value state on change', () => {
+    render(<Input />);
     const inputElement = screen.getByRole('textbox');
-    const iconElement = document.querySelector('.trv-comp-input-icon');
+    fireEvent.change(inputElement, { target: { value: 'new value' } });
+    expect(inputElement).toHaveDisplayValue('new value');
+  });
 
-    expect(inputElement).toBeInTheDocument();
-    expect(iconElement).toBeInTheDocument();
-    expect(iconElement).toHaveClass('trv-comp-input-icon');
+  it('calls onChange prop when value changes', () => {
+    const handleChange = jest.fn();
+    render(<Input onChange={handleChange} />);
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: 'new value' } });
+    expect(handleChange).toHaveBeenCalledTimes(1);
+  });
 
-    if (iconElement) {
-      fireEvent.click(iconElement);
-      expect(handleClick).toHaveBeenCalledTimes(1);
-    }
+  it('validates input and sets error state when input is invalid', () => {
+    render(<Input pattern={/^.{6,}$/} $errorMessage="Input is too short" />);
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: 'short' } });
+    fireEvent.blur(inputElement);
+    const errorMessage = screen.getByText('Input is too short');
+    expect(errorMessage).toBeInTheDocument();
+  });
+
+  it('removes error state when input becomes valid', () => {
+    render(<Input pattern={/^.{6,}$/} $errorMessage="Input is too short" />);
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: 'short' } });
+    fireEvent.blur(inputElement);
+    fireEvent.change(inputElement, { target: { value: 'long enough' } });
+    fireEvent.blur(inputElement);
+    const errorMessage = screen.queryByText('Input is too short');
+    expect(errorMessage).toBeNull();
+  });
+});
+describe('Input Component Error Handling', () => {
+  it('displays custom error message when validation fails', () => {
+    render(
+      <Input
+        pattern={/^.{6,}$/}
+        $errorMessage="Custom error message"
+        value="short"
+      />
+    );
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: 'short' } });
+    fireEvent.blur(inputElement);
+    const errorMessage = screen.getByText('Custom error message');
+    expect(errorMessage).toBeInTheDocument();
   });
 });

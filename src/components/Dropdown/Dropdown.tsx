@@ -2,12 +2,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { DropdownProps, Option } from './IDropdown';
-import { InputWithIcon } from '../Input';
+import { Input } from '../Input';
 
 const Dropdown: React.FC<DropdownProps> = ({
   $options,
   $classNameContainer,
   $classNameList,
+  onChange,
   onSelect,
   $w,
   $m,
@@ -29,7 +30,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         setInputValue(matchingOption.text);
       } else {
         console.error(
-          'Error: El valor inicial "${$initialValue}" no coincide' +
+          `Error: El valor inicial "${$initialValue}" no coincide ` +
             'con ninguna opción.'
         );
       }
@@ -40,13 +41,18 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setInputValue(value);
+    if ($initialValue) {
+      setInputValue(value);
+    }
     setFilteredOptions(
       $options.filter((option) =>
         option.text.toLowerCase().includes(value.toLowerCase())
       )
     );
     setHighlightedIndex(-1);
+    if (onChange) {
+      onChange(e as any);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -64,23 +70,31 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleSelect = (option: Option) => {
-    setInputValue(option.text);
+    if ($initialValue) {
+      setInputValue(option.text);
+    }
     setIsOpen(false);
+    const valueSelected = { ...option, name: props.name };
     if (onSelect) {
       const event = new Event('select', { bubbles: true });
       Object.defineProperty(event, 'target', {
         writable: false,
-        value: option,
+        value: valueSelected,
       });
       onSelect(event as any);
+    }
+    if (onChange) {
+      const event = new Event('select', { bubbles: true });
+      Object.defineProperty(event, 'target', {
+        writable: false,
+        value: valueSelected,
+      });
+      onChange(event as any);
     }
   };
 
   const handleClickOutside = (e: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(e.target as Node)
-    ) {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
       setIsOpen(false);
     }
   };
@@ -105,7 +119,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         margin: $m,
       }}
     >
-      <InputWithIcon
+      <Input
         $icon="arrowDropDown"
         value={inputValue}
         onChange={handleInputChange}

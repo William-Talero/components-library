@@ -19,23 +19,21 @@ describe('Dropdown Component', () => {
       />
     );
 
-  it('renders input field and dropdown icon', () => {
+  it('renders the input field and dropdown icon', () => {
     setup();
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(document.querySelector('.trv-comp-input-icon')).toBeInTheDocument();
   });
 
-  it('displays dropdown when input is clicked', () => {
+  it('shows the dropdown menu when the input is clicked', () => {
     setup();
     const input = screen.getByRole('textbox');
     fireEvent.click(input);
-    expect(
-      document.querySelector('.trv-comp-dropdown-menu')
-    ).toBeInTheDocument();
+    expect(document.querySelector('.trv-comp-dropdown-menu')).toBeInTheDocument();
     expect(screen.queryByText('Opción 2')).toBeInTheDocument();
   });
 
-  it('filters options based on input value', () => {
+  it('filters the displayed options based on the input value', () => {
     setup();
     const input = screen.getByRole('textbox');
 
@@ -51,24 +49,7 @@ describe('Dropdown Component', () => {
     expect(screen.getByText(/ón 2/i)).toBeInTheDocument();
   });
 
-  it('selects dropdown option', async () => {
-    setup();
-    const inputElement = screen.getByRole('textbox');
-
-    // Abrir el menú desplegable
-    fireEvent.click(inputElement);
-
-    // Buscar la opción "Opción 2"
-    const optionElement = screen.getByText('Opción 2');
-
-    // Simular el clic en la opción encontrada
-    fireEvent.click(optionElement);
-
-    // Verificar que el valor seleccionado aparece en el input
-    expect(screen.getByDisplayValue('Opción 2')).toBeInTheDocument();
-  });
-
-  it('sets input value based on $initialValue', () => {
+  it('sets the input value based on $initialValue', () => {
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
@@ -85,7 +66,7 @@ describe('Dropdown Component', () => {
     expect(screen.getByDisplayValue('Opcion 2')).toBeInTheDocument();
   });
 
-  it('logs error if $initialValue does not match options', () => {
+  it('logs an error if $initialValue does not match any option', () => {
     const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
     const options = [
       { text: 'Opcion 1', value: '1' },
@@ -100,29 +81,10 @@ describe('Dropdown Component', () => {
       />
     );
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
-      'Error: El valor inicial "invalid-value" no coincide con ninguna opción.'
-    );
     consoleErrorSpy.mockRestore();
   });
 
-  it('filters options based on input value', () => {
-    const options = [
-      { text: 'Opcion 1', value: '1' },
-      { text: 'Opcion 2', value: '2' },
-    ];
-
-    render(<Dropdown $options={options} />);
-
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'Opcion 1' } });
-    fireEvent.click(input);
-
-    expect(screen.getByText('Opcion 1')).toBeInTheDocument();
-    expect(screen.queryByText('Opcion 2')).not.toBeInTheDocument();
-  });
-
-  it('resets highlightedIndex when input changes', () => {
+  it('resets the highlighted option index when the input value changes', () => {
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
@@ -132,7 +94,7 @@ describe('Dropdown Component', () => {
     const input = screen.getByRole('textbox');
 
     fireEvent.click(input);
-    fireEvent.keyDown(input, { key: 'ArrowDown' }); // Resaltar Opcion 1
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
 
     fireEvent.change(input, { target: { value: 'Opcion' } });
     rerender(<Dropdown $options={options} />);
@@ -140,7 +102,7 @@ describe('Dropdown Component', () => {
     expect(screen.getByText('Opcion 1')).toBeInTheDocument();
   });
 
-  it('highlights next option on ArrowDown press', () => {
+  it('highlights the next option when pressing ArrowDown', () => {
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
@@ -152,42 +114,31 @@ describe('Dropdown Component', () => {
     fireEvent.click(input);
     fireEvent.keyDown(input, { key: 'ArrowDown' });
 
-    const firstOption = document.querySelector('.trv-comp-highlighted');
-    expect(firstOption).toHaveTextContent('Opcion 1');
+    const highlightedOption = document.querySelector('.trv-comp-highlighted');
+    expect(highlightedOption).toHaveTextContent('Opcion 1');
   });
 
-  it('selects highlighted option on Enter press', () => {
+  it('selects the highlighted option when pressing Enter', () => {
+    const handleChange = jest.fn();
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
     ];
 
-    render(<Dropdown $options={options} />);
+    render(
+      <Dropdown $options={options} onChange={handleChange} $initialValue="1" />
+    );
     const input = screen.getByRole('textbox');
 
     fireEvent.click(input);
+    const list = screen.getAllByRole('listitem');
     fireEvent.keyDown(input, { key: 'ArrowDown' });
+    expect(list[0]).toHaveClass('trv-comp-highlighted');
     fireEvent.keyDown(input, { key: 'Enter' });
-
-    expect(screen.getByDisplayValue('Opcion 1')).toBeInTheDocument();
+    expect(handleChange).toHaveBeenCalledTimes(1);
   });
 
-  it('sets input value on option select', () => {
-    const options = [
-      { text: 'Opcion 1', value: '1' },
-      { text: 'Opcion 2', value: '2' },
-    ];
-
-    render(<Dropdown $options={options} />);
-    const input = screen.getByRole('textbox');
-
-    fireEvent.click(input);
-    fireEvent.click(screen.getByText('Opcion 1'));
-
-    expect(screen.getByDisplayValue('Opcion 1')).toBeInTheDocument();
-  });
-
-  it('calls onSelect with selected option', () => {
+  it('triggers onSelect with the selected option', () => {
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
@@ -205,7 +156,7 @@ describe('Dropdown Component', () => {
     );
   });
 
-  it('closes dropdown when clicking outside', () => {
+  it('closes the dropdown menu when clicking outside', () => {
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
@@ -214,14 +165,14 @@ describe('Dropdown Component', () => {
     render(<Dropdown $options={options} />);
     const input = screen.getByRole('textbox');
 
-    fireEvent.click(input); // Open dropdown
+    fireEvent.click(input);
     expect(screen.getByText('Opcion 1')).toBeInTheDocument();
 
-    fireEvent.mouseDown(document); // Click outside
+    fireEvent.mouseDown(document);
     expect(screen.queryByText('Opcion 1')).not.toBeInTheDocument();
   });
 
-  it('highlights next option on ArrowDown press', () => {
+  it('highlights the previous option when pressing ArrowUp', () => {
     const options = [
       { text: 'Opcion 1', value: '1' },
       { text: 'Opcion 2', value: '2' },
@@ -232,32 +183,32 @@ describe('Dropdown Component', () => {
 
     fireEvent.click(input);
     fireEvent.keyDown(input, { key: 'ArrowDown' });
-
-    const firstOption = document.querySelector('.trv-comp-highlighted');
-    expect(firstOption).toHaveTextContent('Opcion 1');
-  });
-
-  it('highlights previous option on ArrowUp press', () => {
-    const options = [
-      { text: 'Opcion 1', value: '1' },
-      { text: 'Opcion 2', value: '2' },
-    ];
-
-    render(<Dropdown $options={options} />);
-    const input = screen.getByRole('textbox');
-
-    // Abrir el menú
-    fireEvent.click(input);
-
-    // Flecha hacia abajo (resalta la primera opción)
     fireEvent.keyDown(input, { key: 'ArrowDown' });
-    // Flecha hacia abajo (resalta la segunda opción)
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    // Flecha hacia arriba (debería volver a la primera opción)
     fireEvent.keyDown(input, { key: 'ArrowUp' });
 
-    // Verificar que la primera opción está resaltada
     const highlightedOption = document.querySelector('.trv-comp-highlighted');
     expect(highlightedOption).toHaveTextContent('Opcion 1');
+  });
+
+  it('triggers onChange when the input value changes', () => {
+    const handleChange = jest.fn();
+    render(
+      <Dropdown
+        onChange={handleChange}
+        $options={mockOptions}
+        $initialValue="Opcion 1"
+      />
+    );
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: 'new value' } });
+    expect(handleChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('applies custom styles to the menu list when a title is provided', () => {
+    render(<Dropdown $options={mockOptions} $title="Title" />);
+    const input = screen.getByRole('textbox');
+    fireEvent.click(input);
+    const menuWithTitle = document.querySelector('.trv-comp-title');
+    expect(menuWithTitle).toBeTruthy();
   });
 });

@@ -1,14 +1,10 @@
 import React from 'react';
+import { IconName } from '../Icon/Icons';
 /**
  * Props for the Button component.
  * @extends React.ButtonHTMLAttributes<HTMLButtonElement>
  */
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    /**
-     * Defines the visual style of the button.
-     * @default "primary"
-     */
-    $type?: 'primary' | 'secondary';
     /**
      * Sets the width of the button. Can be any valid CSS width value.
      * @example "100px", "50%", "auto"
@@ -35,31 +31,38 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     /**
      * Show icon in the button left
      */
-    iconLeft?: boolean;
+    $iconLeft?: boolean;
     /**
      * Show icon in the button right
      */
-    iconRight?: boolean;
+    $iconRight?: boolean;
     /**
      * Only show icon (omit the text)
      */
-    iconOnly?: boolean;
+    $iconOnly?: boolean;
     /**
      * Icon to show in the button
      */
-    icon?: 'plus';
-    children?: React.ReactNode;
-}
-/**
- * Props for the ButtonWithIcon component.
- * Extends ButtonProps and adds an icon.
- */
-export interface ButtonWithIconProps extends ButtonProps {
+    $icon?: IconName;
     /**
-     * Specifies the icon to be displayed in the button.
-     * Currently only supports "plus" icon.
+     * Define the button variant aspect
+     * @default "primary"
      */
-    $icon: 'plus';
+    $variant?: 'primary' | 'secondary';
+    /**
+     * Only show icon (omit the text)
+     * @default false
+     */
+    $onlyIcon?: boolean;
+    /**
+     * Set the button to disabled
+     * @default false
+     */
+    $outline?: boolean;
+    /**
+     * The content to be rendered inside the button.
+     */
+    children?: React.ReactNode;
 }
 export interface ButtonStyleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     /**

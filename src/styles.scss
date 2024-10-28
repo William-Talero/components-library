@@ -8,7 +8,6 @@
 @import './components/Checkbox/Checkbox.styles.scss';
 @import './components/Text/Text.styles.scss';
 @import './components/Arrow/Arrow.styles.scss';
-@import './components/Input/Input.styles.scss';
 @import './components//Table/Table.styles.scss';
 @import './components/Accordion/Accordion.styles.scss';
 @import './components/Breadcrumb/Breadcrumb.styles.scss';
@@ -16,8 +15,14 @@
 @import './components/SectionAccordion/SectionAccordion.styles.scss';
 @import './components/MenuList/MenuList.styles.scss';
 @import './components/Stepper/Stepper.styles.scss';
+@import './components/MenuItem/MenuItem.styles.scss';
+@import './components/SideBar/SideBar.style.scss';
+@import './components/NavBar/NavBar.style.scss';
 @import './components/Tooltip/Tooltip.styles.scss';
 @import './components/Loading/Loading.styles.scss';
+@import "./components/Modal/Modal.styles.scss";
+@import './components/Spinner/Spinner.styles.scss';
+@import './components/Header/Header.styles.scss';
 
 :root {
   color-scheme: dark light;

@@ -1,0 +1,86 @@
+@import "../../parameters/colors.scss";
+
+$width-container: 18.875rem;
+$padding-sidebar: 1rem;
+
+.tvr-comp-sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: $width-container;
+  height: 102vh;
+  padding: 1.5rem 1rem;
+  background: #ffffff;
+  box-shadow: 4px 0px 10px 0px #2A2E3433;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+  transition: all .5s ease-out;
+
+  .tvr-comp-main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    position: relative;
+
+    &>button {
+      position: absolute;
+      display: flex;
+      left: calc($width-container - ($padding-sidebar - 0.0625rem));
+      top: 0.5rem;
+      z-index: 100;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 5rem;
+      border: 2px solid map-get($map: $general-colors , $key: orange-dark-3);
+      transform: translateX(-50%);
+      cursor: pointer;
+      background-color: map-get($map: $general-colors, $key: orange-dark-3);
+      box-shadow: 4px 0px 10px 0px #2A2E3433;
+      transition: all .5s ease-out;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      div {
+        width: 1.5rem;
+        height: 1.5rem;
+        transform: rotate(90deg);
+        transition: all .5s ease-out;
+
+        svg {
+          fill: map-get($map: $general-colors , $key: green-2-light-1);
+
+          path {
+            fill: map-get($map: $general-colors , $key: neutral-light-5);
+          }
+        }
+      }
+    }
+  }
+}
+
+.tvr-comp-collapsed {
+  width: 5rem;
+  padding: 1.5rem 1.25rem;
+  transition: all .5s ease-out;
+
+  .tvr-comp-main-nav {
+    &>button {
+      left: 4.2rem;
+      transform: translateX(-50%);
+      transition: all .5s ease-out;
+
+      div {
+        transform: rotate(0deg);
+        transition: all .5s ease-out;
+      }
+    }
+  }
+}
+
+.tvr-comp-text-decoration {
+  text-decoration: none;
+}

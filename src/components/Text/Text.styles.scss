@@ -86,3 +86,57 @@
 .tvr-comp-bold {
   font-weight: bold;
 }
+
+.tvr-comp-textSupporting {
+  @include text-base;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+}
+
+.tvr-comp-textTitleHeader {
+  @include text-base;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 38px;
+}
+
+.tvr-comp-text-xl-bold {
+  @include text-base;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.tvr-comp-text-md-regular {
+  @include text-base;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.tvr-comp-text-xs-semi-bold {
+  @include text-base;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px; /* 150% */
+}
+
+.tvr-comp-text-sm-semi-bold {
+  @include text-base;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+}
+
+.tvr-comp-text-lg-semi-bold {
+  @include text-base;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 155.556% */
+}

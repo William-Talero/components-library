@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Input as InputText} from '../Input';
+import { Input as InputText } from '../Input';
 import { useState } from 'react';
 import { InputProps } from '@/components/Input/IInput';
 import React from 'react';
@@ -9,11 +9,11 @@ const meta: Meta<InputProps> = {
   argTypes: {
     type: {
       control: { type: 'select' },
-      options: ['text', 'password', 'email', 'namesUpper'],
+      options: ['text', 'password', 'email', 'namesUpper', 'date'],
     },
     $size: {
       control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'large', 'normal'],
     },
     children: { control: 'text' },
     disabled: { control: 'boolean' },
@@ -31,19 +31,22 @@ const Template = (args: InputProps) => {
   // Handle change event
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    
+
     if (args.onChange) {
       args.onChange(event);
     }
   };
 
-  return <InputText {...args} value={value} 
-    onChange={handleChange}
-    onFocus={(event: React.ChangeEvent<HTMLInputElement>)=>console.log(event)}
-    required
-  />;
+  return (
+    <InputText
+      {...args}
+      value={value}
+      onChange={handleChange}
+      onFocus={(event: React.ChangeEvent<HTMLInputElement>) => console.log(event)}
+      required
+    />
+  );
 };
-
 
 export const textInput: Story = {
   render: Template,
@@ -115,7 +118,7 @@ export const inputDisable: Story = {
     type: 'email',
     $title: 'Email',
     $helpText: 'texto de ayuda',
-    disabled: true
+    disabled: true,
   },
 };
 

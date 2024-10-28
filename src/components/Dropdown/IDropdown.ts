@@ -5,8 +5,9 @@ export interface DropdownProps extends InputProps {
   $classNameContainer?: string;
   $classNameList?: string;
   $initialValue?: string;
+  name?: string;
 }
-export interface Option  {
+export interface Option {
   text: string;
-  value: string; 
+  value: string;
 }

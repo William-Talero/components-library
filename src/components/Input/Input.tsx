@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputProps, InputWithIconProps } from './IInput';
 import '@/styles.scss';
-import Icon from '../Icon/Icons';
+import Icon, { IconName } from '../Icon/Icons';
 import { emailPattern, alphabetPattern } from './utils/communPatterns';
 import {
   performValidation,
@@ -18,6 +18,7 @@ const InputBase: React.FC<InputProps> = ({
   $isError = false,
   $isWarning = false,
   $isSuccess = false,
+  $variant,
   disabled = false,
   readOnly = false,
   value,
@@ -29,10 +30,14 @@ const InputBase: React.FC<InputProps> = ({
   $errorMessage,
   required,
   renderIcon,
+  renderIconLeft,
+  renderIconRight,
+  className,
   ...props
 }) => {
   const [_value, setValue] = React.useState<string>(value || '');
   const [inputError, setInputError] = React.useState<string>('');
+  const [showInputSuccess, setShowInputSucecess] = React.useState<boolean>(false);
   const [showInputError, setShowInputError] = React.useState<boolean>(false);
 
   // Sincroniza cambios externos en `value`
@@ -40,10 +45,30 @@ const InputBase: React.FC<InputProps> = ({
     setValue(value || '');
   }, [value]);
 
+  /**
+   * Maneja el cambio de valor del input.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event - El evento de cambio
+   * del input.
+   */
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setValue(newValue);
-
+    if (inputError) {
+      const errors = performValidation(newValue, {
+        pattern,
+        minLength: $minLength,
+        maxLength: $maxLength,
+        required,
+      });
+      const errorMessage = $errorMessage || errors.join(' ');
+      setInputError(errorMessage);
+      if (errors.length === 0) {
+        setShowInputError(false);
+        setShowInputSucecess(true);
+      }
+      setShowInputError(errors.length > 0);
+    }
     if (onChange) {
       onChange(event);
       // Disparamos el onChange para activar interceptor/validación
@@ -85,17 +110,48 @@ const InputBase: React.FC<InputProps> = ({
             ? 'trv-comp-not-editable'
             : '';
 
-  // Determina el estado del campo basado en los errores
+  /**
+   * Aplica el cambio de clase si isError o warning o success... está en true
+   * const containerClassName = $isError
+   * @returns
+   */
   const fieldState = () => {
     if (showInputError) {
       return 'trv-comp-error';
     }
+    if (showInputSuccess && value !== '') {
+      return 'trv-comp-success';
+    }
     return '';
+  };
+
+  const renderHelpText = () => {
+    if ($helpText && !showInputError) {
+      return (
+        <Text4 bold className="trv-comp-help-text">
+          {$helpText}
+        </Text4>
+      );
+    }
+    return null;
+  };
+
+  const renderErrorText = () => {
+    if (showInputError) {
+      return (
+        <Text4 bold className="trv-comp-help-text">
+          {$errorMessage || inputError}
+        </Text4>
+      );
+    }
+    return null;
   };
 
   return (
     <div
-      className={`trv-comp-input-wrapper ${fieldState() || containerClassName}`}
+      className={`${className} trv-comp-input-wrapper ${
+        fieldState() || containerClassName
+      }`}
       style={{
         width: $w,
         margin: $m,
@@ -107,9 +163,14 @@ const InputBase: React.FC<InputProps> = ({
         </Text2>
       )}
       <div className="trv-comp-input-container">
+        {renderIconLeft && renderIconLeft()}
         <input
           type={type}
-          className={`trv-comp-input trv-comp-input-${$size}`}
+          className={`
+            trv-comp-input trv-comp-input-${$size}
+            ${$variant === 'inline' ? 'trv-comp-input-line' : ''}
+            ${$variant === 'rounded' ? 'trv-comp-input-radius-all' : ''}
+          `}
           value={_value || ''}
           onBlur={handleBlur}
           onChange={handleChange}
@@ -118,28 +179,44 @@ const InputBase: React.FC<InputProps> = ({
           required={required}
           {...props}
         />
-        {renderIcon && renderIcon()}{' '}
-        {/* Renderiza el ícono si se proporciona */}
+        {renderIconRight && renderIconRight()}
+        {renderIcon && renderIcon()}
       </div>
-      {$helpText && !showInputError && (
-        <Text4 bold className="trv-comp-help-text">
-          {$helpText}
-        </Text4>
-      )}
-      {showInputError && (
-        <Text4 bold className="trv-comp-help-text">
-          {inputError}
-        </Text4>
-      )}
+      {renderHelpText()}
+      {renderErrorText()}
     </div>
   );
 };
 
-/**
- * Componente Input.
- * @param {InputProps} props
- */
-const Input: React.FC<InputProps> = ({ ...props }) => {
+const renderIcon = (
+  iconName: IconName,
+  props: InputWithIconProps,
+  position: 'left' | 'right' | '',
+  $onClickIcon?: () => void
+) => (
+  <div
+    className={`trv-comp-input-icon-container ${position} ${
+      props.$size ? `trv-comp-input-icon-container-${props.$size}` : ''
+    }`}
+    onClick={$onClickIcon}
+  >
+    <Icon
+      $name={ iconName }
+      $w="10%"
+      className={`trv-comp-input-icon ${
+        props.$size ? `trv-comp-input-icon-${props.$size}` : ''
+      }`}
+    />
+  </div>
+);
+
+const Input: React.FC<InputWithIconProps> = ({
+  $icon,
+  $onClickIcon,
+  $iconLeft,
+  $iconRight,
+  ...props
+}) => {
   const { pattern, ...restProps } = props;
 
   const typePatterns: Record<string, RegExp> = {
@@ -149,26 +226,21 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
     namesUpper: alphabetPattern,
   };
 
-  const customPattern = pattern || typePatterns[props.type || 'text'];
+  const customPattern = pattern || typePatterns[props.type || ''];
 
-  return <InputBase {...restProps} pattern={customPattern} />;
-};
-
-const InputWithIcon: React.FC<InputWithIconProps> = ({
-  $icon,
-  $onClickIcon,
-  ...props
-}) => {
   return (
-    <Input
-      {...props}
-      renderIcon={() => (
-        <div className="trv-comp-input-icon-container" onClick={$onClickIcon}>
-          <Icon $name={$icon} $w="10%" className="trv-comp-input-icon" />
-        </div>
-      )}
+    <InputBase
+      {...restProps}
+      pattern={customPattern}
+      renderIcon={() => $icon && renderIcon($icon, props, '', $onClickIcon)}
+      renderIconLeft={() =>
+        $iconLeft && renderIcon($iconLeft, props, 'left', $onClickIcon)
+      }
+      renderIconRight={() =>
+        $iconRight && renderIcon($iconRight, props, 'right', $onClickIcon)
+      }
     />
   );
 };
 
-export { Input, InputWithIcon };
+export { Input, InputBase };

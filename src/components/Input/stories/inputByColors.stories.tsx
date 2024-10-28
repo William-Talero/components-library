@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { InputWithIcon} from '../Input';
+import { Input } from '../Input';
 import { useState } from 'react';
 import { InputWithIconProps } from '@/components/Input/IInput';
 import React from 'react';
@@ -18,7 +18,7 @@ const meta: Meta<InputWithIconProps> = {
     children: { control: 'text' },
     disabled: { control: 'boolean' },
   },
-  component: InputWithIcon,
+  component: Input,
 };
 
 export default meta;
@@ -31,23 +31,23 @@ const Template = (args: InputWithIconProps) => {
   // Handle change event
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    
+
     if (args.onChange) {
       args.onChange(event);
     }
   };
 
-  return <InputWithIcon 
-    {...args} value={value}
-    $icon='plus'
-    onChange={handleChange}
-    onFocus={(event: React.ChangeEvent<HTMLInputElement>)=>console.log(event)}
-    required
-  />;
+  return (
+    <Input
+      {...args}
+      value={value}
+      $icon="plus"
+      onChange={handleChange}
+      onFocus={(event: React.ChangeEvent<HTMLInputElement>) => console.log(event)}
+      required
+    />
+  );
 };
-
-
-
 
 export const inputSuccess: Story = {
   render: Template,
@@ -64,7 +64,7 @@ export const inputError: Story = {
     type: 'email',
     $title: 'Email',
     $helpText: 'texto de ayuda',
-    $isError:true,
+    $isError: true,
   },
 };
 export const inputOrange: Story = {
@@ -73,6 +73,6 @@ export const inputOrange: Story = {
     type: 'email',
     $title: 'Email',
     $helpText: 'texto de ayuda',
-    $isWarning:true,
+    $isWarning: true,
   },
 };

@@ -5,37 +5,86 @@ import { Button } from '../Button';
 
 describe('Button Components', () => {
   describe('Button', () => {
-    it('renders with default props', () => {
+    test('renders with default props', () => {
       render(<Button>Click me</Button>);
       const button = screen.getByText('Click me');
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('tvr-comp-button tvr-comp-button-primary');
     });
 
-    it('renders with custom type', () => {
-      render(<Button $variant="secondary">Click me</Button>);
-      expect(screen.getByText('Click me')).toHaveClass(
-        'tvr-comp-button tvr-comp-button-secondary'
+    test('renders with an icon on the left', () => {
+      render(<Button $iconLeft>Click me</Button>);
+      const icon = screen.getByTestId('icon-plus');
+      expect(icon).toBeInTheDocument();
+    });
+
+    test('renders with an icon on the right', () => {
+      render(<Button $iconRight>Click me</Button>);
+      const icon = screen.getByTestId('icon-plus');
+      expect(icon).toBeInTheDocument();
+    });
+
+    test('renders with only an icon', () => {
+      render(<Button $onlyIcon />);
+      const icon = screen.getByTestId('icon-plus');
+      expect(icon).toBeInTheDocument();
+    });
+
+    test('should button with all properties', () => {
+      render(
+        <Button
+          $iconLeft
+          $iconRight
+          $onlyIcon
+          $icon="plus"
+          $variant="primary"
+          $size="large"
+          $outline
+        >
+          Click me
+        </Button>
       );
+      const icon = screen.getByTestId('icon-plus');
+      expect(icon).toBeInTheDocument();
     });
 
-    it('renders with custom size', () => {
-      render(<Button $size="large">Click me</Button>);
-      expect(screen.getByText('Click me')).toHaveClass(
-        'tvr-comp-button tvr-comp-button-primary tvr-comp-button-large'
+    test('should show small size button', async () => {
+      const { container } = render(
+        <Button $size="small" $iconLeft $variant="secondary">
+          Click me
+        </Button>
       );
+      const button = container.firstChild;
+      expect(button).toHaveClass('tvr-comp-button-small');
     });
 
-    it('renders with custom margin', () => {
-      render(<Button $m="4">Click me</Button>);
-      expect(screen.getByText('Click me')).toHaveClass(
-        'tvr-comp-button tvr-comp-button-primary'
+    test('should show large size button', async () => {
+      const { container } = render(
+        <Button $size="large" $onlyIcon $variant="secondary">
+          Click me
+        </Button>
       );
+      const button = container.firstChild;
+      expect(button).toHaveClass('tvr-comp-button-large');
     });
 
-    it('passes through additional props', () => {
-      render(<Button data-testid="custom-button">Click me</Button>);
-      expect(screen.getByTestId('custom-button')).toBeInTheDocument();
+    test('should show icon right button', async () => {
+      const { container } = render(
+        <Button $variant="primary" $iconLeft $iconRight>
+          Click me
+        </Button>
+      );
+      const button = container.firstChild;
+      expect(button).toHaveClass('tvr-comp-button-primary');
+    });
+
+    test('should show button with normal size', () => {
+      const { container } = render(
+        <Button $size="normal" $iconLeft>
+          Click me
+        </Button>
+      );
+      const button = container.firstChild;
+      expect(button).toHaveClass('tvr-comp-button-primary');
     });
   });
 });

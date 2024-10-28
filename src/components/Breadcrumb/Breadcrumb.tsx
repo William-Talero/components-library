@@ -11,7 +11,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
           <li key={index} className="tvr-comp-breadcrumb-item">
             {index > 0 && (
               <div className="tvr-comp-breadcrumb-icon">
-                <Icon $name="rightArrow" $w="100%" />
+                <Icon $name="slashBold" $w="100%" />
               </div>
             )}
             {index === items.length - 1 ? (

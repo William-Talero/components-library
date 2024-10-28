@@ -1,20 +1,20 @@
-import React, { useState, useRef } from "react";
-import { FileUploaderProps } from "./IFileUploader";
-import "./FileUploader.styles.scss";
-import Icon from "../Icon/Icons";
+import React, { useState, useRef } from 'react';
+import { FileUploaderProps } from './IFileUploader';
+import './FileUploader.styles.scss';
+import Icon from '../Icon/Icons';
 
 const FileUploader: React.FC<FileUploaderProps> = ({
   maxFileSize = 2,
   maxFileNameLength = 50,
   allowedExtensions = [
-    ".doc",
-    ".pdf",
-    ".jpg",
-    ".gif",
-    ".bmp",
-    ".jpeg",
-    ".docx",
-    ".png",
+    '.doc',
+    '.pdf',
+    '.jpg',
+    '.gif',
+    '.bmp',
+    '.jpeg',
+    '.docx',
+    '.png',
   ],
   maxFiles = 5,
   onFilesChange,
@@ -25,7 +25,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = Array.from(event.target.files || []);
     const validFiles = newFiles.filter((file) => {
-      const extension = "." + file.name.split(".").pop()?.toLowerCase();
+      const extension = '.' + file.name.split('.').pop()?.toLowerCase();
       return (
         allowedExtensions.includes(extension) &&
         file.size <= maxFileSize * 1024 * 1024 &&
@@ -61,7 +61,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           <Icon $name="plus" $w="20px" />
           <span>Adjuntar archivo</span>
           <p>
-            Puede cargar un archivo con extensión {allowedExtensions.join(", ")}{" "}
+            Puede cargar un archivo con extensión {allowedExtensions.join(', ')}{' '}
             , de un tamaño máximo de {maxFileSize} MB y que su nombre tenga
             máximo {maxFileNameLength} caracteres
           </p>
@@ -71,12 +71,12 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           <div className="file-uploader__files-header">
             <Icon $name="plus" $w="20px" />
             <span>
-              {files.length}{" "}
-              {files.length === 1 ? "archivo adjunto" : "archivos adjuntos"}
+              {files.length}{' '}
+              {files.length === 1 ? 'archivo adjunto' : 'archivos adjuntos'}
             </span>
           </div>
           <p>
-            Puede cargar un archivo con extensión {allowedExtensions.join(", ")}{" "}
+            Puede cargar un archivo con extensión {allowedExtensions.join(', ')}{' '}
             , de un tamaño máximo de {maxFileSize} MB y que su nombre tenga
             máximo {maxFileNameLength} caracteres
           </p>
@@ -91,10 +91,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         onChange={handleFileChange}
         multiple
-        accept={allowedExtensions.join(",")}
+        accept={allowedExtensions.join(',')}
       />
     </div>
   );

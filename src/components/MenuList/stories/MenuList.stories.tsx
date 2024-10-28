@@ -12,12 +12,29 @@ const meta: Meta<MenuListProps> = {
       control: {
         type: 'color',
       },
+      description: 'Background color in hexadecimal format (#FFFFFF)'
     },
     colorContent: {
       control: {
         type: 'color',
       },
-      description: 'Color solo en format hexadecimal (#FFFGGG)',
+      description: 'Color only in hexadecimal format (#FFFGGG)',
+    },
+    icon: {
+      control: 'text',
+    },
+    iconExpand: {
+      control: 'text',
+    },
+    iconClassName: {
+      control: 'text',
+    },
+    contentClassName: {
+      control: 'text',
+    },
+    $w: {
+      control: 'text',
+      description: 'Width of the MenuList',
     },
   },
   decorators: [
@@ -25,8 +42,7 @@ const meta: Meta<MenuListProps> = {
       <div
         style={{
           background:
-            'linear-gradient(90deg, #517C13 -7.04%, #89AE42 ' +
-            '100.95%, #8BAF43 100.95%)',
+            '#FFFFFF',
         }}
       >
         {story()}
@@ -42,39 +58,27 @@ type Story = StoryObj<MenuListProps>;
 export const Default: Story = {
   args: {
     content: 'Afiliciones',
+    colorBackground: '#E8F4E1',
+    colorContent: '#000000',
     icon: 'groupAdd',
     iconExpand: 'downArrow',
-    colorBackground: '#FFFFFF',
-    colorContent: '#FFFFFF',
     iconClassName: 'iconClassName',
     contentClassName: 'contentClassName',
+    $w: '20rem',
+    active: true,
     children: [
-      {
-        id: '001',
-        label: 'Confirmación Modelo Afiliaciones',
-        href: '/confirmaciones',
-      },
-      {
-        id: '002',
-        label: 'Parametría de Afiliación',
-        href: '/afiliacion',
-      },
-      {
-        id: '003',
-        label: 'Procesos Masivos',
-        href: '/masivos',
-      },
-      {
-        id: '004',
-        label: 'Saldos por cuenta',
-        href: '/saldos',
-      },
-    ].map((option, index) => {
-      return (
-        <a href={option.href} id={option.id} key={index}>
-          {option.label}
-        </a>
-      );
-    }),
+      <a href="/confirmaciones" id="001" key="001">
+        Confirmación Modelo Afiliaciones
+      </a>,
+      <a href="/afiliacion" id="002" key="002">
+        Parametría de Afiliación
+      </a>,
+      <a href="/masivos" id="003" key="003">
+        Procesos Masivos
+      </a>,
+      <a href="/saldos" id="004" key="004">
+        Saldos por cuenta
+      </a>,
+    ]
   },
 };

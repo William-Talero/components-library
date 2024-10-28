@@ -1,0 +1,282 @@
+@import "../../parameters/colors";
+
+$tipoToast-solid: (
+  dark: (
+    bg: map-get($general-colors, "neutral-gray-800"),
+    title: map-get($general-colors, "text-white-50"),
+    subt-title: map-get($general-colors, "text-white-50"),
+    text: map-get($general-colors, "text-white-50"),
+    border: map-get($general-colors, "neutral-gray-800")
+  ),
+  gray: (
+    bg: map-get($general-colors, "neutral-gray-500"),
+    title: map-get($general-colors, "text-white-50"),
+    subt-title: map-get($general-colors, "text-white-50"),
+    text: map-get($general-colors, "text-white-50"),
+    border: map-get($general-colors, "neutral-gray-500")
+  ),
+  green: (
+    bg: map-get($general-colors, "secondary-green-2-500"),
+    title: map-get($general-colors, "text-white-50"),
+    subt-title: map-get($general-colors, "text-white-50"),
+    text: map-get($general-colors, "text-white-50"),
+    border: map-get($general-colors, "secondary-green-2-500")
+  ),
+  orange: (
+    bg: map-get($general-colors, "primary-orange-500"),
+    title: map-get($general-colors, "text-black-300"),
+    subt-title: map-get($general-colors, "text-black-300"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "primary-orange-500")
+  ),
+  red: (
+    bg: map-get($general-colors, "error-300"),
+    title: map-get($general-colors, "text-white-50"),
+    subt-title: map-get($general-colors, "text-white-50"),
+    text: map-get($general-colors, "text-white-50"),
+    border: map-get($general-colors, "error-300")
+  ),
+  warning: (
+    bg: map-get($general-colors, "warning-300"),
+    title: map-get($general-colors, "text-black-300"),
+    subt-title: map-get($general-colors, "text-black-300"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "warning-300")
+  ),
+  light: (
+    bg: map-get($general-colors, "text-white-50"),
+    title: map-get($general-colors, "text-black-300"),
+    subt-title: map-get($general-colors, "text-black-300"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "text-white-50")
+  )
+);
+
+$tipoToast-soft: (
+  dark: (
+    bg: map-get($general-colors, "neutral-gray-200"),
+    title: map-get($general-colors, "neutral-gray-800"),
+    subt-title: map-get($general-colors, "neutral-gray-700"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "neutral-gray-300"),
+    border-left: map-get($general-colors, "neutral-gray-500")
+  ),
+  gray: (
+    bg: map-get($general-colors, "neutral-gray-50"),
+    title: map-get($general-colors, "neutral-gray-600"),
+    subt-title: map-get($general-colors, "neutral-gray-500"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "neutral-gray-200"),
+    border-left: map-get($general-colors, "neutral-gray-200")
+  ),
+  green: (
+    bg: map-get($general-colors, "secondary-green-2-100"),
+    title: map-get($general-colors, "secondary-green-2-800"),
+    subt-title: map-get($general-colors, "secondary-green-2-700"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "secondary-green-2-200"),
+    border-left: map-get($general-colors, "secondary-green-2-500")
+  ),
+  orange: (
+    bg: map-get($general-colors, "primary-orange-100"),
+    title: map-get($general-colors, "primary-orange-800"),
+    subt-title: map-get($general-colors, "primary-orange-700"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "primary-orange-200"),
+    border-left: map-get($general-colors, "primary-orange-500")
+  ),
+  red: (
+    bg: map-get($general-colors, "error-100"),
+    title: map-get($general-colors, "error-800"),
+    subt-title: map-get($general-colors, "error-700"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "error-200"),
+    border-left: map-get($general-colors, "error-500")
+  ),
+  warning: (
+    bg: map-get($general-colors, "warning-100"),
+    title: map-get($general-colors, "warning-800"),
+    subt-title: map-get($general-colors, "warning-700"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "warning-200"),
+    border-left: map-get($general-colors, "warning-500")
+  ),
+  light: (
+    bg: map-get($general-colors, "text-white-50"),
+    title: map-get($general-colors, "text-black-300"),
+    subt-title: map-get($general-colors, "text-black-300"),
+    text: map-get($general-colors, "text-black-300"),
+    border: map-get($general-colors, "neutral-gray-200"),
+    border-left: map-get($general-colors, "neutral-gray-200")
+  )
+);
+
+$positions-toast: (
+  top-right: (
+    top: 20px,
+    right: 20px
+  ),
+  top-left: (
+    top: 20px,
+    left: 20px
+  ),
+  bottom-right: (
+    bottom: 20px,
+    right: 20px
+  ),
+  bottom-left: (
+    bottom: 20px,
+    left: 20px
+  )
+);
+
+.tvr-comp-toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: auto;
+  height: min-content;
+
+  @each $position, $values in $positions-toast {
+    &.container-position-#{$position} {
+      top: map-get($values, top);
+      right: map-get($values, right);
+      bottom: map-get($values, bottom);
+      left: map-get($values, left);
+    }
+  }
+}
+
+.tvr-comp-toast {
+  padding: 16px;
+  min-width: 443px;
+  position: relative;
+  display: flex;
+  gap: 20px;
+
+  &.entering {
+    animation: toastEnter 0.5s ease forwards;
+  }
+
+  &.exiting {
+    animation: toastExit 0.5s ease forwards;
+  }
+
+  // Mantener los estilos dinámicos existentes
+  @each $type, $colors in (solid: $tipoToast-solid, soft: $tipoToast-soft) {
+    @each $color, $values in $colors {
+      &.toast-#{$type}-#{"#{$color}"} {
+        background-color: map-get($values, bg);
+        color: map-get($values, text);
+        border: 1px solid map-get($values, border);
+
+        .title-color {
+          color: map-get($values, title);
+        }
+
+        .text-color {
+          color: map-get($values, text);
+        }
+
+        .subt-title-color {
+          color: map-get($values, subt-title);
+          margin-top: 4px;
+        }
+
+        .header {
+          display: flex;
+          gap: 10px;
+        }
+
+        .toast-close-btn {
+          background: none;
+          position: absolute;
+          top: 1px;
+          right: 15px;
+          border: none;
+          color: map-get($values, title);
+          font-size: 25px;
+          cursor: pointer;
+          padding: 0;
+          transition: font-size 0.2s ease;
+        }
+
+        .toast-close-btn:hover {
+          font-size: 28px;
+        }
+
+        &.border-left {
+          border: 0px;
+          border-left: 2px solid map-get($values, border-left);
+        }
+
+        .tvr-comp-toast-icon-swap {
+          margin-top: 5px;
+          fill: map-get($values, title);
+        }
+      }
+    }
+  }
+}
+
+.tvr-comp-toast-subtitle {
+  margin-right: 10px;
+}
+
+.tvr-comp-toast-text {
+  white-space: pre-wrap
+}
+
+.tvr-comp-toast-title {
+  width: 316px;
+}
+
+.tvr-comp-toast-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.tvr-comp-toast-shape-rounded {
+  border-radius: 16px;
+}
+
+.tvr-comp-toast-shape-pilled {
+  border-radius: 999px;
+}
+
+@keyframes toastEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.button-story {
+  margin: 4px;
+}

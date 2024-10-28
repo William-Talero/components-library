@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { InputWithIcon } from '../Input';
+import { Input } from '../Input';
 import { useState } from 'react';
-import { InputProps, InputWithIconProps } from '@/components/Input/IInput';
+import { InputProps } from '@/components/Input/IInput';
 import React from 'react';
 
-const meta: Meta<InputWithIconProps> = {
-  title: 'Components/Atoms/Inputs/InputWithIcon',
-  component: InputWithIcon,
+const meta: Meta<InputProps> = {
+  title: 'Components/Atoms/Inputs/Input',
+  component: Input,
 };
 
 export default meta;
@@ -25,22 +25,25 @@ const Template = (args: InputProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     console.log(value);
-    
+
     if (args.onChange) {
       args.onChange(event);
     }
   };
-  return <InputWithIcon 
-    {...args} value={value}
-    $icon='plus'
-    $onClickIcon={handleclickIcon}
-    onChange={handleChange}
-    onFocus={(event: React.ChangeEvent<HTMLInputElement>)=>console.log(event)}
-    required
-  />;
+  return (
+    <Input
+      {...args}
+      value={value}
+      $icon="plus"
+      $onClickIcon={handleclickIcon}
+      onChange={handleChange}
+      onFocus={(event: React.ChangeEvent<HTMLInputElement>) => console.log(event)}
+      required
+    />
+  );
 };
 
-export const inputWithIconOnclickIcon: Story = {
+export const inputOnclickIcon: Story = {
   render: Template,
   args: {
     pattern: /^http.+/gi,
@@ -57,4 +60,3 @@ export const CustomWithPatternValidation: Story = {
     $helpText: 'Texto ayuda',
   },
 };
-

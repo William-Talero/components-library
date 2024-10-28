@@ -16,6 +16,7 @@ $general-colors: (
   //Grey colors
   primary-gray: #4d4d4d,
   secondary-light-grey: #f4f4f4,
+  gray-border: #bbbec5,
 
   // Neutral colors
   neutral-light-1: #c2c2c2,
@@ -34,6 +35,7 @@ $general-colors: (
   orange-light-3: #faefe8,
   orange-dark-1: #fb6903,
   orange-dark-2: #fc8029,
+  orange-dark-3: #e57426,
 
   // Yellow colors
   yellow-light-1: #fdde96,
@@ -64,14 +66,13 @@ $general-colors: (
   green-2-light-5: #e8f4e1,
   green-2-dark-1: #3e6a27,
 
+  //shadows
+  menu-shadow: 4px 0px 10px 0px #2a2e3433,
+
   // Gradients
   gradient-orange: linear-gradient(to right, #fa8035, #ffc956),
   gradient-green: linear-gradient(to right, #517c13, #89ae42, #8baf43),
-
-
   //NUEVOS COLORES
-
-
   // Primary Orange
   primary-orange-50: #fff2ea,
   primary-orange-100: #fed8bd,
@@ -119,7 +120,6 @@ $general-colors: (
   secondary-green-700: #576a1d,
   secondary-green-800: #435217,
   secondary-green-900: #333f11,
-  secondary-green-placeholder: #497111,
 
   // Secondary Green 2
   secondary-green-2-50: #eef2e7,
@@ -134,67 +134,67 @@ $general-colors: (
   secondary-green-2-900: #223408,
 
   // Semantic Colors
-  error-light: #f8e8e8,
-  error-light-hover: #f4dddd,
-  error-light-active: #e9b8b9,
-  error-normal: #b71b1c,
-  error-normal-hover: #a51819,
-  error-normal-active: #a51819,
-  error-dark: #891415,
-  error-dark-hover: #6e1011,
-  error-dark-active: #520c0d,
-  error-darker: #40090a,
+  error-50: #f8e8e8,
+  error-100: #f4dddd,
+  error-200: #e9b8b9,
+  error-300: #b71b1c,
+  error-400: #a51819,
+  error-500: #921616,
+  error-600: #891415,
+  error-700: #6e1011,
+  error-800: #520c0d,
+  error-900: #40090a,
 
-  success-light: #e8efe9,
-  success-light-hover: #dde7de,
-  success-light-active: #b8cdba,
-  success-normal: #1b5e21,
-  success-normal-hover: #18551e,
-  success-normal-active: #164b1a,
-  success-dark: #144719,
-  success-dark-hover: #103814,
-  success-dark-active: #0c2a0f,
-  success-darker: #09210c,
-
-  warning-light: #fff3e6,
-  warning-light-hover: #feedd9,
-  warning-light-active: #fedbb0,
-  warning-normal: #fb8a00,
-  warning-normal-hover: #e27c00,
-  warning-normal-active: #c96e00,
-  warning-dark: #bc6800,
-  warning-dark-hover: #975300,
-  warning-dark-active: #713e00,
-  warning-darker: #583000,
-
+  success-50: #e8efe9,
+  success-100: #dde7de,
+  success-200: #b8cdba,
+  success-300: #1b5e21,
+  success-400: #18551e,
+  success-500: #164b1a,
+  success-600: #144719,
+  success-700: #103814,
+  success-800: #0c2a0f,
+  success-900: #09210c,
+  
+  warning-50: #fff3e6,
+  warning-100: #feedd9,
+  warning-200: #fedbb0,
+  warning-300: #fb8a00,
+  warning-400: #e27c00,
+  warning-500: #c96e00,
+  warning-600: #bc6800,
+  warning-700: #975300,
+  warning-800: #713e00,
+  warning-900: #583000,
+  
   // Text Colors - Black
-  text-black-light: #e6e6e6,
-  text-black-light-hover: #d9d9d9,
-  text-black-light-active: #b0b0b0,
-  text-black-normal: #000000,
-  text-black-normal-hover: #000000,
-  text-black-normal-active: #000000,
-  text-black-dark: #000000,
-  text-black-dark-hover: #000000,
-  text-black-dark-active: #000000,
-  text-black-darker: #000000,
-
+  text-black-50: #e6e6e6,
+  text-black-100: #d9d9d9,
+  text-black-200: #b0b0b0,
+  text-black-300: #000000,
+  text-black-400: #000000,
+  text-black-500: #000000,
+  text-black-600: #000000,
+  text-black-700: #000000,
+  text-black-800: #000000,
+  text-black-900: #000000,
+  
   // Text Colors - White
-  text-white-light: #ffffff,
-  text-white-light-hover: #ffffff,
-  text-white-light-active: #ffffff,
-  text-white-normal: #ffffff,
-  text-white-normal-hover: #e6e6e6,
-  text-white-normal-active: #cccccc,
-  text-white-dark: #bfbfbf,
-  text-white-dark-hover: #999999,
-  text-white-dark-active: #737373,
-  text-white-darker: #595959,
+  text-white-50: #ffffff,
+  text-white-100: #ffffff,
+  text-white-200: #ffffff,
+  text-white-300: #ffffff,
+  text-white-400: #e6e6e6,
+  text-white-500: #cccccc,
+  text-white-600: #bfbfbf,
+  text-white-700: #999999,
+  text-white-800: #737373,
+  text-white-900: #595959,
 
   // Neutral Colors - Gray
   neutral-gray-50: #f0f1f2,
   neutral-gray-100: #d1d3d8,
-  neutral-gray-200: #d1d3d8,
+  neutral-gray-200: #bbbec5,
   neutral-gray-300: #9ca1aa,
   neutral-gray-400: #898e99,
   neutral-gray-500: #6b7280,
@@ -215,7 +215,7 @@ $general-colors: (
   neutral-neutral-800: #3f3f3f,
   neutral-neutral-900: #303030,
 
-
   // Other colors
-  neutral-table-border-color: #BBBEC5
+  neutral-table-border-color: #bbbec5,
+  secondary-green-placeholder: #497111
 );

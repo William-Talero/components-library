@@ -12,5 +12,14 @@ export * from './components/Circle';
 export * from './components/Accordion';
 export * from './components/Stepper';
 export * from './components/Tooltip';
-
+export * from './components/Modal';
 export * from './parameters/colors.scss';
+export * from './components/Header';
+export * from './components/Icon/Icons';
+export * from './components/MenuList';
+export * from './components/NavBar';
+export * from './components/MenuItem';
+export * from './components/SideBar';
+export * from './components/Toast-unique/Toast';
+export * from './components/Spinner/Spinner';
+export * from './components/Skeleton';

@@ -1,15 +1,15 @@
 @import "../../parameters/colors";
 
 .tvr-comp-breadcrumb-container {
-  background-color: map-get($general-colors, "neutral-light-2");
-  padding: 0.4rem 0.1rem;
-  border-radius: 0.25rem;
+  padding: 0;
   overflow-x: auto;
 }
 
 .tvr-comp-breadcrumb-list {
   display: flex;
   align-items: center;
+  margin: 0;
+  padding-inline-start: 32px;
 }
 
 .tvr-comp-breadcrumb-item {
@@ -24,23 +24,22 @@
 }
 
 .tvr-comp-breadcrumb-link {
-  color: #000;
+  color: map-get($general-colors, "neutral-gray-600");
   text-decoration: none;
+  font-weight: 600;
 
   &:hover {
     text-decoration: underline;
-    font-weight: 500;
   }
 
   &:active {
-    font-weight: 500;
     text-decoration: none;
   }
 }
 
 .tvr-comp-breadcrumb-current {
-  font-weight: 600;
-  color: #1f2937;
+  font-weight: 700;
+  color: map-get($general-colors, "primary-orange-600");
 }
 
 .tvr-comp-breadcrumb-icon {

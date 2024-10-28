@@ -1,0 +1,61 @@
+@import '../../parameters/colors';
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: map-get($general-colors, 'neutral-light-5');
+  border-radius: 16px;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body {
+  overflow: auto;
+  flex: 1;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  color: map-get($general-colors, 'neutral-dark-2');
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    max-width: 95%;
+    max-height: 95%;
+    padding: 10px;
+  }
+  .modal-close {
+    top: 4px;
+    right: 4px;
+    font-size: 20px;
+  }
+}

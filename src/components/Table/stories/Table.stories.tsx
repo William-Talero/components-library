@@ -1,110 +1,75 @@
-// import type { Meta, StoryObj } from '@storybook/react';
-// import { Table } from '@/components/Table/Table';
-// import { TableProps, Column } from '@/components/Table/ITable';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Table } from './../Table';
+import { TableProps } from './../ITable';
+import { useState } from 'react';
+import { DataItem, allData, columns, actions } from '@/Data/Table/DataTable';
 
-// interface DataItem {
-//   id: string;
-//   fechaPago: string;
-//   fechaAcreditacion: string;
-//   operacion: string;
-//   inversion: string;
-//   objetivo: string;
-//   nitAcreditador: string;
-//   razonSocial: string;
-//   valor: number;
-// }
+const meta: Meta<TableProps<DataItem>> = {
+  title: 'Components/Molecules/Table/Table',
+  component: Table,
+  argTypes: {
+    $selectionType: {
+      control: 'select',
+      options: ['none', 'checkbox', 'radio'],
+    },
+  },
+};
 
-// const meta: Meta<TableProps<DataItem>> = {
-//   title: 'Components/Atoms/Table/Table',
-//   component: Table,
-//   argTypes: {
-//     itemsPerPage: {
-//       control: { type: 'number', min: 1, max: 20 },
-//     },
-//   },
-// };
+export default meta;
 
-// export default meta;
+type Story = StoryObj<TableProps<DataItem>>;
 
-// type Story = StoryObj<TableProps<DataItem>>;
+const TableWithState = (args: TableProps<DataItem>) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
 
-// const columns: Column<DataItem>[] = [
-//   { key: 'id', header: 'ID Aporte', sortable: true },
-//   { key: 'fechaPago', header: 'Fecha de pago', sortable: true },
-//   { key: 'fechaAcreditacion', header: 'Fecha de acreditación', sortable: true },
-//   { key: 'operacion', header: 'Operación', sortable: true },
-//   { key: 'inversion', header: 'Inversión', sortable: true },
-//   { key: 'objetivo', header: 'Objetivo', sortable: true },
-//   { key: 'nitAcreditador', header: 'NIT acreditador', sortable: true },
-//   { key: 'razonSocial', header: 'Razón social', sortable: true },
-//   { key: 'valor', header: 'Valor', sortable: true },
-// ];
+  const totalPages = Math.ceil(allData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const data = allData.slice(startIndex, endIndex);
 
-// const data: DataItem[] = [
-//   {
-//     id: '10310313820',
-//     fechaPago: '8/03/23',
-//     fechaAcreditacion: '8/03/23',
-//     operacion: 'Acreditación',
-//     inversion: 'Efectivo Colombia Pesos',
-//     objetivo: 'Ahorro',
-//     nitAcreditador: '6476783',
-//     razonSocial: '-',
-//     valor: 50000,
-//   },
-//   {
-//     id: '10310313821',
-//     fechaPago: '8/03/23',
-//     fechaAcreditacion: '8/03/23',
-//     operacion: 'Acreditación',
-//     inversion: 'Efectivo Colombia Pesos',
-//     objetivo: 'Ahorro',
-//     nitAcreditador: '64242',
-//     razonSocial: '-',
-//     valor: 50000,
-//   },
-//   {
-//     id: '10310313822',
-//     fechaPago: '8/03/23',
-//     fechaAcreditacion: '8/03/23',
-//     operacion: 'Acreditación',
-//     inversion: 'Efectivo Colombia Pesos',
-//     objetivo: 'Ahorro',
-//     nitAcreditador: '646353',
-//     razonSocial: '-',
-//     valor: 50000,
-//   },
-//   {
-//     id: '10310313823',
-//     fechaPago: '8/03/23',
-//     fechaAcreditacion: '8/03/23',
-//     operacion: 'Acreditación',
-//     inversion: 'Efectivo Colombia Pesos',
-//     objetivo: 'Ahorro',
-//     nitAcreditador: '52342',
-//     razonSocial: '-',
-//     valor: 50000,
-//   },
-// ];
+  return (
+    <Table
+      {...args}
+      $data={data}
+      $currentPage={currentPage}
+      $totalPages={totalPages}
+      $itemsPerPage={itemsPerPage}
+      $totalItems={allData.length}
+      $onPageChange={(newPage: number) => setCurrentPage(newPage)}
+      $onItemsPerPageChange={(newItemsPerPage: number) => {
+        setItemsPerPage(newItemsPerPage);
+        setCurrentPage(1);
+      }}
+    />
+  );
+};
 
-// export const Default: Story = {
-//   args: {
-//     data: data,
-//     columns: columns,
-//     itemsPerPage: 10,
-//   },
-// };
+export const Default: Story = {
+  render: (args) => <TableWithState {...args} />,
+  args: {
+    $columns: columns,
+    $actions: actions,
+    $selectionType: 'radio',
+    $onSelectionChange: (selectedItems) => console.log(selectedItems),
+    $onSort: (key, direction) => console.log(key, direction),
+    $itemsPerPageOptions: [2, 10, 20, 30],
+  },
+};
 
-// export const FewItemsPerPage: Story = {
-//   args: {
-//     ...Default.args,
-//     itemsPerPage: 2,
-//   },
-// };
+export const WithCheckboxSelection: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    $selectionType: 'checkbox',
+  },
+};
 
-// export const ManyItemsPerPage: Story = {
-//   args: {
-//     ...Default.args,
-//     itemsPerPage: 20,
-//   },
-// };
+export const WithoutSelection: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    $selectionType: 'none',
+  },
+};

@@ -72,7 +72,7 @@
     &.tvr-comp-checkbox-success {
       input[type='checkbox']:checked + .tvr-comp-checkbox-custom {
         &::after {
-          border-color: map-get($general-colors, 'success-normal');
+          border-color: map-get($general-colors, 'success-300');
         }
       }
     }
@@ -102,7 +102,7 @@
 }
 
 .tvr-comp-checkbox-label {
-  color: light-dark(map-get($general-colors, 'text-black-normal'), #fff);
+  color: light-dark(map-get($general-colors, 'text-black-300'), #fff);
   margin-right: 1rem;
   font-weight: 400;
   font-size: 1rem;
@@ -110,38 +110,38 @@
 
 .tvr-comp-checkbox-success {
   .tvr-comp-checkbox-custom {
-    border-color: map-get($general-colors, 'success-normal');
+    border-color: map-get($general-colors, 'success-300');
   }
 
   input[type='checkbox']:checked + .tvr-comp-checkbox-custom {
-    border-color: map-get($general-colors, 'success-normal');
-    background-color: map-get($general-colors, 'success-normal');
+    border-color: map-get($general-colors, 'success-300');
+    background-color: map-get($general-colors, 'success-300');
   }
 
   input[type='checkbox']:focus + .tvr-comp-checkbox-custom {
-    box-shadow: 0 0 0 2px map-get($general-colors, 'success-light');
+    box-shadow: 0 0 0 2px map-get($general-colors, 'success-50');
   }
 
   .tvr-comp-checkbox-label {
-    color: map-get($general-colors, 'success-normal');
+    color: map-get($general-colors, 'success-300');
   }
 }
 
 .tvr-comp-checkbox-invalid {
   .tvr-comp-checkbox-custom {
-    border-color: map-get($general-colors, 'error-normal');
+    border-color: map-get($general-colors, 'error-300');
   }
 
   input[type='checkbox']:checked + .tvr-comp-checkbox-custom {
-    border-color: map-get($general-colors, 'error-normal');
-    background-color: map-get($general-colors, 'error-normal');
+    border-color: map-get($general-colors, 'error-300');
+    background-color: map-get($general-colors, 'error-300');
   }
 
   input[type='checkbox']:focus + .tvr-comp-checkbox-custom {
-    box-shadow: 0 0 0 2px map-get($general-colors, 'error-light');
+    box-shadow: 0 0 0 2px map-get($general-colors, 'error-50');
   }
 
   .tvr-comp-checkbox-label {
-    color: map-get($general-colors, 'error-normal');
+    color: map-get($general-colors, 'error-300');
   }
 }

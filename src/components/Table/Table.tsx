@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '@/styles.scss';
 import { TableProps, Column, PaginationProps } from './ITable';
 import Icon from '../Icon/Icons';
+import { v4 as uuidv4 } from 'uuid';
 
 export function Table<T>({
   $data,
@@ -19,6 +20,10 @@ export function Table<T>({
   $onItemsPerPageChange,
 }: TableProps<T>) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [sortConfig, setSortConfig] = useState<{
+    key: keyof T;
+    direction: 'asc' | 'desc';
+  } | null>(null);
 
   const getItemId = (item: T): string => {
     return (item as { id?: string }).id?.toString() || JSON.stringify(item);
@@ -28,7 +33,12 @@ export function Table<T>({
     const value = item[column.$key];
 
     if (column.$isLink && column.$linkPath) {
-      return <a href={column.$linkPath(item)}>{String(value)}</a>;
+      const LinkComponent = column.$linkComponent || 'a';
+      return (
+        <LinkComponent href={column.$linkPath(item)}>
+          {String(value)}
+        </LinkComponent>
+      );
     }
 
     return String(value);
@@ -59,7 +69,11 @@ export function Table<T>({
   };
 
   const handleSort = (key: keyof T) => {
-    const direction: 'asc' | 'desc' = 'asc';
+    let direction: 'asc' | 'desc' = 'asc';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
     if ($onSort) {
       $onSort(key, direction);
     }
@@ -67,15 +81,26 @@ export function Table<T>({
 
   const isItemSelected = (item: T) => selectedIds.has(getItemId(item));
 
+  const getSortIcon = (key: keyof T) => {
+    if (sortConfig && sortConfig.key === key) {
+      return sortConfig.direction === 'asc' ? (
+        <Icon $name="upArrow" $h="16px" />
+      ) : (
+        <Icon $name="downArrow" $h="16px" />
+      );
+    }
+    return <></>;
+  };
+
   return (
     <div className="tvr-comp-table">
       <div className="tvr-comp-table-container">
         <table className="tvr-comp-custom-table">
           <colgroup>
             {$selectionType !== 'none' && <col style={{ width: '40px' }} />}
-            {$columns.map((column, index) => (
+            {$columns.map((column) => (
               <col
-                key={index}
+                key={uuidv4()}
                 style={{
                   width: column.$width || 'auto',
                   minWidth: column.$width,
@@ -119,6 +144,9 @@ export function Table<T>({
                   onClick={() => column.$sortable && handleSort(column.$key)}
                 >
                   {column.$header}
+                  {column.$sortable && (
+                    <span className="sort-icon">{getSortIcon(column.$key)}</span>
+                  )}
                 </th>
               ))}
               {$actions && <th>Actions</th>}
@@ -150,9 +178,9 @@ export function Table<T>({
                 ))}
                 {$actions && (
                   <td className="action-cell">
-                    {$actions.map((action, actionIndex) => (
+                    {$actions.map((action) => (
                       <button
-                        key={actionIndex}
+                        key={uuidv4()}
                         onClick={() => action.$onClick(item)}
                       >
                         {action.$label}
@@ -187,7 +215,7 @@ function Pagination({
   $itemsPerPageOptions,
   $onItemsPerPageChange,
 }: PaginationProps) {
-  if ($totalPages < 1) {
+  if ($totalPages <= 1) {
     return null;
   }
 

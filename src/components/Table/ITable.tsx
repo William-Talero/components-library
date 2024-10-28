@@ -11,6 +11,8 @@ export interface Column<T> {
   $linkPath?: (item: T) => string;
   /** The width of the column (e.g., '100px', '10%') */
   $width?: string;
+  /** The component to use to render the cell content */
+  $linkComponent?: React.ComponentType<unknown>;
 }
 
 /**

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMountEffect } from './hooks';
 import { UniqueComponentId } from '@/utils';
-import Icon, { IconName } from '../Icon/Icons';
+import Icon from '../Icon/Icons';
 import { Title5 } from '../Text/Text';
 import type { AccordionProps, AccordionTabProps } from './IAccordion';
 import { mergeClassNames } from './utils';
@@ -40,7 +40,7 @@ export const Accordion = (props: AccordionProps) => {
     };
 
     const containerClassName = mergeClassNames(
-      'accordion-header highlight',
+      'tvr-comp-accordion-header highlight',
       tab.props.headerClassName
     );
 
@@ -50,11 +50,11 @@ export const Accordion = (props: AccordionProps) => {
         onClick={() => updateActiveIndex(index)}
         className={containerClassName}
       >
-        <div className="accordion-header-recipient">
+        <div className="tvr-comp-accordion-header-recipient">
           <a
             onClick={(e) => e.preventDefault()}
             {...headerProps}
-            className="accordion-header-link"
+            className="tvr-comp-accordion-header-link"
             aria-expanded={activeIndex === index}
           >
             <Title5 bold>{tab.props.header}</Title5>
@@ -78,7 +78,7 @@ export const Accordion = (props: AccordionProps) => {
       id,
     };
     const contentClassName = mergeClassNames(
-      `accordion-content content-${props.contentColor ?? 'orange'}`,
+      `tvr-comp-accordion-content content-${props.contentColor ?? 'orange'}`,
       tab.props.contentClassName
     );
     return (
@@ -93,8 +93,8 @@ export const Accordion = (props: AccordionProps) => {
     const tabIndex = tab.props.disabled ? -1 : 0;
     const className =
       activeIndex === index
-        ? 'accordion-tab accordion-tab-active'
-        : ' accordion-tab ';
+        ? 'tvr-comp-accordion-tab tvr-comp-accordion-tab-active'
+        : 'tvr-comp-accordion-tab';
 
     const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key !== 'Enter') {
@@ -108,14 +108,10 @@ export const Accordion = (props: AccordionProps) => {
     const header = createTabHeader(tab, index);
     const content = createTabContent(tab, index);
 
-    const { contentClassName, ...rest } = tab.props;
+    const { ...rest } = tab.props;
 
     return (
-      <div
-        {...tabAdditionalsProps}
-        {...rest}
-        contentclassname={contentClassName}
-      >
+      <div {...tabAdditionalsProps} {...rest}>
         {header}
         {content}
       </div>
@@ -133,7 +129,7 @@ export const Accordion = (props: AccordionProps) => {
   };
 
   return (
-    <div className="accordion component" {...rootProps}>
+    <div className="tvr-comp-accordion" {...rootProps}>
       {tabs}
     </div>
   );

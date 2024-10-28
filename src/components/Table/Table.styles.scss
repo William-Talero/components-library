@@ -2,9 +2,11 @@
 
 .tvr-comp-table {
   border: 1px solid
-    light-dark(map-get($general-colors, neutral-table-border-color), map-get($general-colors, neutral-neutral-700));
+    light-dark(
+      map-get($general-colors, neutral-table-border-color),
+      map-get($general-colors, neutral-neutral-700)
+    );
   border-radius: 0.5rem;
-  padding-bottom: 1rem;
   width: 100%;
   overflow: hidden;
 }
@@ -19,10 +21,13 @@
   }
   &::-webkit-scrollbar-thumb {
     background-color: light-dark(#cbd5e1, #4b5563);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
   }
   border-bottom: 1px solid
-    light-dark(map-get($general-colors, neutral-table-border-color), map-get($general-colors, neutral-neutral-700));
+    light-dark(
+      map-get($general-colors, neutral-table-border-color),
+      map-get($general-colors, neutral-neutral-700)
+    );
 
   .tvr-comp-custom-table {
     width: 100%;
@@ -35,7 +40,8 @@
     td {
       padding: 1rem 0.5rem;
       text-align: left;
-      border-bottom: 1px solid light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
+      border-bottom: 1px solid
+        light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
 
       &:first-child {
         padding-left: 1rem;
@@ -58,11 +64,26 @@
       font-size: 0.75rem;
       line-height: 1rem;
       font-weight: 600;
-      color: light-dark(#6b7280, map-get($general-colors, text-white-light));
+      color: light-dark(#6b7280, map-get($general-colors, text-white-50));
       text-transform: uppercase;
 
       &.sortable {
         cursor: pointer;
+        position: relative;
+        padding-right: 1.5rem;
+
+        .sort-icon {
+          position: absolute;
+          right: 0.5rem;
+          top: 50%;
+          transform: translateY(-50%);
+          :only-child {
+            fill: light-dark(
+              map-get($general-colors, neutral-gray-500),
+              map-get($general-colors, neutral-gray-100)
+            );
+          }
+        }
 
         &:hover {
           background-color: light-dark(
@@ -139,6 +160,7 @@
   align-items: center;
   margin-top: 1rem;
   padding: 0 1rem;
+  padding-bottom: 1rem;
 
   .tvr-comp-pagination-controls {
     display: flex;
@@ -181,7 +203,7 @@
       width: 2.375rem;
       height: 2.375rem;
       background-color: map-get($general-colors, primary-orange-500);
-      color: map-get($general-colors, text-white-light);
+      color: map-get($general-colors, text-white-50);
       border-radius: 0.5rem;
       display: flex;
       justify-content: center;
@@ -212,7 +234,8 @@
       height: 2rem;
       margin: 0 0.5rem;
       padding: 0 0.5rem;
-      border: 1px solid light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
+      border: 1px solid
+        light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
       border-radius: 0.25rem;
       text-align: start;
       font-size: 0.875rem;
@@ -231,14 +254,18 @@
   height: 2rem;
   padding: 0.25rem;
   border-radius: 0.25rem;
-  border: 1px solid light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
+  border: 1px solid
+    light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
   background-color: transparent;
   font-size: 0.875rem;
   color: inherit;
 
   option {
     font-size: 0.875rem;
-    background-color: light-dark(#e5e7eb, map-get($general-colors, neutral-neutral-800));
+    background-color: light-dark(
+      #e5e7eb,
+      map-get($general-colors, neutral-neutral-800)
+    );
   }
 }
 

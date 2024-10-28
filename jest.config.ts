@@ -6,6 +6,7 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
+  testResultsProcessor: "jest-sonar-reporter",
   coverageReporters: ["text", "html", "clover", "lcov"],
   preset: "ts-jest",
   testEnvironment: "jsdom",

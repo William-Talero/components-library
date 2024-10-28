@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { InputWithIcon } from '../Input';
+import { Input } from '../Input';
 import { useState } from 'react';
-import { InputProps, InputWithIconProps } from '@/components/Input/IInput';
+import { InputProps } from '@/components/Input/IInput';
 import React from 'react';
 import { Button } from '@/components/Button';
 
-const meta: Meta<InputWithIconProps> = {
+const meta: Meta<InputProps> = {
   title: 'Components/Atoms/Inputs/InputByValidations',
-  component: InputWithIcon,
+  component: Input,
 };
 
 export default meta;
@@ -32,7 +32,7 @@ const Template = (args: InputProps) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputWithIcon
+      <Input
         {...args}
         value={value}
         $icon="plus"

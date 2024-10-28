@@ -28,29 +28,20 @@ export const Default: Story = {
       'labore esse. Consequat ex non officia incididunt aute et sunt of' +
       'ficia.',
     children: (
-      <Accordion
-        contentColor="green"
-        children={[
-          <AccordionTab
-            header="Placeholder"
-            children={
-              <p>
-                Nulla elit magna incididunt cupidatat exercitation consectetur
-                labore aliquip aliqua in et anim ullamco eiusmod.
-              </p>
-            }
-          />,
-          <AccordionTab
-            header="Placeholder"
-            children={
-              <p>
-                Nulla elit magna incididunt cupidatat exercitation consectetur
-                labore aliquip aliqua in et anim ullamco eiusmod.
-              </p>
-            }
-          />,
-        ]}
-      />
+      <Accordion contentColor="green">
+        <AccordionTab header="Placeholder" key={'accordion_1'}>
+          <p>
+            Nulla elit magna incididunt cupidatat exercitation consectetur
+            labore aliquip aliqua in et anim ullamco eiusmod.
+          </p>
+        </AccordionTab>
+        <AccordionTab header="Placeholder">
+          <p>
+            Nulla elit magna incididunt cupidatat exercitation consectetur
+            labore aliquip aliqua in et anim ullamco eiusmod.
+          </p>
+        </AccordionTab>
+      </Accordion>
     ),
   },
 };
