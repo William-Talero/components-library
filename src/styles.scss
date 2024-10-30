@@ -20,9 +20,10 @@
 @import './components/NavBar/NavBar.style.scss';
 @import './components/Tooltip/Tooltip.styles.scss';
 @import './components/Loading/Loading.styles.scss';
-@import "./components/Modal/Modal.styles.scss";
+@import './components/Modal/Modal.styles.scss';
 @import './components/Spinner/Spinner.styles.scss';
 @import './components/Header/Header.styles.scss';
+@import './components/Badge/Badge.styles.scss';
 
 :root {
   color-scheme: dark light;

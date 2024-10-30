@@ -1,48 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
-const container = document.getElementById('root');
-const root = createRoot(container!);
-import { Button } from '../components/Button/Button';
-import { Checkbox } from '@/components/Checkbox/Checkbox';
+import { Accordion, AccordionTab } from '@/components/Accordion/Accordion';
 import { Alert } from '@/components/Alert/Alert';
+import { Arrow } from '@/components/Arrow/Arrow';
+import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
+import { Checkbox } from '@/components/Checkbox/Checkbox';
+import { Circle } from '@/components/Circle/Circle';
+import { Dropdown } from '@/components/Dropdown';
+import { Option } from '@/components/Dropdown/IDropdown';
+import { FileUploader } from '@/components/FileUploader/FileUploader';
+import { Header } from '@/components/Header';
+import { Input } from '@/components/Input';
+import { Loading } from '@/components/Loading/Loading';
+import { MenuItem } from '@/components/MenuItem/MenuItem';
+import { MenuList } from '@/components/MenuList';
+import { Modal } from '@/components/Modal';
+import { NavBar } from '@/components/NavBar/NavBar';
+import { SectionAccordion } from '@/components/SectionAccordion/SectionAccordion';
+import { SideBar } from '@/components/SideBar/SideBar';
+import { Spinner } from '@/components/Spinner';
+import { Stepper } from '@/components/Stepper/Stepper';
+import { Table } from '@/components/Table/Table';
 import {
-  Title1,
-  Title2,
-  Title3,
-  Title4,
-  Title5,
-  Title6,
   Text1,
   Text2,
   Text3,
   Text4,
   TextCTA,
   TextLink,
+  Title1,
+  Title2,
+  Title3,
+  Title4,
+  Title5,
+  Title6,
 } from '@/components/Text/Text';
-import { Arrow } from '@/components/Arrow/Arrow';
-import { Input } from '@/components/Input';
-import { Table } from '@/components/Table/Table';
-import { Dropdown } from '@/components/Dropdown';
-import { Accordion, AccordionTab } from '@/components/Accordion/Accordion';
-import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
-import { Circle } from '@/components/Circle/Circle';
-import { SectionAccordion } from '@/components/SectionAccordion/SectionAccordion';
-import { MenuList } from '@/components/MenuList';
-import { Stepper } from '@/components/Stepper/Stepper';
-import { MenuItem } from '@/components/MenuItem/MenuItem';
-import { SideBar } from '@/components/SideBar/SideBar';
-import { NavBar } from '@/components/NavBar/NavBar';
-import { Option } from '@/components/Dropdown/IDropdown';
-import { Tooltip } from '@/components/Tooltip/Tooltip';
-import { FileUploader } from '@/components/FileUploader/FileUploader';
-import { Loading } from '@/components/Loading/Loading';
-import { Header } from '@/components/Header';
-import { Toast } from '@/components/Toast-unique/Toast';
-import { Modal } from '@/components/Modal';
 import { ToastOptions } from '@/components/Toast-unique/IToast';
-import { DataItem, allData, columns, actions } from '@/Data/Table/DataTable';
-import { Spinner } from '@/components/Spinner';
+import { Toast } from '@/components/Toast-unique/Toast';
+import { Tooltip } from '@/components/Tooltip/Tooltip';
+import BadgeDemo from '@/Data/Badge/BadgeDemo';
 import { SkeletonDemo } from '@/Data/Skeleton/SkeletonDemo';
+import { DataItem, actions, allData, columns } from '@/Data/Table/DataTable';
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Button } from '../components/Button/Button';
+const container = document.getElementById('root');
+const root = createRoot(container!);
 
 const breadcrumbItems = [
   { label: 'Breadcrumb', href: '/' },
@@ -983,6 +984,8 @@ const App = () => {
       </div>
       <h3>Skeleton</h3>
       <SkeletonDemo />
+      <h3>Badge</h3>
+      <BadgeDemo />
     </div>
   );
 };
